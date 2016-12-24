@@ -1,0 +1,56 @@
+{
+  "name": "rollup-plugin-real-babili",
+  "version": "0.0.0",
+  "description": "Simple rollup plugin for minifying code using Babili.",
+  "main": "dist/rollup-plugin-real-babili.js",
+  "jsnext:main": "dist/rollup-plugin-real-babili.es2015.js",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "rollup-babel-lib-bundler -f cjs,es6 src/index.js",
+    "lint": "eslint src/**/*.js tests/**/*.js",
+    "pretest": "npm run lint && npm run build",
+    "test": "mocha tests/index.js",
+    "preversion": "npm test",
+    "postversion": "git push origin && git push origin --tags",
+    "prepublish": "in-publish && npm run build || exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Comandeer/rollup-plugin-real-babili.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "rollup",
+    "rollup-plugin",
+    "babili",
+    "minify"
+  ],
+  "author": "Comandeer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Comandeer/rollup-plugin-real-babili/issues"
+  },
+  "homepage": "https://github.com/Comandeer/rollup-plugin-real-babili#readme",
+  "devDependencies": {
+    "babel-plugin-external-helpers": "^6.8.0",
+    "babel-preset-es2015": "^6.13.2",
+    "chai": "^3.5.0",
+    "cz-conventional-changelog": "^1.2.0",
+    "eslint": "^3.0.1",
+    "in-publish": "^2.0.0",
+    "mocha": "^3.0.2",
+    "rimraf": "^2.5.2",
+    "rollup": "^0.37.0",
+    "rollup-babel-lib-bundler": "^3.0.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "dependencies": {
+    "babili": "0.0.9"
+  }
+}

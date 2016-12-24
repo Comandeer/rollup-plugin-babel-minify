@@ -1,0 +1,8 @@
+node_modules/
+*.*~
+*.db
+.goutputstream-*
+*.bac
+/.project
+coverage/
+/dist
