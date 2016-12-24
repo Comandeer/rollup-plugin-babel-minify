@@ -45,4 +45,18 @@ describe( 'rollup-plugin-real-babili', () => {
 			expect( result.code.trim() ).to.equal( babeledCode.code );
 		} );
 	} );
+
+	it( 'adds banner even if comments are removed', () => {
+		return rollup( {
+			entry: 'fixtures/index.js',
+			plugins: [ plugin( {
+				comments: false,
+				banner: '/* hublabubla */'
+			} ) ],
+		} ).then( ( bundle ) => {
+			const result = bundle.generate();
+
+			expect( result.code ).to.match( /^\/\* hublabubla \*\// );
+		} );
+	} );
 } );
