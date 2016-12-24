@@ -6,7 +6,7 @@
   "jsnext:main": "dist/rollup-plugin-real-babili.es2015.js",
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "rollup-babel-lib-bundler -f cjs,es6 src/index.js",
+    "build": "rollup-babel-lib-bundler -f cjs,es src/index.js",
     "lint": "eslint src/**/*.js tests/**/*.js",
     "pretest": "npm run lint && npm run build",
     "test": "mocha tests/index.js",
