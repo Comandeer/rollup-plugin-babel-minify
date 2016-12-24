@@ -1,9 +1,9 @@
 'use strict';
 
-const { readFileSync } = require( 'fs' );
+const readFileSync = require( 'fs' ).readFileSync;
 const chai = require( 'chai' );
 const expect = chai.expect;
-const { rollup } = require( 'rollup' );
+const rollup = require( 'rollup' ).rollup;
 const plugin = require( '../dist/rollup-plugin-real-babili' );
 const babel = require( 'babel-core' );
 
