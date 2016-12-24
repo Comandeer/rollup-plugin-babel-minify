@@ -28,4 +28,21 @@ describe( 'rollup-plugin-real-babili', () => {
 			expect( result.code.trim() ).to.equal( babeledCode.code );
 		} );
 	} );
+
+	it( 'removes comments', () => {
+		const path = 'fixtures/index.js';
+		const code = readFileSync( path );
+		const babeledCode = babel.transform( code, { presets: [ 'babili' ], comments: false } );
+
+		return rollup( {
+			entry: path,
+			plugins: [ plugin( {
+				comments: false
+			} ) ]
+		} ).then( ( bundle ) => {
+			const result = bundle.generate();
+
+			expect( result.code.trim() ).to.equal( babeledCode.code );
+		} );
+	} );
 } );
