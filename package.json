@@ -51,6 +51,7 @@
     }
   },
   "dependencies": {
-    "babili": "0.0.9"
+    "babel-core": "^6.21.0",
+    "babel-preset-babili": "0.0.9"
   }
 }
