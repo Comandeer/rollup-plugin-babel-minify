@@ -9,6 +9,7 @@ export default function babili( options = {} ) {
 		transformBundle( code ) {
 			const result = babel.transform( code, {
 				presets: [ 'babili' ],
+				sourceMaps: typeof options.sourceMap !== 'undefined' ? Boolean( options.sourceMap ) : true,
 				comments: typeof options.comments !== 'undefined' ? Boolean( options.comments ) : true
 			} );
 

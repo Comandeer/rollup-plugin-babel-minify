@@ -59,4 +59,32 @@ describe( 'rollup-plugin-real-babili', () => {
 			expect( result.code ).to.match( /^\/\* hublabubla \*\// );
 		} );
 	} );
+
+	it( 'generates source map by default', () => {
+		return rollup( {
+			entry: 'fixtures/index.js',
+			plugins: [ plugin() ],
+		} ).then( ( bundle ) => {
+			const result = bundle.generate( {
+				sourceMap: true
+			} );
+
+			expect( result.map ).to.not.equal( null );
+		} );
+	} );
+
+	it( 'does not generate source map when the proper option is passed', () => {
+		return rollup( {
+			entry: 'fixtures/index.js',
+			plugins: [ plugin( {
+				sourceMap: false
+			} ) ],
+		} ).then( ( bundle ) => {
+			const result = bundle.generate( {
+				sourceMap: false
+			} );
+
+			expect( result.map ).to.equal( null );
+		} );
+	} )
 } );
