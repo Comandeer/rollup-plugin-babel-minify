@@ -1,5 +1,6 @@
 'use strict';
 
+import { getCommentContent } from '@comandeer/babel-plugin-banner/utils';
 const babel = require( 'babel-core' );
 
 export default function babili( options = {} ) {
@@ -7,17 +8,35 @@ export default function babili( options = {} ) {
 		name: 'babili',
 
 		transformBundle( code ) {
-			const result = babel.transform( code, {
+			const babelConf = {
 				presets: [ 'babili' ],
 				sourceMaps: typeof options.sourceMap !== 'undefined' ? Boolean( options.sourceMap ) : true,
 				comments: typeof options.comments !== 'undefined' ? Boolean( options.comments ) : true
-			} );
+			};
 
-			if ( options.banner ) {
-				result.code = `${ options.banner }\n${ result.code.trim() }`;
+			if ( typeof options.banner === 'string' ) {
+				const banner = options.banner;
+				const bannerContent = getCommentContent( banner );
+				let isAlreadyInserted = false;
+
+				babelConf.plugins = [
+					[ '@comandeer/babel-plugin-banner', {
+						banner
+					} ]
+				];
+
+				babelConf.shouldPrintComment = ( comment ) => {
+					if ( !isAlreadyInserted && comment === bannerContent ) {
+						isAlreadyInserted = true;
+
+						return true;
+					}
+
+					return false;
+				};
 			}
 
-			return result;
+			return babel.transform( code, babelConf );
 		}
 	};
 }
