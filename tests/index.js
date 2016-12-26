@@ -60,6 +60,35 @@ describe( 'rollup-plugin-real-babili', () => {
 		} );
 	} );
 
+	it( 'preserves comments alongside banner if no comments option is passed', () => {
+		return rollup( {
+			entry: 'fixtures/index.js',
+			plugins: [ plugin( {
+				banner: '/* hublabubla */'
+			} ) ],
+		} ).then( ( bundle ) => {
+			const result = bundle.generate();
+
+			expect( result.code ).to.match( /^\/\* hublabubla \*\// );
+			expect( result.code ).to.match( /.+\/\* Simple comment \*\/.+/g );
+		} );
+	} );
+
+	it( 'preserves comments alongside banner if comments option is set to true', () => {
+		return rollup( {
+			entry: 'fixtures/index.js',
+			plugins: [ plugin( {
+				comments: true,
+				banner: '/* hublabubla */'
+			} ) ],
+		} ).then( ( bundle ) => {
+			const result = bundle.generate();
+
+			expect( result.code ).to.match( /^\/\* hublabubla \*\// );
+			expect( result.code ).to.match( /.+\/\* Simple comment \*\/.+/g );
+		} );
+	} );
+
 	it( 'generates source map by default', () => {
 		return rollup( {
 			entry: 'fixtures/index.js',

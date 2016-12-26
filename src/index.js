@@ -25,15 +25,17 @@ export default function babili( options = {} ) {
 					} ]
 				];
 
-				babelConf.shouldPrintComment = ( comment ) => {
-					if ( !isAlreadyInserted && comment === bannerContent ) {
-						isAlreadyInserted = true;
+				if ( typeof options.comments !== 'undefined' && !options.comments ) {
+					babelConf.shouldPrintComment = ( comment ) => {
+						if ( !isAlreadyInserted && comment === bannerContent ) {
+							isAlreadyInserted = true;
 
-						return true;
-					}
+							return true;
+						}
 
-					return false;
-				};
+						return false;
+					};
+				}
 			}
 
 			return babel.transform( code, babelConf );
