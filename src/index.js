@@ -25,7 +25,7 @@ export default function babili( options = {} ) {
 					} ]
 				];
 
-				if ( typeof options.comments !== 'undefined' && !options.comments ) {
+				if ( !babelConf.comments ) {
 					babelConf.shouldPrintComment = ( comment ) => {
 						if ( !isAlreadyInserted && comment === bannerContent ) {
 							isAlreadyInserted = true;
