@@ -91,7 +91,7 @@ describe( 'rollup-plugin-real-babili', () => {
 
 	it( 'generates source map by default', () => {
 		return rollup( {
-			entry: 'fixtures/index.js',
+			entry: 'fixtures/sourcemap.js',
 			plugins: [ plugin() ],
 		} ).then( ( bundle ) => {
 			const result = bundle.generate( {
@@ -104,7 +104,7 @@ describe( 'rollup-plugin-real-babili', () => {
 
 	it( 'does not generate source map when the proper option is passed', () => {
 		return rollup( {
-			entry: 'fixtures/index.js',
+			entry: 'fixtures/sourcemap.js',
 			plugins: [ plugin( {
 				sourceMap: false
 			} ) ],
@@ -115,5 +115,20 @@ describe( 'rollup-plugin-real-babili', () => {
 
 			expect( result.map ).to.equal( null );
 		} );
-	} )
+	} );
+
+	it( 'generates source map for UMD bundle', () => {
+		return rollup( {
+			entry: 'fixtures/sourcemap.js',
+			plugins: [ plugin() ],
+		} ).then( ( bundle ) => {
+			const result = bundle.generate( {
+				format: 'umd',
+				moduleName: 'Test',
+				sourceMap: true
+			} );
+
+			expect( result.map ).to.not.equal( null );
+		} );
+	} );
 } );
