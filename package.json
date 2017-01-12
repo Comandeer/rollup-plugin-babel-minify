@@ -7,7 +7,7 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "rollup-babel-lib-bundler -f cjs,es6 src/index.js",
-    "lint": "eslint src/**/*.js tests/**/*.js",
+    "lint": "eslint src/**/*.js tests/*.js",
     "pretest": "npm run lint && npm run build",
     "test": "mocha tests/index.js",
     "preversion": "npm test",
