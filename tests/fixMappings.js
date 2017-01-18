@@ -21,4 +21,20 @@ describe( 'fixMappings', () => {
 
 		expect( result ).to.equal( mappings.valid );
 	} );
+
+	it( 'return empty string for invalid input', () => {
+		const inputs = [
+			1,
+			null,
+			[],
+			{},
+			undefined
+		];
+
+		inputs.forEach( ( input ) => {
+			const result = fixMappings( input );
+
+			expect( result ).to.equal( '' );
+		} );
+	} );
 } );

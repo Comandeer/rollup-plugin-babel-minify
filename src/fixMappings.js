@@ -3,6 +3,10 @@
 import { encode, decode } from 'sourcemap-codec';
 
 function fixMappings( mappings ) {
+	if ( typeof mappings !== 'string' ) {
+		return '';
+	}
+
 	mappings = decode( mappings );
 	const lastLine = mappings[ 0 ][ mappings[ 0 ].length - 1 ];
 
