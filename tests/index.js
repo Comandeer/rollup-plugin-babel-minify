@@ -60,6 +60,35 @@ describe( 'rollup-plugin-real-babili', () => {
 		} );
 	} );
 
+	it( 'adds banner inherited from bundle.generate', () => {
+		return rollup( {
+			entry: 'fixtures/index.js',
+			plugins: [ plugin() ],
+		} ).then( ( bundle ) => {
+			const result = bundle.generate( {
+				banner: '/* hublabubla */'
+			} );
+
+			expect( result.code ).to.match( /^\/\* hublabubla \*\// );
+		} );
+	} );
+
+	it( 'prefers banner from own options over one inherited from bundle.generate', () => {
+		return rollup( {
+			entry: 'fixtures/index.js',
+			plugins: [ plugin( {
+				banner: '/* ROLLUP RULEZ */'
+			} ) ],
+		} ).then( ( bundle ) => {
+			const result = bundle.generate( {
+				banner: '/* hublabubla */'
+			} );
+
+			expect( result.code ).to.match( /^\/\* ROLLUP RULEZ \*\// );
+			expect( result.code ).not.to.match( /^\/\* hublabubla \*\// );
+		} );
+	} );
+
 	it( 'preserves comments alongside banner if no comments option is passed', () => {
 		return rollup( {
 			entry: 'fixtures/index.js',

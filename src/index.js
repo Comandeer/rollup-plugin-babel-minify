@@ -8,15 +8,15 @@ function babili( options = {} ) {
 	return {
 		name: 'babili',
 
-		transformBundle( bundle ) {
+		transformBundle( bundle, rollupOptions ) {
 			const babelConf = {
 				presets: [ 'babili' ],
 				sourceMaps: typeof options.sourceMap !== 'undefined' ? Boolean( options.sourceMap ) : true,
 				comments: typeof options.comments !== 'undefined' ? Boolean( options.comments ) : true
 			};
 
-			if ( typeof options.banner === 'string' ) {
-				const banner = options.banner;
+			if ( typeof options.banner === 'string' || typeof rollupOptions.banner === 'string' ) {
+				const banner = options.banner || rollupOptions.banner;
 				const bannerContent = getCommentContent( banner );
 				let isAlreadyInserted = false;
 
