@@ -53,6 +53,7 @@
   "dependencies": {
     "@comandeer/babel-plugin-banner": "^1.0.0",
     "babel-core": "^6.21.0",
-    "babel-preset-babili": "0.0.9"
+    "babel-preset-babili": "0.0.9",
+    "sourcemap-codec": "^1.3.0"
   }
 }
