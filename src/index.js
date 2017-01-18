@@ -2,7 +2,7 @@
 
 import { getCommentContent } from '@comandeer/babel-plugin-banner/utils';
 import fixMappings from './fixMappings';
-const babel = require( 'babel-core' );
+import { transform } from 'babel-core';
 
 function babili( options = {} ) {
 	return {
@@ -39,7 +39,7 @@ function babili( options = {} ) {
 				}
 			}
 
-			const { code, map } = babel.transform( bundle, babelConf );
+			const { code, map } = transform( bundle, babelConf );
 
 			if ( map ) {
 				map.mappings = fixMappings( map.mappings );
