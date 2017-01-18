@@ -17,7 +17,7 @@ describe( 'rollup-plugin-real-babili', () => {
 	it( 'minifies code just like Babili', () => {
 		const path = 'fixtures/index.js';
 		const code = readFileSync( path, 'utf8' );
-		const babeledCode = babel.transform( code, { presets: [ 'babili' ] } );
+		const babeledCode = babel.transform( code, { presets: [ 'babili' ], comments: true } );
 
 		return rollup( {
 			entry: path,
