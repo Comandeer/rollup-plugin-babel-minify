@@ -9,7 +9,7 @@
     "build": "rollup-babel-lib-bundler -f cjs,es6 src/index.js",
     "lint": "eslint src/**/*.js tests/*.js",
     "pretest": "npm run lint && npm run build",
-    "test": "mocha tests/index.js",
+    "test": "mocha tests/*.js",
     "preversion": "npm test",
     "postversion": "git push origin && git push origin --tags",
     "prepublish": "in-publish && npm run build || exit 0"
