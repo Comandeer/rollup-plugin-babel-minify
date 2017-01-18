@@ -22,7 +22,7 @@ describe( 'fixMappings', () => {
 		expect( result ).to.equal( mappings.valid );
 	} );
 
-	it( 'return empty string for invalid input', () => {
+	it( 'returns empty string for invalid input', () => {
 		const inputs = [
 			1,
 			null,
@@ -36,5 +36,11 @@ describe( 'fixMappings', () => {
 
 			expect( result ).to.equal( '' );
 		} );
+	} );
+
+	it( 'returns empty string for empty mappings', () => {
+		const result = fixMappings( '' );
+
+		expect( result ).to.equal( '' );
 	} );
 } );

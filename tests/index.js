@@ -160,4 +160,18 @@ describe( 'rollup-plugin-real-babili', () => {
 			expect( result.map ).to.not.equal( null );
 		} );
 	} );
+
+	it( 'generates source map for empty bundle', () => {
+		return rollup( {
+			entry: 'fixtures/empty.js',
+			plugins: [ plugin() ],
+		} ).then( ( bundle ) => {
+			const result = bundle.generate( {
+				format: 'es',
+				sourceMap: true
+			} );
+
+			expect( result.map ).to.not.equal( null );
+		} );
+	} );
 } );

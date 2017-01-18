@@ -12,7 +12,7 @@ function fixMappings( mappings ) {
 
 	// If the last line has only one segment with only one item,
 	// just drop the whole line.
-	if ( lastLine.length === 1 ) {
+	if ( lastLine && lastLine.length === 1 ) {
 		mappings[ 0 ].pop();
 	}
 
