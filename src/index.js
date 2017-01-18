@@ -1,13 +1,14 @@
 'use strict';
 
 import { getCommentContent } from '@comandeer/babel-plugin-banner/utils';
+import fixMappings from './fixMappings';
 const babel = require( 'babel-core' );
 
-export default function babili( options = {} ) {
+function babili( options = {} ) {
 	return {
 		name: 'babili',
 
-		transformBundle( code ) {
+		transformBundle( bundle ) {
 			const babelConf = {
 				presets: [ 'babili' ],
 				sourceMaps: typeof options.sourceMap !== 'undefined' ? Boolean( options.sourceMap ) : true,
@@ -38,7 +39,20 @@ export default function babili( options = {} ) {
 				}
 			}
 
-			return babel.transform( code, babelConf );
+			const { code, map } = babel.transform( bundle, babelConf );
+
+			if ( map ) {
+				map.mappings = fixMappings( map.mappings );
+			}
+
+			return {
+				code,
+				map
+			};
 		}
 	};
 }
+
+babili.fixMappings = fixMappings;
+
+export default babili;
