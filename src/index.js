@@ -1,5 +1,6 @@
 'use strict';
 
+import bannerPlugin from '@comandeer/babel-plugin-banner';
 import { getCommentContent } from '@comandeer/babel-plugin-banner/utils';
 import fixMappings from './fixMappings';
 import { transform } from 'babel-core';
@@ -21,7 +22,7 @@ function babili( options = {} ) {
 				let isAlreadyInserted = false;
 
 				babelConf.plugins = [
-					[ '@comandeer/babel-plugin-banner', {
+					[ bannerPlugin, {
 						banner
 					} ]
 				];
