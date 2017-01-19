@@ -12,7 +12,7 @@ npm install rollup-plugin-real-babili [--save-dev]
 
 ```javascript
 import { rollup } from 'rollup';
-import babili from 'rollup-plugin-babili';
+import babili from 'rollup-plugin-real-babili';
 
 rollup( {
 	entry: './src/index.js',
