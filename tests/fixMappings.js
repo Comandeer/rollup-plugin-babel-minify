@@ -3,7 +3,7 @@
 const chai = require( 'chai' );
 const expect = chai.expect;
 const mappings = require( './fixtures/mappings' );
-const fixMappings = require( '../dist/rollup-plugin-real-babili' ).fixMappings;
+const fixMappings = require( '../dist/rollup-plugin-babili' ).fixMappings;
 
 describe( 'fixMappings', () => {
 	it( 'is a function', () => {

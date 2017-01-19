@@ -1,4 +1,4 @@
-# rollup-plugin-real-babili Changelog
+# rollup-plugin-babili Changelog
 
 ---
 

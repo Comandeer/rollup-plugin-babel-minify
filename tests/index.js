@@ -4,12 +4,12 @@ const readFileSync = require( 'fs' ).readFileSync;
 const chai = require( 'chai' );
 const expect = chai.expect;
 const rollup = require( 'rollup' ).rollup;
-const plugin = require( '../dist/rollup-plugin-real-babili' );
+const plugin = require( '../dist/rollup-plugin-babili' );
 const babel = require( 'babel-core' );
 
 process.chdir( 'tests' );
 
-describe( 'rollup-plugin-real-babili', () => {
+describe( 'rollup-plugin-babili', () => {
 	it( 'is a function', () => {
 		expect( plugin ).to.be.a( 'function' );
 	} );

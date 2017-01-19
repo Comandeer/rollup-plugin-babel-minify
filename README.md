@@ -1,18 +1,18 @@
-# rollup-plugin-real-babili [![Build Status](https://travis-ci.org/Comandeer/rollup-plugin-real-babili.svg?branch=master)](https://travis-ci.org/Comandeer/rollup-plugin-real-babili) [![Dependency Status](https://david-dm.org/Comandeer/rollup-plugin-real-babili.svg)](https://david-dm.org/Comandeer/rollup-plugin-real-babili) [![devDependency Status](https://david-dm.org/Comandeer/rollup-plugin-real-babili/dev-status.svg)](https://david-dm.org/Comandeer/rollup-plugin-real-babili#info=devDependencies)
+# rollup-plugin-babili [![Build Status](https://travis-ci.org/Comandeer/rollup-plugin-babili.svg?branch=master)](https://travis-ci.org/Comandeer/rollup-plugin-babili) [![Dependency Status](https://david-dm.org/Comandeer/rollup-plugin-babili.svg)](https://david-dm.org/Comandeer/rollup-plugin-babili) [![devDependency Status](https://david-dm.org/Comandeer/rollup-plugin-babili/dev-status.svg)](https://david-dm.org/Comandeer/rollup-plugin-babili#info=devDependencies)
 
 Allows using [Babili minifier](https://github.com/babel/babili) with Rollup.
 
 ## Installation
 
 ```bash
-npm install rollup-plugin-real-babili [--save-dev]
+npm install rollup-plugin-babili [--save-dev]
 ```
 
 ## Usage
 
 ```javascript
 import { rollup } from 'rollup';
-import babili from 'rollup-plugin-real-babili';
+import babili from 'rollup-plugin-babili';
 
 rollup( {
 	entry: './src/index.js',
