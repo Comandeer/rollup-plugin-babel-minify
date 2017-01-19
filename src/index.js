@@ -1,5 +1,6 @@
 'use strict';
 
+import babiliPreset from 'babel-preset-babili';
 import bannerPlugin from '@comandeer/babel-plugin-banner';
 import { getCommentContent } from '@comandeer/babel-plugin-banner/utils';
 import fixMappings from './fixMappings';
@@ -11,7 +12,7 @@ function babili( options = {} ) {
 
 		transformBundle( bundle, rollupOptions ) {
 			const babelConf = {
-				presets: [ 'babili' ],
+				presets: [ babiliPreset ],
 				sourceMaps: typeof options.sourceMap !== 'undefined' ? Boolean( options.sourceMap ) : true,
 				comments: typeof options.comments !== 'undefined' ? Boolean( options.comments ) : true
 			};
