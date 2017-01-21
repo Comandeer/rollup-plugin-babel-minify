@@ -1,4 +1,4 @@
-# rollup-plugin-babili [![Build Status](https://travis-ci.org/Comandeer/rollup-plugin-babili.svg?branch=master)](https://travis-ci.org/Comandeer/rollup-plugin-babili) [![Dependency Status](https://david-dm.org/Comandeer/rollup-plugin-babili.svg)](https://david-dm.org/Comandeer/rollup-plugin-babili) [![devDependency Status](https://david-dm.org/Comandeer/rollup-plugin-babili/dev-status.svg)](https://david-dm.org/Comandeer/rollup-plugin-babili#info=devDependencies)
+# rollup-plugin-babili [![Build Status](https://travis-ci.org/Comandeer/rollup-plugin-babili.svg?branch=master)](https://travis-ci.org/Comandeer/rollup-plugin-babili) [![Dependency Status](https://david-dm.org/Comandeer/rollup-plugin-babili.svg)](https://david-dm.org/Comandeer/rollup-plugin-babili) [![devDependencies Status](https://david-dm.org/Comandeer/rollup-plugin-babili/dev-status.svg)](https://david-dm.org/Comandeer/rollup-plugin-babili?type=dev)
 
 Allows using [Babili minifier](https://github.com/babel/babili) with Rollup.
 
