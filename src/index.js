@@ -12,7 +12,7 @@ function babili( options = {} ) {
 
 		transformBundle( bundle, rollupOptions ) {
 			const babelConf = {
-				presets: [ babiliPreset ],
+				presets: [ [ babiliPreset, options ] ],
 				sourceMaps: typeof options.sourceMap !== 'undefined' ? Boolean( options.sourceMap ) : true,
 				comments: typeof options.comments !== 'undefined' ? Boolean( options.comments ) : true
 			};
