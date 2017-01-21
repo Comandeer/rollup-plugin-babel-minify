@@ -29,6 +29,25 @@ describe( 'rollup-plugin-babili', () => {
 		} );
 	} );
 
+	it( 'passes options to babel', () => {
+		const path = 'fixtures/sourcemap.js';
+		const code = readFileSync( path );
+		const babeledCode = babel.transform( code, { presets: [ [ 'babili', {
+			removeConsole: true
+		} ] ] } );
+
+		return rollup( {
+			entry: path,
+			plugins: [ plugin( {
+				removeConsole: true
+			} ) ]
+		} ).then( ( bundle ) => {
+			const result = bundle.generate();
+
+			expect( result.code.trim() ).to.equal( babeledCode.code );
+		} );
+	} );
+
 	it( 'removes comments', () => {
 		const path = 'fixtures/index.js';
 		const code = readFileSync( path );
