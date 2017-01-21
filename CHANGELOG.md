@@ -2,6 +2,10 @@
 
 ---
 
+## 1.1.0
+
+* Pass options to Babili preset.
+
 ## 1.0.3
 
 * Fix this changelog (one day I will not forget about it).
