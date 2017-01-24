@@ -26,10 +26,11 @@ rollup( {
 
 For the list of options, check [Babili's docs](https://github.com/babel/babili/blob/master/README.md).
 
-There are two additional options:
+There are additional options:
 
 * `comments` (default: `true`): indicates if comments should be preserved in source
 * `banner` (default: `undefined`): the comment which should be prepended to the transformed bundle
+* `sourceMap` (default: `true`): indicates if sourcemap should be generated
 
 ## License
 
