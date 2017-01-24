@@ -8,13 +8,14 @@ function fixMappings( mappings ) {
 	}
 
 	mappings = decode( mappings );
-	const lastLine = mappings[ 0 ][ mappings[ 0 ].length - 1 ];
 
-	// If the last line has only one segment with only one item,
-	// just drop the whole line.
-	if ( lastLine && lastLine.length === 1 ) {
-		mappings[ 0 ].pop();
-	}
+	mappings[ 0 ].forEach( ( line, index ) => {
+		// If the line has only one segment with only one item,
+		// just drop the whole line.
+		if ( line && line.length === 1 ) {
+			mappings[ 0 ].splice( index, 1 );
+		}
+	} );
 
 	return encode( mappings );
 }
