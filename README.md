@@ -24,7 +24,7 @@ rollup( {
 } );
 ```
 
-For the list of options, check [Babili's docs](https://github.com/babel/babili/blob/master/README.md).
+For the list of options, check [Babili Preset's docs](https://github.com/babel/babili/blob/master/packages/babel-preset-babili/README.md#options).
 
 There are additional options:
 
