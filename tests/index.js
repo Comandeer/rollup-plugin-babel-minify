@@ -200,4 +200,21 @@ describe( 'rollup-plugin-babili', () => {
 			expect( result.map ).to.not.equal( null );
 		} );
 	} );
+
+	it( 'generates valid source map after heavy processing by fixMappings', () => {
+		return rollup( {
+			entry: 'fixtures/invalidMappings.js',
+			plugins: [ plugin() ],
+		} ).then( ( bundle ) => {
+			const result = bundle.generate( {
+				format: 'es',
+				sourceMap: true
+			} );
+
+			expect( result.map ).to.not.equal( null );
+			expect( () => {
+				validateSourcemap( result.code, result.map );
+			} ).not.to.throw();
+		} );
+	} );
 } );
