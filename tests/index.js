@@ -6,6 +6,7 @@ const expect = chai.expect;
 const rollup = require( 'rollup' ).rollup;
 const plugin = require( '../dist/rollup-plugin-babili' );
 const babel = require( 'babel-core' );
+const validateSourcemap = require( 'sourcemap-validator' );
 
 process.chdir( 'tests' );
 
@@ -147,6 +148,9 @@ describe( 'rollup-plugin-babili', () => {
 			} );
 
 			expect( result.map ).to.not.equal( null );
+			expect( () => {
+				validateSourcemap( result.code, result.map );
+			} ).not.to.throw();
 		} );
 	} );
 
@@ -177,6 +181,9 @@ describe( 'rollup-plugin-babili', () => {
 			} );
 
 			expect( result.map ).to.not.equal( null );
+			expect( () => {
+				validateSourcemap( result.code, result.map );
+			} ).not.to.throw();
 		} );
 	} );
 
