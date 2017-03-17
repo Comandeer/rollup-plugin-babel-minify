@@ -3,7 +3,6 @@
 import babiliPreset from 'babel-preset-babili';
 import bannerPlugin from '@comandeer/babel-plugin-banner';
 import { getCommentContent } from '@comandeer/babel-plugin-banner/utils';
-import fixMappings from './fixMappings';
 import { transform } from 'babel-core';
 
 function babili( options = {} ) {
@@ -43,10 +42,6 @@ function babili( options = {} ) {
 
 			const { code, map } = transform( bundle, babelConf );
 
-			if ( map ) {
-				map.mappings = fixMappings( map.mappings );
-			}
-
 			return {
 				code,
 				map
@@ -54,7 +49,5 @@ function babili( options = {} ) {
 		}
 	};
 }
-
-babili.fixMappings = fixMappings;
 
 export default babili;
