@@ -5,6 +5,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 ---
 
+## [2.0.0] – 2017-03-18
+### Changed
+* Update Babili version to `^0.0.12`.
+* Update rollup to `^0.41.5`
+
+### Removed
+* Remove `fixMappings`, both from code and public API – after upgrading Rollup is not longer needed.
+
 ## [1.1.1] – 2017-01-25
 ### Changed
 * Move changelog to Keep a Changelog standard.
