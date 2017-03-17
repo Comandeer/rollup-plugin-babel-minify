@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-babili",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "description": "Simple rollup plugin for minifying code using Babili.",
   "main": "dist/rollup-plugin-babili.js",
   "jsnext:main": "dist/rollup-plugin-babili.es2015.js",
