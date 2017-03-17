@@ -42,7 +42,7 @@
     "in-publish": "^2.0.0",
     "mocha": "^3.0.2",
     "rimraf": "^2.5.2",
-    "rollup": "^0.41.1",
+    "rollup": "^0.41.5",
     "rollup-babel-lib-bundler": "^3.0.1",
     "sourcemap-validator": "^1.0.5"
   },
@@ -54,7 +54,6 @@
   "dependencies": {
     "@comandeer/babel-plugin-banner": "^1.0.0",
     "babel-core": "^6.21.0",
-    "babel-preset-babili": "^0.0.12",
-    "sourcemap-codec": "^1.3.0"
+    "babel-preset-babili": "^0.0.12"
   }
 }
