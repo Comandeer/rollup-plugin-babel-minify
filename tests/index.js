@@ -93,19 +93,32 @@ describe( 'rollup-plugin-babili', () => {
 		} );
 	} );
 
-	it( 'prefers banner from own options over one inherited from bundle.generate', () => {
+	it ( 'adds banner inherited from root configuration', () => {
+		// while you can ask: WTF? banner is not an option for an rollup
+		// function, this is how options from config file are passed
+		return rollup( {
+			entry: 'fixtures/index.js',
+			banner: '/* hublabubla */',
+			plugins: [ plugin() ],
+		} ).then( ( bundle ) => {
+			const result = bundle.generate();
+
+			expect ( result.code ).to.match( /^\/\* hublabubla \*\// );
+		} );
+	} );
+
+	it ( 'adds banner as a result of call if plugin banner option is fn itself', () => {
 		return rollup( {
 			entry: 'fixtures/index.js',
 			plugins: [ plugin( {
-				banner: '/* ROLLUP RULEZ */'
+				banner: () => {
+					return '/* hublabubla */';
+				}
 			} ) ],
-		} ).then( ( bundle ) => {
-			const result = bundle.generate( {
-				banner: '/* hublabubla */'
-			} );
+		} ).then ( ( bundle ) => {
+			const result = bundle.generate();
 
-			expect( result.code ).to.match( /^\/\* ROLLUP RULEZ \*\// );
-			expect( result.code ).not.to.match( /^\/\* hublabubla \*\// );
+			expect ( result.code ).to.match( /^\/\* hublabubla \*\// );
 		} );
 	} );
 
