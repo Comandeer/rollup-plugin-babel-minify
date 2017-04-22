@@ -5,6 +5,17 @@ import bannerPlugin from '@comandeer/babel-plugin-banner';
 import { getCommentContent } from '@comandeer/babel-plugin-banner/utils';
 import { transform } from 'babel-core';
 
+// NOTE: lodash or something else more precise can be an option here
+const isString = ( v ) => {
+	return v != null && typeof v === 'string';
+};
+const isFn = ( v ) => {
+	return v != null && typeof v === 'function';
+};
+const isFnOrString = ( v ) => {
+	return isString( v ) || isFn( v );
+};
+
 function babili( options = {} ) {
 	let _banner;
 
@@ -22,8 +33,9 @@ function babili( options = {} ) {
 				comments: typeof options.comments !== 'undefined' ? Boolean( options.comments ) : true
 			};
 
-			if ( typeof options.banner === 'string' || typeof _banner === 'string' ) {
-				const banner = options.banner || _banner;
+			if ( isFnOrString( options.banner ) || isFnOrString ( _banner ) ) {
+				let banner = options.banner || _banner;
+				banner = isFn ( banner ) ? banner() : banner;
 				const bannerContent = getCommentContent( banner );
 				let isAlreadyInserted = false;
 

@@ -107,6 +107,21 @@ describe( 'rollup-plugin-babili', () => {
 		} );
 	} );
 
+	it ( 'adds banner as a result of call if plugin banner option is fn itself', () => {
+		return rollup( {
+			entry: 'fixtures/index.js',
+			plugins: [ plugin( {
+				banner: () => {
+					return '/* hublabubla */';
+				}
+			} ) ],
+		} ).then ( ( bundle ) => {
+			const result = bundle.generate();
+
+			expect ( result.code ).to.match( /^\/\* hublabubla \*\// );
+		} );
+	} );
+
 	it( 'preserves comments alongside banner if no comments option is passed', () => {
 		return rollup( {
 			entry: 'fixtures/index.js',
