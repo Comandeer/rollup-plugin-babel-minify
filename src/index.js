@@ -17,13 +17,13 @@ const isFnOrString = ( v ) => {
 };
 
 function babili( options = {} ) {
-	let _banner;
+	let rollupBanner;
 
 	return {
 		name: 'babili',
 
 		options( { banner } ) {
-			_banner = banner;
+			rollupBanner = banner;
 		},
 
 		transformBundle( bundle ) {
@@ -33,8 +33,8 @@ function babili( options = {} ) {
 				comments: typeof options.comments !== 'undefined' ? Boolean( options.comments ) : true
 			};
 
-			if ( isFnOrString( options.banner ) || isFnOrString ( _banner ) ) {
-				let banner = options.banner || _banner;
+			if ( isFnOrString( options.banner ) || isFnOrString ( rollupBanner ) ) {
+				let banner = options.banner || rollupBanner;
 				banner = isFn ( banner ) ? banner() : banner;
 				const bannerContent = getCommentContent( banner );
 				let isAlreadyInserted = false;
