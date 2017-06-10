@@ -1,5 +1,6 @@
 'use strict';
 
+import { filterBabiliOptions } from './utils.js';
 import babiliPreset from 'babel-preset-babili';
 import bannerPlugin from '@comandeer/babel-plugin-banner';
 import { getCommentContent } from '@comandeer/babel-plugin-banner/utils';
@@ -27,8 +28,9 @@ function babili( options = {} ) {
 		},
 
 		transformBundle( bundle ) {
+			const babiliOptions = filterBabiliOptions( options );
 			const babelConf = {
-				presets: [ [ babiliPreset, options ] ],
+				presets: [ [ babiliPreset, babiliOptions ] ],
 				sourceMaps: typeof options.sourceMap !== 'undefined' ? Boolean( options.sourceMap ) : true,
 				comments: typeof options.comments !== 'undefined' ? Boolean( options.comments ) : true
 			};
