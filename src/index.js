@@ -1,21 +1,12 @@
 'use strict';
 
 import { filterBabiliOptions } from './utils.js';
+import { isFn } from './utils.js';
+import { isFnOrString } from './utils.js';
 import babiliPreset from 'babel-preset-babili';
 import bannerPlugin from '@comandeer/babel-plugin-banner';
 import { getCommentContent } from '@comandeer/babel-plugin-banner/utils';
 import { transform } from 'babel-core';
-
-// NOTE: lodash or something else more precise can be an option here
-const isString = ( v ) => {
-	return v != null && typeof v === 'string';
-};
-const isFn = ( v ) => {
-	return v != null && typeof v === 'function';
-};
-const isFnOrString = ( v ) => {
-	return isString( v ) || isFn( v );
-};
 
 function babili( options = {} ) {
 	let rollupBanner;
