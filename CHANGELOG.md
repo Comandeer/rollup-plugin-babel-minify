@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
-## 3.1.0
+## [3.1.0] – 2017-06-10
 #### Added
 * Add support for Node.js 8 and npm 5.
 
@@ -55,6 +55,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 * First working version, yay!
 
+[3.1.0]: https://github.com/Comandeer/rollup-plugin-babili/compare/v3.0.0...v3.1.0
 [3.0.0]: https://github.com/Comandeer/rollup-plugin-babili/compare/v2.0.0...v3.0.0
 [2.0.0]: https://github.com/Comandeer/rollup-plugin-babili/compare/v1.1.1...v2.0.0
 [1.1.1]: https://github.com/Comandeer/rollup-plugin-babili/compare/v1.1.0...v1.1.1
