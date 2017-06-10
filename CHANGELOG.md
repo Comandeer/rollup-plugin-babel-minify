@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## 3.1.0
+### Changed
+* Update Babili version to `^0.1.2`.
+* Update Rollup version to `^0.42.0`.
+
 ## [3.0.0] – 2017-04-22
 ### Changed
 * Handling of banner option should be better now, thanks to [Alex Khomchenko](https://github.com/gagoman)!
