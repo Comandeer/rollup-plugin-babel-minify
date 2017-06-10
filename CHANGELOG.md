@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ---
 
 ## 3.1.0
+#### Added
+* Add support for Node.js 8 and npm 5.
+
 ### Changed
 * Update Babili version to `^0.1.2`.
 * Update Rollup version to `^0.42.0`.
