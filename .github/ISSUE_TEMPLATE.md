@@ -10,6 +10,6 @@
 
 Version of package:
 
-Browser:
+Node.js & npm versions:
 
-Operating system: 
+Operating system:
