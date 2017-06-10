@@ -17,4 +17,19 @@ function filterBabiliOptions( options ) {
 	return babiliOptions;
 }
 
+function isString( v ) {
+	return v != null && typeof v === 'string';
+}
+
+function isFn( v ) {
+	return v != null && typeof v === 'function';
+}
+
+function isFnOrString( v ) {
+	return isString( v ) || isFn( v );
+}
+
 export { filterBabiliOptions };
+export { isString };
+export { isFn };
+export { isFnOrString };
