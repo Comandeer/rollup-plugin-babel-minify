@@ -33,6 +33,9 @@
     "url": "https://github.com/Comandeer/rollup-plugin-babili/issues"
   },
   "homepage": "https://github.com/Comandeer/rollup-plugin-babili#readme",
+  "peerDependencies": {
+    "rollup": ">=0.41.5"
+  },
   "devDependencies": {
     "babel-plugin-external-helpers": "^6.8.0",
     "babel-preset-es2015": "^6.13.2",
