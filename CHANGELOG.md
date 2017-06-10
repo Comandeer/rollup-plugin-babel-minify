@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 * Update Babili version to `^0.1.2`.
 * Update Rollup version to `^0.42.0`.
+* Add Rollup as peer dependency.
 
 ## [3.0.0] – 2017-04-22
 ### Changed
