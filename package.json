@@ -44,6 +44,23 @@
       "tests/**/*.js"
     ]
   },
+  "commitplease": {
+    "style": "angular",
+    "types": [
+      "feat",
+      "fix",
+      "docs",
+      "style",
+      "refactor",
+      "perf",
+      "test",
+      "build",
+      "ci",
+      "chore",
+      "revert"
+    ],
+    "scope": "\\S+.*"
+  },
   "peerDependencies": {
     "rollup": ">=0.41.5"
   },
@@ -53,6 +70,7 @@
     "babel-preset-es2015": "^6.13.2",
     "chai": "^4.0.0",
     "codecov": "^2.2.0",
+    "commitplease": "^2.7.10",
     "cz-conventional-changelog": "^2.0.0",
     "eslint": "^3.0.1",
     "in-publish": "^2.0.0",
