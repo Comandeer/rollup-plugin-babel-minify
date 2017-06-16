@@ -72,12 +72,12 @@
     "codecov": "^2.2.0",
     "commitplease": "^2.7.10",
     "cz-conventional-changelog": "^2.0.0",
-    "eslint": "^3.0.1",
+    "eslint": "^4.0.0",
     "in-publish": "^2.0.0",
     "mocha": "^3.0.2",
     "nyc": "^11.0.2",
     "rimraf": "^2.5.2",
-    "rollup": "^0.42.0",
+    "rollup": "^0.43.0",
     "sourcemap-validator": "^1.0.5"
   },
   "config": {
@@ -88,6 +88,6 @@
   "dependencies": {
     "@comandeer/babel-plugin-banner": "^1.0.0",
     "babel-core": "^6.21.0",
-    "babel-preset-babili": "^0.1.2"
+    "babel-preset-babili": "^0.1.3"
   }
 }
