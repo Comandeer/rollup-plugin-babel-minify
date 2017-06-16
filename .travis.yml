@@ -8,3 +8,4 @@ before_install: if [[ $( node --version ) =~ ^v8. ]]; then npm install -g greenk
 before_script: if [[ $( node --version ) =~ ^v8. ]]; then greenkeeper-lockfile-update; fi;
 script: npm test
 after_script: if [[ $( node --version ) =~ ^v8. ]]; then greenkeeper-lockfile-upload; fi;
+after_success: npm run coverage
