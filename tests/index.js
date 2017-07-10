@@ -24,9 +24,9 @@ describe( 'rollup-plugin-babili', () => {
 			entry: path,
 			plugins: [ plugin() ]
 		} ).then( ( bundle ) => {
-			const result = bundle.generate();
-
-			expect( result.code.trim() ).to.equal( babeledCode.code );
+			bundle.generate().then( ( result ) => {
+				expect( result.code.trim() ).to.equal( babeledCode.code );
+			} );
 		} );
 	} );
 
@@ -43,9 +43,9 @@ describe( 'rollup-plugin-babili', () => {
 				removeConsole: true
 			} ) ]
 		} ).then( ( bundle ) => {
-			const result = bundle.generate();
-
-			expect( result.code.trim() ).to.equal( babeledCode.code );
+			bundle.generate().then( ( result ) => {
+				expect( result.code.trim() ).to.equal( babeledCode.code );
+			} );
 		} );
 	} );
 
@@ -60,9 +60,9 @@ describe( 'rollup-plugin-babili', () => {
 				comments: false
 			} ) ]
 		} ).then( ( bundle ) => {
-			const result = bundle.generate();
-
-			expect( result.code.trim() ).to.equal( babeledCode.code );
+			bundle.generate().then( ( result ) => {
+				expect( result.code.trim() ).to.equal( babeledCode.code );
+			} );
 		} );
 	} );
 
@@ -74,9 +74,9 @@ describe( 'rollup-plugin-babili', () => {
 				banner: '/* hublabubla */'
 			} ) ],
 		} ).then( ( bundle ) => {
-			const result = bundle.generate();
-
-			expect( result.code ).to.match( /^\/\* hublabubla \*\// );
+			bundle.generate().then( ( result ) => {
+				expect( result.code ).to.match( /^\/\* hublabubla \*\// );
+			} );
 		} );
 	} );
 
@@ -85,11 +85,11 @@ describe( 'rollup-plugin-babili', () => {
 			entry: 'fixtures/index.js',
 			plugins: [ plugin() ],
 		} ).then( ( bundle ) => {
-			const result = bundle.generate( {
+			bundle.generate( {
 				banner: '/* hublabubla */'
+			} ).then( ( result ) => {
+				expect( result.code ).to.match( /^\/\* hublabubla \*\// );
 			} );
-
-			expect( result.code ).to.match( /^\/\* hublabubla \*\// );
 		} );
 	} );
 
@@ -101,9 +101,9 @@ describe( 'rollup-plugin-babili', () => {
 			banner: '/* hublabubla */',
 			plugins: [ plugin() ],
 		} ).then( ( bundle ) => {
-			const result = bundle.generate();
-
-			expect ( result.code ).to.match( /^\/\* hublabubla \*\// );
+			bundle.generate().then( ( result ) => {
+				expect ( result.code ).to.match( /^\/\* hublabubla \*\// );
+			} );
 		} );
 	} );
 
@@ -116,9 +116,9 @@ describe( 'rollup-plugin-babili', () => {
 				}
 			} ) ],
 		} ).then ( ( bundle ) => {
-			const result = bundle.generate();
-
-			expect ( result.code ).to.match( /^\/\* hublabubla \*\// );
+			bundle.generate().then( ( result ) => {
+				expect ( result.code ).to.match( /^\/\* hublabubla \*\// );
+			} );
 		} );
 	} );
 
@@ -129,10 +129,10 @@ describe( 'rollup-plugin-babili', () => {
 				banner: '/* hublabubla */'
 			} ) ],
 		} ).then( ( bundle ) => {
-			const result = bundle.generate();
-
-			expect( result.code ).to.match( /^\/\* hublabubla \*\// );
-			expect( result.code ).to.match( /.+\/\* Simple comment \*\/.+/g );
+			bundle.generate().then( ( result ) => {
+				expect( result.code ).to.match( /^\/\* hublabubla \*\// );
+				expect( result.code ).to.match( /.+\/\* Simple comment \*\/.+/g );
+			} );
 		} );
 	} );
 
@@ -144,10 +144,10 @@ describe( 'rollup-plugin-babili', () => {
 				banner: '/* hublabubla */'
 			} ) ],
 		} ).then( ( bundle ) => {
-			const result = bundle.generate();
-
-			expect( result.code ).to.match( /^\/\* hublabubla \*\// );
-			expect( result.code ).to.match( /.+\/\* Simple comment \*\/.+/g );
+			bundle.generate().then( ( result ) => {
+				expect( result.code ).to.match( /^\/\* hublabubla \*\// );
+				expect( result.code ).to.match( /.+\/\* Simple comment \*\/.+/g );
+			} );
 		} );
 	} );
 
@@ -156,14 +156,14 @@ describe( 'rollup-plugin-babili', () => {
 			entry: 'fixtures/sourcemap.js',
 			plugins: [ plugin() ],
 		} ).then( ( bundle ) => {
-			const result = bundle.generate( {
+			bundle.generate( {
 				sourceMap: true
+			} ).then( ( result ) => {
+				expect( result.map ).to.not.equal( null );
+				expect( () => {
+					validateSourcemap( result.code, result.map );
+				} ).not.to.throw();
 			} );
-
-			expect( result.map ).to.not.equal( null );
-			expect( () => {
-				validateSourcemap( result.code, result.map );
-			} ).not.to.throw();
 		} );
 	} );
 
@@ -174,11 +174,11 @@ describe( 'rollup-plugin-babili', () => {
 				sourceMap: false
 			} ) ],
 		} ).then( ( bundle ) => {
-			const result = bundle.generate( {
+			bundle.generate( {
 				sourceMap: false
+			} ).then( ( result ) => {
+				expect( result.map ).to.equal( null );
 			} );
-
-			expect( result.map ).to.equal( null );
 		} );
 	} );
 
@@ -187,16 +187,16 @@ describe( 'rollup-plugin-babili', () => {
 			entry: 'fixtures/sourcemap.js',
 			plugins: [ plugin() ],
 		} ).then( ( bundle ) => {
-			const result = bundle.generate( {
+			bundle.generate( {
 				format: 'umd',
 				moduleName: 'Test',
 				sourceMap: true
+			} ).then( ( result ) => {
+				expect( result.map ).to.not.equal( null );
+				expect( () => {
+					validateSourcemap( result.code, result.map );
+				} ).not.to.throw();
 			} );
-
-			expect( result.map ).to.not.equal( null );
-			expect( () => {
-				validateSourcemap( result.code, result.map );
-			} ).not.to.throw();
 		} );
 	} );
 
@@ -205,12 +205,12 @@ describe( 'rollup-plugin-babili', () => {
 			entry: 'fixtures/empty.js',
 			plugins: [ plugin() ],
 		} ).then( ( bundle ) => {
-			const result = bundle.generate( {
+			bundle.generate( {
 				format: 'es',
 				sourceMap: true
+			} ).then( ( result ) => {
+				expect( result.map ).to.not.equal( null );
 			} );
-
-			expect( result.map ).to.not.equal( null );
 		} );
 	} );
 
@@ -219,15 +219,15 @@ describe( 'rollup-plugin-babili', () => {
 			entry: 'fixtures/invalidMappings.js',
 			plugins: [ plugin() ],
 		} ).then( ( bundle ) => {
-			const result = bundle.generate( {
+			bundle.generate( {
 				format: 'es',
 				sourceMap: true
+			} ).then( ( result ) => {
+				expect( result.map ).to.not.equal( null );
+				expect( () => {
+					validateSourcemap( result.code, result.map );
+				} ).not.to.throw();
 			} );
-
-			expect( result.map ).to.not.equal( null );
-			expect( () => {
-				validateSourcemap( result.code, result.map );
-			} ).not.to.throw();
 		} );
 	} );
 } );
