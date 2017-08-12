@@ -6,10 +6,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## 3.1.2
+### Changed
+* Change name from `rollup-plugin-babili` to `rollup-plugin-babel-minify` and update dependencies accordingly.
+
 ## [3.1.1] – 2017-08-12
 ### Changed
 * Update Rollup version to `^0.47.0`.
-* Change name from `rollup-plugin-babili` to `rollup-plugin-babel-minify`.
 
 ## [3.1.0] – 2017-06-10
 #### Added
