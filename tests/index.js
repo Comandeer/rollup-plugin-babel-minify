@@ -4,7 +4,7 @@ const readFileSync = require( 'fs' ).readFileSync;
 const chai = require( 'chai' );
 const expect = chai.expect;
 const rollup = require( 'rollup' ).rollup;
-const plugin = require( '../dist/rollup-plugin-babili' );
+const plugin = require( '../dist/rollup-plugin-babel-minify' );
 const babel = require( 'babel-core' );
 const validateSourcemap = require( 'sourcemap-validator' );
 
@@ -14,12 +14,12 @@ const bundleOptions = {
 
 process.chdir( 'tests' );
 
-describe( 'rollup-plugin-babili', () => {
+describe( 'rollup-plugin-babel-minify', () => {
 	it( 'is a function', () => {
 		expect( plugin ).to.be.a( 'function' );
 	} );
 
-	it( 'minifies code just like Babili', () => {
+	it( 'minifies code just like babel-minify', () => {
 		const path = 'fixtures/index.js';
 		const code = readFileSync( path, 'utf8' );
 		const babeledCode = babel.transform( code, { presets: [ 'babili' ], comments: true } );

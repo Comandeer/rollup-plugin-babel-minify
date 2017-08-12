@@ -1,27 +1,27 @@
 'use strict';
 
-import { filterBabiliOptions } from './utils.js';
+import { filterMinifyOptions } from './utils.js';
 import { isFn } from './utils.js';
 import { isFnOrString } from './utils.js';
-import babiliPreset from 'babel-preset-babili';
+import minifyPreset from 'babel-preset-minify';
 import bannerPlugin from '@comandeer/babel-plugin-banner';
 import { getCommentContent } from '@comandeer/babel-plugin-banner/utils';
 import { transform } from 'babel-core';
 
-function babili( options = {} ) {
+function minify( options = {} ) {
 	let rollupBanner;
 
 	return {
-		name: 'babili',
+		name: 'babel-minify',
 
 		options( { banner } ) {
 			rollupBanner = banner;
 		},
 
 		transformBundle( bundle ) {
-			const babiliOptions = filterBabiliOptions( options );
+			const minifyOptions = filterMinifyOptions( options );
 			const babelConf = {
-				presets: [ [ babiliPreset, babiliOptions ] ],
+				presets: [ [ minifyPreset, minifyOptions ] ],
 				sourceMaps: typeof options.sourceMap !== 'undefined' ? Boolean( options.sourceMap ) : true,
 				comments: typeof options.comments !== 'undefined' ? Boolean( options.comments ) : true
 			};
@@ -61,4 +61,4 @@ function babili( options = {} ) {
 	};
 }
 
-export default babili;
+export default minify;
