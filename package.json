@@ -1,10 +1,10 @@
 {
-  "name": "rollup-plugin-babili",
+  "name": "rollup-plugin-babel-minify",
   "version": "3.1.1",
-  "description": "Simple rollup plugin for minifying code using Babili.",
-  "main": "dist/rollup-plugin-babili.js",
-  "jsnext:main": "dist/rollup-plugin-babili.es2015.js",
-  "module": "dist/rollup-plugin-babili.es2015.js",
+  "description": "Simple rollup plugin for minifying code using babel-minify.",
+  "main": "dist/rollup-plugin-babel-minify.js",
+  "jsnext:main": "dist/rollup-plugin-babel-minify.es2015.js",
+  "module": "dist/rollup-plugin-babel-minify.es2015.js",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "rlb",
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Comandeer/rollup-plugin-babili.git"
+    "url": "git+https://github.com/Comandeer/rollup-plugin-babel-minify.git"
   },
   "files": [
     "dist"
@@ -32,9 +32,9 @@
   "author": "Comandeer",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Comandeer/rollup-plugin-babili/issues"
+    "url": "https://github.com/Comandeer/rollup-plugin-babel-minify/issues"
   },
-  "homepage": "https://github.com/Comandeer/rollup-plugin-babili#readme",
+  "homepage": "https://github.com/Comandeer/rollup-plugin-babel-minify#readme",
   "nyc": {
     "include": [
       "dist/**/*.js"
@@ -88,6 +88,6 @@
   "dependencies": {
     "@comandeer/babel-plugin-banner": "^1.0.0",
     "babel-core": "^6.21.0",
-    "babel-preset-babili": "^0.1.3"
+    "babel-preset-minify": "*"
   }
 }

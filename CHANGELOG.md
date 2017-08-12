@@ -1,4 +1,4 @@
-# rollup-plugin-babili Changelog
+# rollup-plugin-babel-minify Changelog
 
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [3.1.1] – 2017-08-12
 ### Changed
 * Update Rollup version to `^0.47.0`.
+* Change name from `rollup-plugin-babili` to `rollup-plugin-babel-minify`.
 
 ## [3.1.0] – 2017-06-10
 #### Added
@@ -59,6 +60,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 * First working version, yay!
 
+[3.1.1]: https://github.com/Comandeer/rollup-plugin-babili/compare/v3.1.0...v3.1.1
 [3.1.0]: https://github.com/Comandeer/rollup-plugin-babili/compare/v3.0.0...v3.1.0
 [3.0.0]: https://github.com/Comandeer/rollup-plugin-babili/compare/v2.0.0...v3.0.0
 [2.0.0]: https://github.com/Comandeer/rollup-plugin-babili/compare/v1.1.1...v2.0.0
