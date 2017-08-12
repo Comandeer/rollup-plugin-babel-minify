@@ -8,6 +8,10 @@ const plugin = require( '../dist/rollup-plugin-babili' );
 const babel = require( 'babel-core' );
 const validateSourcemap = require( 'sourcemap-validator' );
 
+const bundleOptions = {
+	format: 'es'
+};
+
 process.chdir( 'tests' );
 
 describe( 'rollup-plugin-babili', () => {
@@ -24,7 +28,7 @@ describe( 'rollup-plugin-babili', () => {
 			entry: path,
 			plugins: [ plugin() ]
 		} ).then( ( bundle ) => {
-			bundle.generate().then( ( result ) => {
+			bundle.generate( bundleOptions ).then( ( result ) => {
 				expect( result.code.trim() ).to.equal( babeledCode.code );
 			} );
 		} );
@@ -43,7 +47,7 @@ describe( 'rollup-plugin-babili', () => {
 				removeConsole: true
 			} ) ]
 		} ).then( ( bundle ) => {
-			bundle.generate().then( ( result ) => {
+			bundle.generate( bundleOptions ).then( ( result ) => {
 				expect( result.code.trim() ).to.equal( babeledCode.code );
 			} );
 		} );
@@ -60,7 +64,7 @@ describe( 'rollup-plugin-babili', () => {
 				comments: false
 			} ) ]
 		} ).then( ( bundle ) => {
-			bundle.generate().then( ( result ) => {
+			bundle.generate( bundleOptions ).then( ( result ) => {
 				expect( result.code.trim() ).to.equal( babeledCode.code );
 			} );
 		} );
@@ -74,7 +78,7 @@ describe( 'rollup-plugin-babili', () => {
 				banner: '/* hublabubla */'
 			} ) ],
 		} ).then( ( bundle ) => {
-			bundle.generate().then( ( result ) => {
+			bundle.generate( bundleOptions ).then( ( result ) => {
 				expect( result.code ).to.match( /^\/\* hublabubla \*\// );
 			} );
 		} );
@@ -85,9 +89,9 @@ describe( 'rollup-plugin-babili', () => {
 			entry: 'fixtures/index.js',
 			plugins: [ plugin() ],
 		} ).then( ( bundle ) => {
-			bundle.generate( {
+			bundle.generate( Object.assign( {}, bundleOptions, {
 				banner: '/* hublabubla */'
-			} ).then( ( result ) => {
+			} ) ).then( ( result ) => {
 				expect( result.code ).to.match( /^\/\* hublabubla \*\// );
 			} );
 		} );
@@ -101,7 +105,7 @@ describe( 'rollup-plugin-babili', () => {
 			banner: '/* hublabubla */',
 			plugins: [ plugin() ],
 		} ).then( ( bundle ) => {
-			bundle.generate().then( ( result ) => {
+			bundle.generate( bundleOptions ).then( ( result ) => {
 				expect ( result.code ).to.match( /^\/\* hublabubla \*\// );
 			} );
 		} );
@@ -116,7 +120,7 @@ describe( 'rollup-plugin-babili', () => {
 				}
 			} ) ],
 		} ).then ( ( bundle ) => {
-			bundle.generate().then( ( result ) => {
+			bundle.generate( bundleOptions ).then( ( result ) => {
 				expect ( result.code ).to.match( /^\/\* hublabubla \*\// );
 			} );
 		} );
@@ -129,7 +133,7 @@ describe( 'rollup-plugin-babili', () => {
 				banner: '/* hublabubla */'
 			} ) ],
 		} ).then( ( bundle ) => {
-			bundle.generate().then( ( result ) => {
+			bundle.generate( bundleOptions ).then( ( result ) => {
 				expect( result.code ).to.match( /^\/\* hublabubla \*\// );
 				expect( result.code ).to.match( /.+\/\* Simple comment \*\/.+/g );
 			} );
@@ -144,7 +148,7 @@ describe( 'rollup-plugin-babili', () => {
 				banner: '/* hublabubla */'
 			} ) ],
 		} ).then( ( bundle ) => {
-			bundle.generate().then( ( result ) => {
+			bundle.generate( bundleOptions ).then( ( result ) => {
 				expect( result.code ).to.match( /^\/\* hublabubla \*\// );
 				expect( result.code ).to.match( /.+\/\* Simple comment \*\/.+/g );
 			} );
@@ -156,9 +160,9 @@ describe( 'rollup-plugin-babili', () => {
 			entry: 'fixtures/sourcemap.js',
 			plugins: [ plugin() ],
 		} ).then( ( bundle ) => {
-			bundle.generate( {
+			bundle.generate( Object.assign( {}, bundleOptions, {
 				sourceMap: true
-			} ).then( ( result ) => {
+			} ) ).then( ( result ) => {
 				expect( result.map ).to.not.equal( null );
 				expect( () => {
 					validateSourcemap( result.code, result.map );
@@ -174,9 +178,9 @@ describe( 'rollup-plugin-babili', () => {
 				sourceMap: false
 			} ) ],
 		} ).then( ( bundle ) => {
-			bundle.generate( {
+			bundle.generate( Object.assign( {}, bundleOptions, {
 				sourceMap: false
-			} ).then( ( result ) => {
+			} ) ).then( ( result ) => {
 				expect( result.map ).to.equal( null );
 			} );
 		} );
