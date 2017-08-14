@@ -22,7 +22,7 @@ describe( 'rollup-plugin-babel-minify', () => {
 	it( 'minifies code just like babel-minify', () => {
 		const path = 'fixtures/index.js';
 		const code = readFileSync( path, 'utf8' );
-		const babeledCode = babel.transform( code, { presets: [ 'babili' ], comments: true } );
+		const babeledCode = babel.transform( code, { presets: [ 'minify' ], comments: true } );
 
 		return rollup( {
 			entry: path,
@@ -37,7 +37,7 @@ describe( 'rollup-plugin-babel-minify', () => {
 	it( 'passes options to babel', () => {
 		const path = 'fixtures/sourcemap.js';
 		const code = readFileSync( path );
-		const babeledCode = babel.transform( code, { presets: [ [ 'babili', {
+		const babeledCode = babel.transform( code, { presets: [ [ 'minify', {
 			removeConsole: true
 		} ] ] } );
 
@@ -56,7 +56,7 @@ describe( 'rollup-plugin-babel-minify', () => {
 	it( 'removes comments', () => {
 		const path = 'fixtures/index.js';
 		const code = readFileSync( path );
-		const babeledCode = babel.transform( code, { presets: [ 'babili' ], comments: false } );
+		const babeledCode = babel.transform( code, { presets: [ 'minify' ], comments: false } );
 
 		return rollup( {
 			entry: path,
