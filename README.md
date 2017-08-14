@@ -1,32 +1,32 @@
-# rollup-plugin-babili
+# rollup-plugin-babel-minify
 
-[![Build Status](https://travis-ci.org/Comandeer/rollup-plugin-babili.svg?branch=master)](https://travis-ci.org/Comandeer/rollup-plugin-babili) [![Dependency Status](https://david-dm.org/Comandeer/rollup-plugin-babili.svg)](https://david-dm.org/Comandeer/rollup-plugin-babili) [![devDependencies Status](https://david-dm.org/Comandeer/rollup-plugin-babili/dev-status.svg)](https://david-dm.org/Comandeer/rollup-plugin-babili?type=dev) [![npm](https://img.shields.io/npm/v/rollup-plugin-babili.svg)](https://www.npmjs.com/package/rollup-plugin-babili)
+[![Build Status](https://travis-ci.org/Comandeer/rollup-plugin-babel-minify.svg?branch=master)](https://travis-ci.org/Comandeer/rollup-plugin-babel-minify) [![Dependency Status](https://david-dm.org/Comandeer/rollup-plugin-babel-minify.svg)](https://david-dm.org/Comandeer/rollup-plugin-babel-minify) [![devDependencies Status](https://david-dm.org/Comandeer/rollup-plugin-babel-minify/dev-status.svg)](https://david-dm.org/Comandeer/rollup-plugin-babel-minify?type=dev) [![npm](https://img.shields.io/npm/v/rollup-plugin-babel-minify.svg)](https://www.npmjs.com/package/rollup-plugin-babel-minify)
 
-Allows using [Babili minifier](https://github.com/babel/babili) with Rollup.
+Allows using [Babili minifier](https://github.com/babel/minify) with Rollup.
 
 ## Installation
 
 ```bash
-npm install rollup-plugin-babili [--save-dev]
+npm install rollup-plugin-babel-minify [--save-dev]
 ```
 
 ## Usage
 
 ```javascript
 import { rollup } from 'rollup';
-import babili from 'rollup-plugin-babili';
+import babili from 'rollup-plugin-babel-minify';
 
 rollup( {
 	entry: './src/index.js',
 	plugins: [
 		babili( {
-			// Options for Babili.
+			// Options for babel-minify.
 		} )
 	]
 } );
 ```
 
-For the list of options, check [Babili Preset's docs](https://github.com/babel/babili/blob/master/packages/babel-preset-babili/README.md#options).
+For the list of options, check [babel-minify Preset's docs](https://github.com/babel/minify/blob/master/packages/babel-preset-minify/README.md#options).
 
 There are additional options:
 

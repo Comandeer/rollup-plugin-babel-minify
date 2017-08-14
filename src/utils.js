@@ -1,20 +1,20 @@
 'use strict';
 
-function filterBabiliOptions( options ) {
+function filterMinifyOptions( options ) {
 	const disallowedProperties = [
 		'banner',
 		'sourceMap',
 		'comments'
 	];
-	const babiliOptions = {};
+	const minifyOptions = {};
 
 	Object.keys( options ).filter( ( option ) => {
 		if ( disallowedProperties.indexOf( option ) === -1 ) {
-			babiliOptions[ option ] = options[ option ];
+			minifyOptions[ option ] = options[ option ];
 		}
 	} );
 
-	return babiliOptions;
+	return minifyOptions;
 }
 
 function isString( v ) {
@@ -29,7 +29,7 @@ function isFnOrString( v ) {
 	return isString( v ) || isFn( v );
 }
 
-export { filterBabiliOptions };
+export { filterMinifyOptions };
 export { isString };
 export { isFn };
 export { isFnOrString };
