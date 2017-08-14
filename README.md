@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/Comandeer/rollup-plugin-babel-minify.svg?branch=master)](https://travis-ci.org/Comandeer/rollup-plugin-babel-minify) [![Dependency Status](https://david-dm.org/Comandeer/rollup-plugin-babel-minify.svg)](https://david-dm.org/Comandeer/rollup-plugin-babel-minify) [![devDependencies Status](https://david-dm.org/Comandeer/rollup-plugin-babel-minify/dev-status.svg)](https://david-dm.org/Comandeer/rollup-plugin-babel-minify?type=dev) [![npm](https://img.shields.io/npm/v/rollup-plugin-babel-minify.svg)](https://www.npmjs.com/package/rollup-plugin-babel-minify)
 
-Allows using [Babili minifier](https://github.com/babel/minify) with Rollup.
+Allows using [babel-minify](https://github.com/babel/minify) with Rollup.
 
 ## Installation
 
@@ -14,12 +14,12 @@ npm install rollup-plugin-babel-minify [--save-dev]
 
 ```javascript
 import { rollup } from 'rollup';
-import babili from 'rollup-plugin-babel-minify';
+import minify from 'rollup-plugin-babel-minify';
 
 rollup( {
 	entry: './src/index.js',
 	plugins: [
-		babili( {
+		minify( {
 			// Options for babel-minify.
 		} )
 	]
