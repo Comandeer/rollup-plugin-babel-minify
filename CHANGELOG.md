@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
-## 3.1.2
+## [3.1.2] – 2017-08-14
 ### Changed
 * Change name from `rollup-plugin-babili` to `rollup-plugin-babel-minify` and update dependencies accordingly.
 
@@ -63,6 +63,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 * First working version, yay!
 
+[3.1.2]: https://github.com/Comandeer/rollup-plugin-babili/compare/v3.1.1...v3.1.2
 [3.1.1]: https://github.com/Comandeer/rollup-plugin-babili/compare/v3.1.0...v3.1.1
 [3.1.0]: https://github.com/Comandeer/rollup-plugin-babili/compare/v3.0.0...v3.1.0
 [3.0.0]: https://github.com/Comandeer/rollup-plugin-babili/compare/v2.0.0...v3.0.0
