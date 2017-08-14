@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-babel-minify",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "Simple rollup plugin for minifying code using babel-minify.",
   "main": "dist/rollup-plugin-babel-minify.js",
   "jsnext:main": "dist/rollup-plugin-babel-minify.es2015.js",
