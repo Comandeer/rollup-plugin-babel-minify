@@ -25,7 +25,7 @@ describe( 'rollup-plugin-babel-minify', () => {
 		const babeledCode = babel.transform( code, { presets: [ 'minify' ], comments: true } );
 
 		return rollup( {
-			entry: path,
+			input: path,
 			plugins: [ plugin() ]
 		} ).then( ( bundle ) => {
 			bundle.generate( bundleOptions ).then( ( result ) => {
@@ -42,7 +42,7 @@ describe( 'rollup-plugin-babel-minify', () => {
 		} ] ] } );
 
 		return rollup( {
-			entry: path,
+			input: path,
 			plugins: [ plugin( {
 				removeConsole: true
 			} ) ]
@@ -59,7 +59,7 @@ describe( 'rollup-plugin-babel-minify', () => {
 		const babeledCode = babel.transform( code, { presets: [ 'minify' ], comments: false } );
 
 		return rollup( {
-			entry: path,
+			input: path,
 			plugins: [ plugin( {
 				comments: false
 			} ) ]
@@ -72,7 +72,7 @@ describe( 'rollup-plugin-babel-minify', () => {
 
 	it( 'adds banner even if comments are removed', () => {
 		return rollup( {
-			entry: 'fixtures/index.js',
+			input: 'fixtures/index.js',
 			plugins: [ plugin( {
 				comments: false,
 				banner: '/* hublabubla */'
@@ -86,7 +86,7 @@ describe( 'rollup-plugin-babel-minify', () => {
 
 	it( 'adds banner inherited from bundle.generate', () => {
 		return rollup( {
-			entry: 'fixtures/index.js',
+			input: 'fixtures/index.js',
 			plugins: [ plugin() ],
 		} ).then( ( bundle ) => {
 			bundle.generate( Object.assign( {}, bundleOptions, {
@@ -101,7 +101,7 @@ describe( 'rollup-plugin-babel-minify', () => {
 		// while you can ask: WTF? banner is not an option for an rollup
 		// function, this is how options from config file are passed
 		return rollup( {
-			entry: 'fixtures/index.js',
+			input: 'fixtures/index.js',
 			banner: '/* hublabubla */',
 			plugins: [ plugin() ],
 		} ).then( ( bundle ) => {
@@ -113,7 +113,7 @@ describe( 'rollup-plugin-babel-minify', () => {
 
 	it ( 'adds banner as a result of call if plugin banner option is fn itself', () => {
 		return rollup( {
-			entry: 'fixtures/index.js',
+			input: 'fixtures/index.js',
 			plugins: [ plugin( {
 				banner: () => {
 					return '/* hublabubla */';
@@ -128,7 +128,7 @@ describe( 'rollup-plugin-babel-minify', () => {
 
 	it( 'preserves comments alongside banner if no comments option is passed', () => {
 		return rollup( {
-			entry: 'fixtures/index.js',
+			input: 'fixtures/index.js',
 			plugins: [ plugin( {
 				banner: '/* hublabubla */'
 			} ) ],
@@ -142,7 +142,7 @@ describe( 'rollup-plugin-babel-minify', () => {
 
 	it( 'preserves comments alongside banner if comments option is set to true', () => {
 		return rollup( {
-			entry: 'fixtures/index.js',
+			input: 'fixtures/index.js',
 			plugins: [ plugin( {
 				comments: true,
 				banner: '/* hublabubla */'
@@ -157,11 +157,11 @@ describe( 'rollup-plugin-babel-minify', () => {
 
 	it( 'generates source map by default', () => {
 		return rollup( {
-			entry: 'fixtures/sourcemap.js',
+			input: 'fixtures/sourcemap.js',
 			plugins: [ plugin() ],
 		} ).then( ( bundle ) => {
 			bundle.generate( Object.assign( {}, bundleOptions, {
-				sourceMap: true
+				sourcemap: true
 			} ) ).then( ( result ) => {
 				expect( result.map ).to.not.equal( null );
 				expect( () => {
@@ -173,13 +173,13 @@ describe( 'rollup-plugin-babel-minify', () => {
 
 	it( 'does not generate source map when the proper option is passed', () => {
 		return rollup( {
-			entry: 'fixtures/sourcemap.js',
+			input: 'fixtures/sourcemap.js',
 			plugins: [ plugin( {
 				sourceMap: false
 			} ) ],
 		} ).then( ( bundle ) => {
 			bundle.generate( Object.assign( {}, bundleOptions, {
-				sourceMap: false
+				sourcemap: false
 			} ) ).then( ( result ) => {
 				expect( result.map ).to.equal( null );
 			} );
@@ -188,13 +188,13 @@ describe( 'rollup-plugin-babel-minify', () => {
 
 	it( 'generates source map for UMD bundle', () => {
 		return rollup( {
-			entry: 'fixtures/sourcemap.js',
+			input: 'fixtures/sourcemap.js',
 			plugins: [ plugin() ],
 		} ).then( ( bundle ) => {
 			bundle.generate( {
 				format: 'umd',
-				moduleName: 'Test',
-				sourceMap: true
+				name: 'Test',
+				sourcemap: true
 			} ).then( ( result ) => {
 				expect( result.map ).to.not.equal( null );
 				expect( () => {
@@ -206,12 +206,12 @@ describe( 'rollup-plugin-babel-minify', () => {
 
 	it( 'generates source map for empty bundle', () => {
 		return rollup( {
-			entry: 'fixtures/empty.js',
+			input: 'fixtures/empty.js',
 			plugins: [ plugin() ],
 		} ).then( ( bundle ) => {
 			bundle.generate( {
 				format: 'es',
-				sourceMap: true
+				sourcemap: true
 			} ).then( ( result ) => {
 				expect( result.map ).to.not.equal( null );
 			} );
@@ -220,12 +220,12 @@ describe( 'rollup-plugin-babel-minify', () => {
 
 	it( 'generates valid source map after heavy processing by fixMappings', () => {
 		return rollup( {
-			entry: 'fixtures/invalidMappings.js',
+			input: 'fixtures/invalidMappings.js',
 			plugins: [ plugin() ],
 		} ).then( ( bundle ) => {
 			bundle.generate( {
 				format: 'es',
-				sourceMap: true
+				sourcemap: true
 			} ).then( ( result ) => {
 				expect( result.map ).to.not.equal( null );
 				expect( () => {
