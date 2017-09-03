@@ -65,7 +65,7 @@
     "rollup": ">=0.41.5"
   },
   "devDependencies": {
-    "@comandeer/rollup-lib-bundler": "^0.1.1",
+    "@comandeer/rollup-lib-bundler": "^0.2.0",
     "babel-plugin-external-helpers": "^6.8.0",
     "babel-preset-es2015": "^6.13.2",
     "chai": "^4.0.0",
