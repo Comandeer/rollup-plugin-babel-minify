@@ -70,7 +70,7 @@
     "babel-preset-es2015": "^6.13.2",
     "chai": "^4.1.2",
     "codecov": "^2.3.0",
-    "commitplease": "^2.7.10",
+    "commitplease": "^3.1.0",
     "cz-conventional-changelog": "^2.0.0",
     "eslint": "^4.7.0",
     "in-publish": "^2.0.0",
