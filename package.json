@@ -45,6 +45,7 @@
     ]
   },
   "commitplease": {
+  	"nohook": true,
     "style": "angular",
     "types": [
       "feat",
