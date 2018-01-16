@@ -1,9 +1,9 @@
 language: node_js
 node_js:
-  - 4
-  - 6
-  - 7
   - 8
+  - 7
+  - 6
+  - 4
 before_install: if [[ $( node --version ) =~ ^v8. ]]; then npm install -g greenkeeper-lockfile; fi;
 before_script: if [[ $( node --version ) =~ ^v8. ]]; then greenkeeper-lockfile-update; fi;
 script: npm test
