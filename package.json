@@ -38,10 +38,10 @@
   "homepage": "https://github.com/Comandeer/rollup-plugin-babel-minify#readme",
   "nyc": {
     "include": [
-      "dist/**/*.js"
+      "src/**/*.js"
     ],
     "exclude": [
-      "src/**/*.js",
+      "dist/**/*.js",
       "tests/**/*.js"
     ]
   },
