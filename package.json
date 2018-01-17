@@ -92,6 +92,8 @@
   "dependencies": {
     "@comandeer/babel-plugin-banner": "^1.0.0",
     "babel-core": "^6.26.0",
-    "babel-preset-minify": "^0.2.0"
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-preset-minify": "^0.2.0",
+    "babel-register": "^6.26.0"
   }
 }
