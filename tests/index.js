@@ -27,9 +27,9 @@ describe( 'rollup-plugin-babel-minify', () => {
 			input: path,
 			plugins: [ plugin() ]
 		} ).then( ( bundle ) => {
-			bundle.generate( bundleOptions ).then( ( result ) => {
-				expect( result.code.trim() ).to.equal( babeledCode.code );
-			} );
+			return bundle.generate( bundleOptions );
+		} ).then( ( result ) => {
+			expect( result.code.trim() ).to.equal( babeledCode.code );
 		} );
 	} );
 
@@ -46,9 +46,9 @@ describe( 'rollup-plugin-babel-minify', () => {
 				removeConsole: true
 			} ) ]
 		} ).then( ( bundle ) => {
-			bundle.generate( bundleOptions ).then( ( result ) => {
-				expect( result.code.trim() ).to.equal( babeledCode.code );
-			} );
+			return bundle.generate( bundleOptions );
+		} ).then( ( result ) => {
+			expect( result.code.trim() ).to.equal( babeledCode.code );
 		} );
 	} );
 
@@ -63,9 +63,9 @@ describe( 'rollup-plugin-babel-minify', () => {
 				comments: false
 			} ) ]
 		} ).then( ( bundle ) => {
-			bundle.generate( bundleOptions ).then( ( result ) => {
-				expect( result.code.trim() ).to.equal( babeledCode.code );
-			} );
+			return bundle.generate( bundleOptions );
+		} ).then( ( result ) => {
+			expect( result.code.trim() ).to.equal( babeledCode.code );
 		} );
 	} );
 
@@ -77,9 +77,9 @@ describe( 'rollup-plugin-babel-minify', () => {
 				banner: '/* hublabubla */'
 			} ) ],
 		} ).then( ( bundle ) => {
-			bundle.generate( bundleOptions ).then( ( result ) => {
-				expect( result.code ).to.match( /^\/\* hublabubla \*\// );
-			} );
+			return bundle.generate( bundleOptions );
+		} ).then( ( result ) => {
+			expect( result.code ).to.match( /^\/\* hublabubla \*\// );
 		} );
 	} );
 
@@ -88,11 +88,11 @@ describe( 'rollup-plugin-babel-minify', () => {
 			input: 'fixtures/index.js',
 			plugins: [ plugin() ],
 		} ).then( ( bundle ) => {
-			bundle.generate( Object.assign( {}, bundleOptions, {
+			return bundle.generate( Object.assign( {}, bundleOptions, {
 				banner: '/* hublabubla */'
-			} ) ).then( ( result ) => {
-				expect( result.code ).to.match( /^\/\* hublabubla \*\// );
-			} );
+			} ) );
+		} ).then( ( result ) => {
+			expect( result.code ).to.match( /^\/\* hublabubla \*\// );
 		} );
 	} );
 
@@ -104,9 +104,9 @@ describe( 'rollup-plugin-babel-minify', () => {
 			banner: '/* hublabubla */',
 			plugins: [ plugin() ],
 		} ).then( ( bundle ) => {
-			bundle.generate( bundleOptions ).then( ( result ) => {
-				expect ( result.code ).to.match( /^\/\* hublabubla \*\// );
-			} );
+			return bundle.generate( bundleOptions );
+		} ).then( ( result ) => {
+			expect ( result.code ).to.match( /^\/\* hublabubla \*\// );
 		} );
 	} );
 
@@ -119,9 +119,9 @@ describe( 'rollup-plugin-babel-minify', () => {
 				}
 			} ) ],
 		} ).then ( ( bundle ) => {
-			bundle.generate( bundleOptions ).then( ( result ) => {
-				expect ( result.code ).to.match( /^\/\* hublabubla \*\// );
-			} );
+			return bundle.generate( bundleOptions );
+		} ).then( ( result ) => {
+			expect ( result.code ).to.match( /^\/\* hublabubla \*\// );
 		} );
 	} );
 
@@ -132,10 +132,10 @@ describe( 'rollup-plugin-babel-minify', () => {
 				banner: '/* hublabubla */'
 			} ) ],
 		} ).then( ( bundle ) => {
-			bundle.generate( bundleOptions ).then( ( result ) => {
-				expect( result.code ).to.match( /^\/\* hublabubla \*\// );
-				expect( result.code ).to.match( /.+\/\* Simple comment \*\/.+/g );
-			} );
+			return bundle.generate( bundleOptions );
+		} ).then( ( result ) => {
+			expect( result.code ).to.match( /^\/\* hublabubla \*\// );
+			expect( result.code ).to.match( /.+\/\* Simple comment \*\/.+/g );
 		} );
 	} );
 
@@ -147,10 +147,10 @@ describe( 'rollup-plugin-babel-minify', () => {
 				banner: '/* hublabubla */'
 			} ) ],
 		} ).then( ( bundle ) => {
-			bundle.generate( bundleOptions ).then( ( result ) => {
-				expect( result.code ).to.match( /^\/\* hublabubla \*\// );
-				expect( result.code ).to.match( /.+\/\* Simple comment \*\/.+/g );
-			} );
+			return bundle.generate( bundleOptions );
+		} ).then( ( result ) => {
+			expect( result.code ).to.match( /^\/\* hublabubla \*\// );
+			expect( result.code ).to.match( /.+\/\* Simple comment \*\/.+/g );
 		} );
 	} );
 
@@ -159,14 +159,14 @@ describe( 'rollup-plugin-babel-minify', () => {
 			input: 'fixtures/sourcemap.js',
 			plugins: [ plugin() ],
 		} ).then( ( bundle ) => {
-			bundle.generate( Object.assign( {}, bundleOptions, {
+			return bundle.generate( Object.assign( {}, bundleOptions, {
 				sourcemap: true
-			} ) ).then( ( result ) => {
-				expect( result.map ).to.not.equal( null );
-				expect( () => {
-					validateSourcemap( result.code, result.map );
-				} ).not.to.throw();
-			} );
+			} ) );
+		} ).then( ( result ) => {
+			expect( result.map ).to.not.equal( null );
+			expect( () => {
+				validateSourcemap( result.code, result.map );
+			} ).not.to.throw();
 		} );
 	} );
 
@@ -177,11 +177,11 @@ describe( 'rollup-plugin-babel-minify', () => {
 				sourceMap: false
 			} ) ],
 		} ).then( ( bundle ) => {
-			bundle.generate( Object.assign( {}, bundleOptions, {
+			return bundle.generate( Object.assign( {}, bundleOptions, {
 				sourcemap: false
-			} ) ).then( ( result ) => {
-				expect( result.map ).to.equal( null );
-			} );
+			} ) );
+		} ).then( ( result ) => {
+			expect( result.map ).to.equal( null );
 		} );
 	} );
 
@@ -190,16 +190,16 @@ describe( 'rollup-plugin-babel-minify', () => {
 			input: 'fixtures/sourcemap.js',
 			plugins: [ plugin() ],
 		} ).then( ( bundle ) => {
-			bundle.generate( {
+			return bundle.generate( {
 				format: 'umd',
 				name: 'Test',
 				sourcemap: true
-			} ).then( ( result ) => {
-				expect( result.map ).to.not.equal( null );
-				expect( () => {
-					validateSourcemap( result.code, result.map );
-				} ).not.to.throw();
 			} );
+		} ).then( ( result ) => {
+			expect( result.map ).to.not.equal( null );
+			expect( () => {
+				validateSourcemap( result.code, result.map );
+			} ).not.to.throw();
 		} );
 	} );
 
@@ -208,12 +208,12 @@ describe( 'rollup-plugin-babel-minify', () => {
 			input: 'fixtures/empty.js',
 			plugins: [ plugin() ],
 		} ).then( ( bundle ) => {
-			bundle.generate( {
+			return bundle.generate( {
 				format: 'es',
 				sourcemap: true
-			} ).then( ( result ) => {
-				expect( result.map ).to.not.equal( null );
 			} );
+		} ).then( ( result ) => {
+			expect( result.map ).to.not.equal( null );
 		} );
 	} );
 
@@ -222,15 +222,15 @@ describe( 'rollup-plugin-babel-minify', () => {
 			input: 'fixtures/invalidMappings.js',
 			plugins: [ plugin() ],
 		} ).then( ( bundle ) => {
-			bundle.generate( {
+			return bundle.generate( {
 				format: 'es',
 				sourcemap: true
-			} ).then( ( result ) => {
-				expect( result.map ).to.not.equal( null );
-				expect( () => {
-					validateSourcemap( result.code, result.map );
-				} ).not.to.throw();
 			} );
+		} ).then( ( result ) => {
+			expect( result.map ).to.not.equal( null );
+			expect( () => {
+				validateSourcemap( result.code, result.map );
+			} ).not.to.throw();
 		} );
 	} );
 } );
