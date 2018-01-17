@@ -9,11 +9,11 @@
     "prebuild": "rimraf dist",
     "build": "rlb",
     "lint": "eslint src/**/*.js tests/*.js",
-    "pretest": "npm run lint && npm run build",
-    "test": "nyc mocha tests/*.js",
+    "pretest": "npm run lint",
+    "test": "nyc mocha tests/*.js --timeout 15000 --require babel-register",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "commitmsg": "is-ci && exit 0 || commitplease .git/COMMIT_EDITMSG",
-    "preversion": "npm test && git add -f dist/",
+    "preversion": "npm test && npm run build && git add -f dist/",
     "postversion": "git rm -r --cached dist/ && git commit -m \"chore(dist): clean after release [ci skip]\" && git push origin && git push origin --tags",
     "prepublish": "in-publish && npm run build || exit 0"
   },
@@ -38,10 +38,10 @@
   "homepage": "https://github.com/Comandeer/rollup-plugin-babel-minify#readme",
   "nyc": {
     "include": [
-      "dist/**/*.js"
+      "src/**/*.js"
     ],
     "exclude": [
-      "src/**/*.js",
+      "dist/**/*.js",
       "tests/**/*.js"
     ]
   },
@@ -70,7 +70,9 @@
     "@comandeer/is-ci": "^1.0.0",
     "@comandeer/rollup-lib-bundler": "^0.3.0",
     "babel-plugin-external-helpers": "^6.8.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
     "babel-preset-es2015": "^6.13.2",
+    "babel-register": "^6.26.0",
     "chai": "^4.1.2",
     "codecov": "^3.0.0",
     "commitplease": "^3.1.0",

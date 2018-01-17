@@ -1,12 +1,11 @@
-'use strict';
+import chai from 'chai';
+import { readFileSync } from 'fs';
+import { rollup } from 'rollup';
+import { transform } from 'babel-core';
+import validateSourcemap from 'sourcemap-validator';
+import plugin from '../src/index.js';
 
-const readFileSync = require( 'fs' ).readFileSync;
-const chai = require( 'chai' );
 const expect = chai.expect;
-const rollup = require( 'rollup' ).rollup;
-const plugin = require( '../dist/rollup-plugin-babel-minify' );
-const babel = require( 'babel-core' );
-const validateSourcemap = require( 'sourcemap-validator' );
 
 const bundleOptions = {
 	format: 'es'
@@ -22,22 +21,22 @@ describe( 'rollup-plugin-babel-minify', () => {
 	it( 'minifies code just like babel-minify', () => {
 		const path = 'fixtures/index.js';
 		const code = readFileSync( path, 'utf8' );
-		const babeledCode = babel.transform( code, { presets: [ 'minify' ], comments: true } );
+		const babeledCode = transform( code, { presets: [ 'minify' ], comments: true } );
 
 		return rollup( {
 			input: path,
 			plugins: [ plugin() ]
 		} ).then( ( bundle ) => {
-			bundle.generate( bundleOptions ).then( ( result ) => {
-				expect( result.code.trim() ).to.equal( babeledCode.code );
-			} );
+			return bundle.generate( bundleOptions );
+		} ).then( ( result ) => {
+			expect( result.code.trim() ).to.equal( babeledCode.code );
 		} );
 	} );
 
 	it( 'passes options to babel', () => {
 		const path = 'fixtures/sourcemap.js';
 		const code = readFileSync( path );
-		const babeledCode = babel.transform( code, { presets: [ [ 'minify', {
+		const babeledCode = transform( code, { presets: [ [ 'minify', {
 			removeConsole: true
 		} ] ] } );
 
@@ -47,16 +46,16 @@ describe( 'rollup-plugin-babel-minify', () => {
 				removeConsole: true
 			} ) ]
 		} ).then( ( bundle ) => {
-			bundle.generate( bundleOptions ).then( ( result ) => {
-				expect( result.code.trim() ).to.equal( babeledCode.code );
-			} );
+			return bundle.generate( bundleOptions );
+		} ).then( ( result ) => {
+			expect( result.code.trim() ).to.equal( babeledCode.code );
 		} );
 	} );
 
 	it( 'removes comments', () => {
 		const path = 'fixtures/index.js';
 		const code = readFileSync( path );
-		const babeledCode = babel.transform( code, { presets: [ 'minify' ], comments: false } );
+		const babeledCode = transform( code, { presets: [ 'minify' ], comments: false } );
 
 		return rollup( {
 			input: path,
@@ -64,9 +63,9 @@ describe( 'rollup-plugin-babel-minify', () => {
 				comments: false
 			} ) ]
 		} ).then( ( bundle ) => {
-			bundle.generate( bundleOptions ).then( ( result ) => {
-				expect( result.code.trim() ).to.equal( babeledCode.code );
-			} );
+			return bundle.generate( bundleOptions );
+		} ).then( ( result ) => {
+			expect( result.code.trim() ).to.equal( babeledCode.code );
 		} );
 	} );
 
@@ -78,9 +77,9 @@ describe( 'rollup-plugin-babel-minify', () => {
 				banner: '/* hublabubla */'
 			} ) ],
 		} ).then( ( bundle ) => {
-			bundle.generate( bundleOptions ).then( ( result ) => {
-				expect( result.code ).to.match( /^\/\* hublabubla \*\// );
-			} );
+			return bundle.generate( bundleOptions );
+		} ).then( ( result ) => {
+			expect( result.code ).to.match( /^\/\* hublabubla \*\// );
 		} );
 	} );
 
@@ -89,11 +88,11 @@ describe( 'rollup-plugin-babel-minify', () => {
 			input: 'fixtures/index.js',
 			plugins: [ plugin() ],
 		} ).then( ( bundle ) => {
-			bundle.generate( Object.assign( {}, bundleOptions, {
+			return bundle.generate( Object.assign( {}, bundleOptions, {
 				banner: '/* hublabubla */'
-			} ) ).then( ( result ) => {
-				expect( result.code ).to.match( /^\/\* hublabubla \*\// );
-			} );
+			} ) );
+		} ).then( ( result ) => {
+			expect( result.code ).to.match( /^\/\* hublabubla \*\// );
 		} );
 	} );
 
@@ -105,9 +104,9 @@ describe( 'rollup-plugin-babel-minify', () => {
 			banner: '/* hublabubla */',
 			plugins: [ plugin() ],
 		} ).then( ( bundle ) => {
-			bundle.generate( bundleOptions ).then( ( result ) => {
-				expect ( result.code ).to.match( /^\/\* hublabubla \*\// );
-			} );
+			return bundle.generate( bundleOptions );
+		} ).then( ( result ) => {
+			expect ( result.code ).to.match( /^\/\* hublabubla \*\// );
 		} );
 	} );
 
@@ -120,9 +119,9 @@ describe( 'rollup-plugin-babel-minify', () => {
 				}
 			} ) ],
 		} ).then ( ( bundle ) => {
-			bundle.generate( bundleOptions ).then( ( result ) => {
-				expect ( result.code ).to.match( /^\/\* hublabubla \*\// );
-			} );
+			return bundle.generate( bundleOptions );
+		} ).then( ( result ) => {
+			expect ( result.code ).to.match( /^\/\* hublabubla \*\// );
 		} );
 	} );
 
@@ -133,10 +132,10 @@ describe( 'rollup-plugin-babel-minify', () => {
 				banner: '/* hublabubla */'
 			} ) ],
 		} ).then( ( bundle ) => {
-			bundle.generate( bundleOptions ).then( ( result ) => {
-				expect( result.code ).to.match( /^\/\* hublabubla \*\// );
-				expect( result.code ).to.match( /.+\/\* Simple comment \*\/.+/g );
-			} );
+			return bundle.generate( bundleOptions );
+		} ).then( ( result ) => {
+			expect( result.code ).to.match( /^\/\* hublabubla \*\// );
+			expect( result.code ).to.match( /.+\/\* Simple comment \*\/.+/g );
 		} );
 	} );
 
@@ -148,10 +147,10 @@ describe( 'rollup-plugin-babel-minify', () => {
 				banner: '/* hublabubla */'
 			} ) ],
 		} ).then( ( bundle ) => {
-			bundle.generate( bundleOptions ).then( ( result ) => {
-				expect( result.code ).to.match( /^\/\* hublabubla \*\// );
-				expect( result.code ).to.match( /.+\/\* Simple comment \*\/.+/g );
-			} );
+			return bundle.generate( bundleOptions );
+		} ).then( ( result ) => {
+			expect( result.code ).to.match( /^\/\* hublabubla \*\// );
+			expect( result.code ).to.match( /.+\/\* Simple comment \*\/.+/g );
 		} );
 	} );
 
@@ -160,14 +159,14 @@ describe( 'rollup-plugin-babel-minify', () => {
 			input: 'fixtures/sourcemap.js',
 			plugins: [ plugin() ],
 		} ).then( ( bundle ) => {
-			bundle.generate( Object.assign( {}, bundleOptions, {
+			return bundle.generate( Object.assign( {}, bundleOptions, {
 				sourcemap: true
-			} ) ).then( ( result ) => {
-				expect( result.map ).to.not.equal( null );
-				expect( () => {
-					validateSourcemap( result.code, result.map );
-				} ).not.to.throw();
-			} );
+			} ) );
+		} ).then( ( result ) => {
+			expect( result.map ).to.not.equal( null );
+			expect( () => {
+				validateSourcemap( result.code, result.map );
+			} ).not.to.throw();
 		} );
 	} );
 
@@ -178,11 +177,11 @@ describe( 'rollup-plugin-babel-minify', () => {
 				sourceMap: false
 			} ) ],
 		} ).then( ( bundle ) => {
-			bundle.generate( Object.assign( {}, bundleOptions, {
+			return bundle.generate( Object.assign( {}, bundleOptions, {
 				sourcemap: false
-			} ) ).then( ( result ) => {
-				expect( result.map ).to.equal( null );
-			} );
+			} ) );
+		} ).then( ( result ) => {
+			expect( result.map ).to.equal( null );
 		} );
 	} );
 
@@ -191,16 +190,16 @@ describe( 'rollup-plugin-babel-minify', () => {
 			input: 'fixtures/sourcemap.js',
 			plugins: [ plugin() ],
 		} ).then( ( bundle ) => {
-			bundle.generate( {
+			return bundle.generate( {
 				format: 'umd',
 				name: 'Test',
 				sourcemap: true
-			} ).then( ( result ) => {
-				expect( result.map ).to.not.equal( null );
-				expect( () => {
-					validateSourcemap( result.code, result.map );
-				} ).not.to.throw();
 			} );
+		} ).then( ( result ) => {
+			expect( result.map ).to.not.equal( null );
+			expect( () => {
+				validateSourcemap( result.code, result.map );
+			} ).not.to.throw();
 		} );
 	} );
 
@@ -209,12 +208,12 @@ describe( 'rollup-plugin-babel-minify', () => {
 			input: 'fixtures/empty.js',
 			plugins: [ plugin() ],
 		} ).then( ( bundle ) => {
-			bundle.generate( {
+			return bundle.generate( {
 				format: 'es',
 				sourcemap: true
-			} ).then( ( result ) => {
-				expect( result.map ).to.not.equal( null );
 			} );
+		} ).then( ( result ) => {
+			expect( result.map ).to.not.equal( null );
 		} );
 	} );
 
@@ -223,15 +222,15 @@ describe( 'rollup-plugin-babel-minify', () => {
 			input: 'fixtures/invalidMappings.js',
 			plugins: [ plugin() ],
 		} ).then( ( bundle ) => {
-			bundle.generate( {
+			return bundle.generate( {
 				format: 'es',
 				sourcemap: true
-			} ).then( ( result ) => {
-				expect( result.map ).to.not.equal( null );
-				expect( () => {
-					validateSourcemap( result.code, result.map );
-				} ).not.to.throw();
 			} );
+		} ).then( ( result ) => {
+			expect( result.map ).to.not.equal( null );
+			expect( () => {
+				validateSourcemap( result.code, result.map );
+			} ).not.to.throw();
 		} );
 	} );
 } );
