@@ -1,12 +1,11 @@
-'use strict';
+import chai from 'chai';
+import { readFileSync } from 'fs';
+import { rollup } from 'rollup';
+import { transform } from 'babel-core';
+import validateSourcemap from 'sourcemap-validator';
+import plugin from '../src/index.js';
 
-const readFileSync = require( 'fs' ).readFileSync;
-const chai = require( 'chai' );
 const expect = chai.expect;
-const rollup = require( 'rollup' ).rollup;
-const plugin = require( '../dist/rollup-plugin-babel-minify' );
-const babel = require( 'babel-core' );
-const validateSourcemap = require( 'sourcemap-validator' );
 
 const bundleOptions = {
 	format: 'es'
@@ -22,7 +21,7 @@ describe( 'rollup-plugin-babel-minify', () => {
 	it( 'minifies code just like babel-minify', () => {
 		const path = 'fixtures/index.js';
 		const code = readFileSync( path, 'utf8' );
-		const babeledCode = babel.transform( code, { presets: [ 'minify' ], comments: true } );
+		const babeledCode = transform( code, { presets: [ 'minify' ], comments: true } );
 
 		return rollup( {
 			input: path,
@@ -37,7 +36,7 @@ describe( 'rollup-plugin-babel-minify', () => {
 	it( 'passes options to babel', () => {
 		const path = 'fixtures/sourcemap.js';
 		const code = readFileSync( path );
-		const babeledCode = babel.transform( code, { presets: [ [ 'minify', {
+		const babeledCode = transform( code, { presets: [ [ 'minify', {
 			removeConsole: true
 		} ] ] } );
 
@@ -56,7 +55,7 @@ describe( 'rollup-plugin-babel-minify', () => {
 	it( 'removes comments', () => {
 		const path = 'fixtures/index.js';
 		const code = readFileSync( path );
-		const babeledCode = babel.transform( code, { presets: [ 'minify' ], comments: false } );
+		const babeledCode = transform( code, { presets: [ 'minify' ], comments: false } );
 
 		return rollup( {
 			input: path,
