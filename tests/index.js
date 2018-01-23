@@ -96,15 +96,37 @@ describe( 'rollup-plugin-babel-minify', () => {
 		} );
 	} );
 
-	it ( 'adds banner inherited from root configuration', () => {
-		// while you can ask: WTF? banner is not an option for an rollup
-		// function, this is how options from config file are passed
-		return rollup( {
+	it( 'adds banner inherited from root configuration (legacy syntax)', () => {
+		const bannerOptions = {
+			banner: '/* hublabubla */'
+		};
+		const inputOptions = Object.assign( {
 			input: 'fixtures/index.js',
-			banner: '/* hublabubla */',
 			plugins: [ plugin() ],
-		} ).then( ( bundle ) => {
-			return bundle.generate( bundleOptions );
+		}, bannerOptions );
+		const outputOptions = Object.assign( {}, bundleOptions, bannerOptions );
+
+		return rollup( inputOptions ).then( ( bundle ) => {
+			return bundle.generate( outputOptions );
+		} ).then( ( result ) => {
+			expect ( result.code ).to.match( /^\/\* hublabubla \*\// );
+		} );
+	} );
+
+	it( 'adds banner inherited from root configuration (new syntax)', () => {
+		const bannerOptions = {
+			output: {
+				banner: '/* hublabubla */',
+			}
+		};
+		const inputOptions = Object.assign( {
+			input: 'fixtures/index.js',
+			plugins: [ plugin() ],
+		}, bannerOptions );
+		const outputOptions = Object.assign( {}, bundleOptions, bannerOptions );
+
+		return rollup( inputOptions ).then( ( bundle ) => {
+			return bundle.generate( outputOptions );
 		} ).then( ( result ) => {
 			expect ( result.code ).to.match( /^\/\* hublabubla \*\// );
 		} );
@@ -112,7 +134,7 @@ describe( 'rollup-plugin-babel-minify', () => {
 
 	it ( 'adds banner as a result of call if plugin banner option is fn itself', () => {
 		return rollup( {
-			input: 'fixtures/index.js',
+			entry: 'fixtures/index.js',
 			plugins: [ plugin( {
 				banner: () => {
 					return '/* hublabubla */';
