@@ -18,7 +18,7 @@ function minify( options = {} ) {
 			rollupBanner = banner;
 		},
 
-		transformBundle( bundle ) {
+		transformBundle( bundle, { banner: bundleBanner } ) {
 			const minifyOptions = filterMinifyOptions( options );
 			const babelConf = {
 				presets: [ [ minifyPreset, minifyOptions ] ],
@@ -27,7 +27,7 @@ function minify( options = {} ) {
 			};
 
 			if ( isFnOrString( options.banner ) || isFnOrString ( rollupBanner ) ) {
-				let banner = options.banner || rollupBanner;
+				let banner = options.banner || bundleBanner || rollupBanner;
 				banner = isFn ( banner ) ? banner() : banner;
 				const bannerContent = getCommentContent( banner );
 				let isAlreadyInserted = false;
