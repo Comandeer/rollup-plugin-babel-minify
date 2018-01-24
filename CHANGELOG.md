@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 * Add proper Code of Conduct.
 
+### Fixed
+* [#73] Banner is not inherited from root configuration.
+
 ## [3.1.2] – 2017-08-14
 ### Changed
 * Change name from `rollup-plugin-babili` to `rollup-plugin-babel-minify` and update dependencies accordingly.
@@ -66,6 +69,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## 1.0.0 – 2017-01-18
 ### Added
 * First working version, yay!
+
+[#73]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/73
 
 [3.1.2]: https://github.com/Comandeer/rollup-plugin-babili/compare/v3.1.1...v3.1.2
 [3.1.1]: https://github.com/Comandeer/rollup-plugin-babili/compare/v3.1.0...v3.1.1
