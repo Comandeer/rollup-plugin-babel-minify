@@ -26,7 +26,7 @@ function minify( options = {} ) {
 				comments: typeof options.comments !== 'undefined' ? Boolean( options.comments ) : true
 			};
 
-			if ( isFnOrString( options.banner ) || isFnOrString ( rollupBanner ) ) {
+			if ( isFnOrString( options.banner ) || isFnOrString ( bundleBanner ) || isFnOrString ( rollupBanner ) ) {
 				let banner = options.banner || bundleBanner || rollupBanner;
 				banner = isFn ( banner ) ? banner() : banner;
 				const bannerContent = getCommentContent( banner );
