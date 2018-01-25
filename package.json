@@ -13,7 +13,7 @@
     "test": "nyc mocha tests/*.js --timeout 15000 --require babel-register",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "commitmsg": "is-ci && exit 0 || commitplease .git/COMMIT_EDITMSG",
-    "preversion": "npm test && npm run build && git add -f dist/",
+    "version": "npm test && npm run build && git add -f dist/",
     "postversion": "git rm -r --cached dist/ && git commit -m \"chore(dist): clean after release [ci skip]\" && git push origin && git push origin --tags",
     "prepublish": "in-publish && npm run build || exit 0"
   },
