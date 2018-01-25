@@ -14,8 +14,7 @@
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "commitmsg": "is-ci && exit 0 || commitplease .git/COMMIT_EDITMSG",
     "version": "npm test && npm run build && git add -f dist/",
-    "postversion": "git rm -r --cached dist/ && git commit -m \"chore(dist): clean after release [ci skip]\" && git push origin && git push origin --tags",
-    "prepublish": "in-publish && npm run build || exit 0"
+    "postversion": "git rm -r --cached dist/ && git commit -m \"chore(dist): clean after release [ci skip]\" && git push origin && git push origin --tags"
   },
   "repository": {
     "type": "git",
@@ -79,7 +78,6 @@
     "cz-conventional-changelog": "^2.1.0",
     "eslint": "^4.11.0",
     "husky": "^0.14.3",
-    "in-publish": "^2.0.0",
     "mocha": "^5.0.0",
     "nyc": "^11.3.0",
     "rimraf": "^2.6.2",
