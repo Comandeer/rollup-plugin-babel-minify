@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 * [#73] Banner is not inherited from root configuration.
+* [#71] Published version of the package contains incorrect version number in the banner comment.
 
 ## [3.1.2] – 2017-08-14
 ### Changed
@@ -70,6 +71,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 * First working version, yay!
 
+[#71]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/71
 [#73]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/73
 
 [3.1.2]: https://github.com/Comandeer/rollup-plugin-babili/compare/v3.1.1...v3.1.2
