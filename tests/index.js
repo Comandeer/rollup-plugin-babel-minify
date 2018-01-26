@@ -176,6 +176,20 @@ describe( 'rollup-plugin-babel-minify', () => {
 		} );
 	} );
 
+	it( 'adds new line after banner if appropriate option is passed', () => {
+		return rollup( {
+			input: 'fixtures/index.js',
+			plugins: [ plugin( {
+				banner: '/* hublabubla */',
+				bannerNewLine: true
+			} ) ],
+		} ).then( ( bundle ) => {
+			return bundle.generate( bundleOptions );
+		} ).then( ( result ) => {
+			expect( result.code ).to.match( /^\/\* hublabubla \*\/\n[^\n]/ );
+		} );
+	} );
+
 	it( 'generates source map by default', () => {
 		return rollup( {
 			input: 'fixtures/sourcemap.js',
@@ -250,6 +264,26 @@ describe( 'rollup-plugin-babel-minify', () => {
 			} );
 		} ).then( ( result ) => {
 			expect( result.map ).to.not.equal( null );
+			expect( () => {
+				validateSourcemap( result.code, result.map );
+			} ).not.to.throw();
+		} );
+	} );
+
+	// #16
+	it( 'generates valid source map for bundle with banner with empty line', () => {
+		return rollup( {
+			input: 'fixtures/index.js',
+			plugins: [ plugin( {
+				banner: '/* hublabubla */',
+				bannerNewLine: true
+			} ) ],
+		} ).then( ( bundle ) => {
+			return bundle.generate( {
+				format: 'es',
+				sourcemap: true
+			} );
+		} ).then( ( result ) => {
 			expect( () => {
 				validateSourcemap( result.code, result.map );
 			} ).not.to.throw();

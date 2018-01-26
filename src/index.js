@@ -1,6 +1,7 @@
 'use strict';
 
 import { filterMinifyOptions } from './utils.js';
+import { addNewLine } from './utils.js';
 import { isFn } from './utils.js';
 import { isFnOrString } from './utils.js';
 import minifyPreset from 'babel-preset-minify';
@@ -51,7 +52,11 @@ function minify( options = {} ) {
 				}
 			}
 
-			const { code, map } = transform( bundle, babelConf );
+			let { code, map } = transform( bundle, babelConf );
+
+			if ( options.bannerNewLine ) {
+				( { code, map } = addNewLine( code ) );
+			}
 
 			return {
 				code,
