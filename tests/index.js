@@ -176,6 +176,7 @@ describe( 'rollup-plugin-babel-minify', () => {
 		} );
 	} );
 
+	// #16
 	it( 'adds new line after banner if appropriate option is passed', () => {
 		return rollup( {
 			input: 'fixtures/index.js',
@@ -187,6 +188,35 @@ describe( 'rollup-plugin-babel-minify', () => {
 			return bundle.generate( bundleOptions );
 		} ).then( ( result ) => {
 			expect( result.code ).to.match( /^\/\* hublabubla \*\/\n[^\n]/ );
+		} );
+	} );
+
+	// #16
+	it( 'does not add new line after banner if appropriate option is not passed', () => {
+		return rollup( {
+			input: 'fixtures/index.js',
+			plugins: [ plugin( {
+				banner: '/* hublabubla */'
+			} ) ],
+		} ).then( ( bundle ) => {
+			return bundle.generate( bundleOptions );
+		} ).then( ( result ) => {
+			expect( result.code ).to.match( /^\/\* hublabubla \*\/[^\n]/ );
+		} );
+	} );
+
+	// #16
+	it( 'does not add new line after banner if appropriate option is set to false', () => {
+		return rollup( {
+			input: 'fixtures/index.js',
+			plugins: [ plugin( {
+				banner: '/* hublabubla */',
+				bannerNewLine: false
+			} ) ],
+		} ).then( ( bundle ) => {
+			return bundle.generate( bundleOptions );
+		} ).then( ( result ) => {
+			expect( result.code ).to.match( /^\/\* hublabubla \*\/[^\n]/ );
 		} );
 	} );
 
