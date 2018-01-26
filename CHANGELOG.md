@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [3.2.0]
 ### Added
 * Add proper Code of Conduct.
+* [#16] Support for new line after banner via new configuration variable, `bannerNewLine`.
 
 ### Fixed
 * [#73] Banner is not inherited from root configuration.
@@ -71,6 +72,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 * First working version, yay!
 
+[#16]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/16
 [#71]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/71
 [#73]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/73
 
