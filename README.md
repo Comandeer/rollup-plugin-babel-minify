@@ -32,6 +32,7 @@ There are additional options:
 
 * `comments` (default: `true`): indicates if comments should be preserved in source
 * `banner` (default: `undefined`): the comment which should be prepended to the transformed bundle
+* `bannerNewLine` (since 3.2.0, default: `false`): indicates if the banner comment should be followed by a new line
 * `sourceMap` (default: `true`): indicates if sourcemap should be generated
 
 ## License
