@@ -1,8 +1,25 @@
-'use strict';
+import MagicString from 'magic-string';
+
+function addNewLine( code ) {
+	const magicString = new MagicString( code );
+	const bannerEnd = code.indexOf( '*/' );
+
+	magicString.appendRight( bannerEnd + 2, '\n' );
+
+	const map = magicString.generateMap( {
+		includeContent: true
+	} );
+
+	return {
+		code: magicString.toString(),
+		map
+	};
+}
 
 function filterMinifyOptions( options ) {
 	const disallowedProperties = [
 		'banner',
+		'bannerNewLine',
 		'sourceMap',
 		'comments'
 	];
@@ -29,6 +46,7 @@ function isFnOrString( v ) {
 	return isString( v ) || isFn( v );
 }
 
+export { addNewLine };
 export { filterMinifyOptions };
 export { isString };
 export { isFn };

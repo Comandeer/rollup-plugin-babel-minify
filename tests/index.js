@@ -176,6 +176,50 @@ describe( 'rollup-plugin-babel-minify', () => {
 		} );
 	} );
 
+	// #16
+	it( 'adds new line after banner if appropriate option is passed', () => {
+		return rollup( {
+			input: 'fixtures/index.js',
+			plugins: [ plugin( {
+				banner: '/* hublabubla */',
+				bannerNewLine: true
+			} ) ],
+		} ).then( ( bundle ) => {
+			return bundle.generate( bundleOptions );
+		} ).then( ( result ) => {
+			expect( result.code ).to.match( /^\/\* hublabubla \*\/\n[^\n]/ );
+		} );
+	} );
+
+	// #16
+	it( 'does not add new line after banner if appropriate option is not passed', () => {
+		return rollup( {
+			input: 'fixtures/index.js',
+			plugins: [ plugin( {
+				banner: '/* hublabubla */'
+			} ) ],
+		} ).then( ( bundle ) => {
+			return bundle.generate( bundleOptions );
+		} ).then( ( result ) => {
+			expect( result.code ).to.match( /^\/\* hublabubla \*\/[^\n]/ );
+		} );
+	} );
+
+	// #16
+	it( 'does not add new line after banner if appropriate option is set to false', () => {
+		return rollup( {
+			input: 'fixtures/index.js',
+			plugins: [ plugin( {
+				banner: '/* hublabubla */',
+				bannerNewLine: false
+			} ) ],
+		} ).then( ( bundle ) => {
+			return bundle.generate( bundleOptions );
+		} ).then( ( result ) => {
+			expect( result.code ).to.match( /^\/\* hublabubla \*\/[^\n]/ );
+		} );
+	} );
+
 	it( 'generates source map by default', () => {
 		return rollup( {
 			input: 'fixtures/sourcemap.js',
@@ -250,6 +294,26 @@ describe( 'rollup-plugin-babel-minify', () => {
 			} );
 		} ).then( ( result ) => {
 			expect( result.map ).to.not.equal( null );
+			expect( () => {
+				validateSourcemap( result.code, result.map );
+			} ).not.to.throw();
+		} );
+	} );
+
+	// #16
+	it( 'generates valid source map for bundle with banner with empty line', () => {
+		return rollup( {
+			input: 'fixtures/index.js',
+			plugins: [ plugin( {
+				banner: '/* hublabubla */',
+				bannerNewLine: true
+			} ) ],
+		} ).then( ( bundle ) => {
+			return bundle.generate( {
+				format: 'es',
+				sourcemap: true
+			} );
+		} ).then( ( result ) => {
 			expect( () => {
 				validateSourcemap( result.code, result.map );
 			} ).not.to.throw();
