@@ -1,4 +1,5 @@
 import MagicString from 'magic-string';
+import semver from 'semver';
 
 function addNewLine( code ) {
 	const magicString = new MagicString( code );
@@ -46,8 +47,13 @@ function isFnOrString( v ) {
 	return isString( v ) || isFn( v );
 }
 
+function checkNodeVersion() {
+	return semver.satisfies( process.version, '>=6.0.0' );
+}
+
 export { addNewLine };
 export { filterMinifyOptions };
 export { isString };
 export { isFn };
 export { isFnOrString };
+export { checkNodeVersion };
