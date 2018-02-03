@@ -15,6 +15,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 * [#86] Update `babel-preset-minify` to `^0.3.0` – **BREAKING CHANGE**.
 
+### Deprecated
+* [#69] Deprecate support for Node <6.
+
 ### Fixed
 * [#73] Banner is not inherited from root configuration.
 * [#71] Published version of the package contains incorrect version number in the banner comment.
@@ -77,6 +80,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * First working version, yay!
 
 [#16]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/16
+[#69]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/69
 [#71]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/71
 [#73]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/73
 [#83]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/83
