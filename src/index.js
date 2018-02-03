@@ -4,13 +4,21 @@ import { filterMinifyOptions } from './utils.js';
 import { addNewLine } from './utils.js';
 import { isFn } from './utils.js';
 import { isFnOrString } from './utils.js';
+import { checkNodeVersion } from './utils.js';
+import depd from 'depd';
 import minifyPreset from 'babel-preset-minify';
 import bannerPlugin from '@comandeer/babel-plugin-banner';
 import { getCommentContent } from '@comandeer/babel-plugin-banner/utils';
 import { transform } from 'babel-core';
 
+const deprecate = depd( 'rollup-plugin-babel-minify' );
+
 function minify( options = {} ) {
 	let rollupBanner;
+
+	if ( !checkNodeVersion() ) {
+		deprecate( 'This plugin will remove support for Node <6 in version 5.0.0.' );
+	}
 
 	return {
 		name: 'babel-minify',

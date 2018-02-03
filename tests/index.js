@@ -18,6 +18,33 @@ describe( 'rollup-plugin-babel-minify', () => {
 		expect( plugin ).to.be.a( 'function' );
 	} );
 
+	describe( 'in Node <6', () => {
+		const originalVersion = process.version;
+
+		before( () => {
+			// process.version is read-only, however it's still deleteable.
+			delete process.version;
+			process.version = '4.4.7';
+		} );
+
+		after( () => {
+			process.version = originalVersion;
+		} );
+
+		it( 'is deprecated', () => {
+			return new Promise( ( resolve ) => {
+				process.once( 'deprecation', ( result ) => {
+					resolve( result );
+				} );
+
+				plugin();
+			} ).then( ( { namespace, message } ) => {
+				expect( namespace ).to.equal( 'rollup-plugin-babel-minify' );
+				expect( message ).to.equal( 'This plugin will remove support for Node <6 in version 5.0.0.' );
+			} );
+		} );
+	} );
+
 	it( 'minifies code just like babel-minify', () => {
 		const path = 'fixtures/index.js';
 		const code = readFileSync( path, 'utf8' );
