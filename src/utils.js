@@ -36,11 +36,11 @@ function filterMinifyOptions( options ) {
 }
 
 function isString( v ) {
-	return v != null && typeof v === 'string';
+	return typeof v === 'string';
 }
 
 function isFn( v ) {
-	return v != null && typeof v === 'function';
+	return typeof v === 'function';
 }
 
 function isFnOrString( v ) {
