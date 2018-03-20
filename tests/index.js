@@ -274,7 +274,11 @@ describe( 'rollup-plugin-babel-minify', () => {
 				sourcemap: false
 			} ) );
 		} ).then( ( result ) => {
-			expect( result.map ).to.equal( null );
+			// It seems that Rollup tends to behave differently on different versions of
+			// Node.js, returning null on Node 8+ and undefined otherwise.
+			expect( result.map ).to.satisfy( ( value ) => {
+				return value === undefined || value === null;
+			} );
 		} );
 	} );
 
