@@ -92,7 +92,7 @@
   "dependencies": {
     "@comandeer/babel-plugin-banner": "^2.0.2",
     "babel-core": "^6.26.0",
-    "babel-preset-minify": "^0.3.0",
+    "babel-preset-minify": "^0.4.0",
     "depd": "^1.1.2",
     "magic-string": "^0.24.0",
     "semver": "^5.5.0"
