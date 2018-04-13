@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## [5.0.0]
+### Changed
+* [#97] **BREAKING CHANGE**: Update `babel-preset-minify` to `^0.4.0`.
+
 ## [4.0.0] – 2018-02-03
 ### Added
 * [#60] Add proper Code of Conduct.
@@ -13,7 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * [#83] Add coverage badge.
 
 ### Changed
-* [#86] Update `babel-preset-minify` to `^0.3.0` – **BREAKING CHANGE**.
+* [#86] **BREAKING CHANGE**: Update `babel-preset-minify` to `^0.3.0`.
 
 ### Deprecated
 * [#69] Deprecate support for Node <6.
