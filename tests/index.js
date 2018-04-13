@@ -3,9 +3,11 @@ import { readFileSync } from 'fs';
 import { rollup } from 'rollup';
 import { transform } from 'babel-core';
 import validateSourcemap from 'sourcemap-validator';
+import { callThru } from 'proxyquire';
 import plugin from '../src/index.js';
 
 const expect = chai.expect;
+const proxyquire = callThru();
 
 const bundleOptions = {
 	format: 'es'
@@ -41,6 +43,29 @@ describe( 'rollup-plugin-babel-minify', () => {
 			} ).then( ( { namespace, message } ) => {
 				expect( namespace ).to.equal( 'rollup-plugin-babel-minify' );
 				expect( message ).to.equal( 'This plugin will remove support for Node <6 in version 5.0.0.' );
+			} );
+		} );
+	} );
+
+	describe( 'with Rollup < 0.57.0', () => {
+		it( 'is deprecated', () => {
+			const proxiedPlugin = proxyquire( '../src/index.js', {
+				'./utils.js': {
+					checkRollupVersion() {
+						return false;
+					}
+				}
+			} );
+
+			return new Promise( ( resolve ) => {
+				process.once( 'deprecation', ( result ) => {
+					resolve( result );
+				} );
+
+				proxiedPlugin.default();
+			} ).then( ( { namespace, message } ) => {
+				expect( namespace ).to.equal( 'rollup-plugin-babel-minify' );
+				expect( message ).to.equal( 'This plugin will remove support for Rollup <0.57.0 in version 6.0.0.' );
 			} );
 		} );
 	} );

@@ -1,5 +1,6 @@
 import MagicString from 'magic-string';
 import semver from 'semver';
+import { VERSION as rollupVersion } from 'rollup';
 
 function addNewLine( code ) {
 	const magicString = new MagicString( code );
@@ -51,9 +52,14 @@ function checkNodeVersion() {
 	return semver.satisfies( process.version, '>=6.0.0' );
 }
 
+function checkRollupVersion() {
+	return semver.satisfies( rollupVersion, '>=0.57.0' );
+}
+
 export { addNewLine };
 export { filterMinifyOptions };
 export { isString };
 export { isFn };
 export { isFnOrString };
 export { checkNodeVersion };
+export { checkRollupVersion };
