@@ -66,6 +66,7 @@
     "rollup": ">=0.41.5"
   },
   "devDependencies": {
+    "@comandeer/eslint-config": "^0.1.0",
     "@comandeer/is-ci": "^1.0.0",
     "@comandeer/rollup-lib-bundler": "^0.4.0",
     "babel-plugin-external-helpers": "^6.8.0",
