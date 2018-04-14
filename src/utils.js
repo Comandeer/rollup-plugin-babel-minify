@@ -26,7 +26,7 @@ function filterMinifyOptions( options ) {
 	];
 	const minifyOptions = {};
 
-	Object.keys( options ).filter( ( option ) => {
+	Object.keys( options ).forEach( ( option ) => {
 		if ( disallowedProperties.indexOf( option ) === -1 ) {
 			minifyOptions[ option ] = options[ option ];
 		}

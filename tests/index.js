@@ -102,7 +102,7 @@ describe( 'rollup-plugin-babel-minify', () => {
 			plugins: [ plugin( {
 				comments: false,
 				banner: '/* hublabubla */'
-			} ) ],
+			} ) ]
 		} ).then( ( bundle ) => {
 			return bundle.generate( bundleOptions );
 		} ).then( ( result ) => {
@@ -113,7 +113,7 @@ describe( 'rollup-plugin-babel-minify', () => {
 	it( 'adds banner inherited from bundle.generate', () => {
 		return rollup( {
 			input: 'fixtures/index.js',
-			plugins: [ plugin() ],
+			plugins: [ plugin() ]
 		} ).then( ( bundle ) => {
 			return bundle.generate( Object.assign( {}, bundleOptions, {
 				banner: '/* hublabubla */'
@@ -129,7 +129,7 @@ describe( 'rollup-plugin-babel-minify', () => {
 		};
 		const inputOptions = Object.assign( {
 			input: 'fixtures/index.js',
-			plugins: [ plugin() ],
+			plugins: [ plugin() ]
 		}, bannerOptions );
 		const outputOptions = Object.assign( {}, bundleOptions, bannerOptions );
 
@@ -143,12 +143,12 @@ describe( 'rollup-plugin-babel-minify', () => {
 	it( 'adds banner inherited from root configuration (new syntax)', () => {
 		const bannerOptions = {
 			output: {
-				banner: '/* hublabubla */',
+				banner: '/* hublabubla */'
 			}
 		};
 		const inputOptions = Object.assign( {
 			input: 'fixtures/index.js',
-			plugins: [ plugin() ],
+			plugins: [ plugin() ]
 		}, bannerOptions );
 		const outputOptions = Object.assign( {}, bundleOptions, bannerOptions );
 
@@ -166,7 +166,7 @@ describe( 'rollup-plugin-babel-minify', () => {
 				banner: () => {
 					return '/* hublabubla */';
 				}
-			} ) ],
+			} ) ]
 		} ).then ( ( bundle ) => {
 			return bundle.generate( bundleOptions );
 		} ).then( ( result ) => {
@@ -179,7 +179,7 @@ describe( 'rollup-plugin-babel-minify', () => {
 			input: 'fixtures/index.js',
 			plugins: [ plugin( {
 				banner: '/* hublabubla */'
-			} ) ],
+			} ) ]
 		} ).then( ( bundle ) => {
 			return bundle.generate( bundleOptions );
 		} ).then( ( result ) => {
@@ -194,7 +194,7 @@ describe( 'rollup-plugin-babel-minify', () => {
 			plugins: [ plugin( {
 				comments: true,
 				banner: '/* hublabubla */'
-			} ) ],
+			} ) ]
 		} ).then( ( bundle ) => {
 			return bundle.generate( bundleOptions );
 		} ).then( ( result ) => {
@@ -210,7 +210,7 @@ describe( 'rollup-plugin-babel-minify', () => {
 			plugins: [ plugin( {
 				banner: '/* hublabubla */',
 				bannerNewLine: true
-			} ) ],
+			} ) ]
 		} ).then( ( bundle ) => {
 			return bundle.generate( bundleOptions );
 		} ).then( ( result ) => {
@@ -224,7 +224,7 @@ describe( 'rollup-plugin-babel-minify', () => {
 			input: 'fixtures/index.js',
 			plugins: [ plugin( {
 				banner: '/* hublabubla */'
-			} ) ],
+			} ) ]
 		} ).then( ( bundle ) => {
 			return bundle.generate( bundleOptions );
 		} ).then( ( result ) => {
@@ -239,7 +239,7 @@ describe( 'rollup-plugin-babel-minify', () => {
 			plugins: [ plugin( {
 				banner: '/* hublabubla */',
 				bannerNewLine: false
-			} ) ],
+			} ) ]
 		} ).then( ( bundle ) => {
 			return bundle.generate( bundleOptions );
 		} ).then( ( result ) => {
@@ -250,7 +250,7 @@ describe( 'rollup-plugin-babel-minify', () => {
 	it( 'generates source map by default', () => {
 		return rollup( {
 			input: 'fixtures/sourcemap.js',
-			plugins: [ plugin() ],
+			plugins: [ plugin() ]
 		} ).then( ( bundle ) => {
 			return bundle.generate( Object.assign( {}, bundleOptions, {
 				sourcemap: true
@@ -268,7 +268,7 @@ describe( 'rollup-plugin-babel-minify', () => {
 			input: 'fixtures/sourcemap.js',
 			plugins: [ plugin( {
 				sourceMap: false
-			} ) ],
+			} ) ]
 		} ).then( ( bundle ) => {
 			return bundle.generate( Object.assign( {}, bundleOptions, {
 				sourcemap: false
@@ -285,7 +285,7 @@ describe( 'rollup-plugin-babel-minify', () => {
 	it( 'generates source map for UMD bundle', () => {
 		return rollup( {
 			input: 'fixtures/sourcemap.js',
-			plugins: [ plugin() ],
+			plugins: [ plugin() ]
 		} ).then( ( bundle ) => {
 			return bundle.generate( {
 				format: 'umd',
@@ -303,7 +303,7 @@ describe( 'rollup-plugin-babel-minify', () => {
 	it( 'generates source map for empty bundle', () => {
 		return rollup( {
 			input: 'fixtures/empty.js',
-			plugins: [ plugin() ],
+			plugins: [ plugin() ]
 		} ).then( ( bundle ) => {
 			return bundle.generate( {
 				format: 'es',
@@ -317,7 +317,7 @@ describe( 'rollup-plugin-babel-minify', () => {
 	it( 'generates valid source map after heavy processing by fixMappings', () => {
 		return rollup( {
 			input: 'fixtures/invalidMappings.js',
-			plugins: [ plugin() ],
+			plugins: [ plugin() ]
 		} ).then( ( bundle ) => {
 			return bundle.generate( {
 				format: 'es',
@@ -338,7 +338,7 @@ describe( 'rollup-plugin-babel-minify', () => {
 			plugins: [ plugin( {
 				banner: '/* hublabubla */',
 				bannerNewLine: true
-			} ) ],
+			} ) ]
 		} ).then( ( bundle ) => {
 			return bundle.generate( {
 				format: 'es',
