@@ -5,6 +5,7 @@ import { addNewLine } from './utils.js';
 import { isFn } from './utils.js';
 import { isFnOrString } from './utils.js';
 import { checkNodeVersion } from './utils.js';
+import { checkRollupVersion } from './utils.js';
 import depd from 'depd';
 import minifyPreset from 'babel-preset-minify';
 import bannerPlugin from '@comandeer/babel-plugin-banner';
@@ -18,6 +19,10 @@ function minify( options = {} ) {
 
 	if ( !checkNodeVersion() ) {
 		deprecate( 'This plugin will remove support for Node <6 in version 5.0.0.' );
+	}
+
+	if ( !checkRollupVersion() ) {
+		deprecate( 'This plugin will remove support for Rollup <0.57.0 in version 6.0.0.' );
 	}
 
 	return {

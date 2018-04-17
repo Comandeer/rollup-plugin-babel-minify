@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 * [#97] **BREAKING CHANGE**: Update `babel-preset-minify` to `^0.4.0`.
 
+### Deprecated
+* [#69] Deprecate support for Rollup <0.57.0.
+
 ## [4.0.0] – 2018-02-03
 ### Added
 * [#60] Add proper Code of Conduct.
