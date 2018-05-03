@@ -7,8 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ---
 
 ## [5.0.0]
+### Added
+* [#105] Add support for Node 10.
+
 ### Changed
 * [#97] **BREAKING CHANGE**: Update `babel-preset-minify` to `^0.4.0`.
+
+### Removed
+* [#64] **BREAKING CHANGE**: remove support for Node <6 and 7.
 
 ## [4.0.0] – 2018-02-03
 ### Added
@@ -109,11 +115,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [#47]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/47
 [#48]: https://github.com/Comandeer/rollup-plugin-babel-minify/pull/48
 [#60]: https://github.com/Comandeer/rollup-plugin-babel-minify/pull/60
+[#64]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/64
 [#69]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/69
 [#71]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/71
 [#73]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/73
 [#83]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/83
 [#86]: https://github.com/Comandeer/rollup-plugin-babel-minify/pull/86
+[#105]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/105
 
 [4.0.0]: https://github.com/Comandeer/rollup-plugin-babili/compare/v3.1.2...v4.0.0
 [3.1.2]: https://github.com/Comandeer/rollup-plugin-babili/compare/v3.1.1...v3.1.2
