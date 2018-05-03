@@ -34,7 +34,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [3.1.2] – 2017-08-14
 ### Changed
-* [#47] Change name from `rollup-plugin-babili` to `rollup-plugin-babel-minify` and update dependencies accordingly.
+* [#47] Change name from `rollup-plugin-babel-minify` to `rollup-plugin-babel-minify` and update dependencies accordingly.
 
 ## [3.1.1] – 2017-08-12
 ### Changed
@@ -83,7 +83,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.0.1] – 2017-01-19
 ### Changed
-* [#8] Change name from `rollup-plugin-real-babili` to `rollup-plugin-babili`.
+* [#8] Change name from `rollup-plugin-real-babili` to `rollup-plugin-babel-minify`.
 
 ### Fixed
 * [`c8a3f56`] Add support for empty sourcemap's mappings.
@@ -123,15 +123,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [#86]: https://github.com/Comandeer/rollup-plugin-babel-minify/pull/86
 [#105]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/105
 
-[4.0.0]: https://github.com/Comandeer/rollup-plugin-babili/compare/v3.1.2...v4.0.0
-[3.1.2]: https://github.com/Comandeer/rollup-plugin-babili/compare/v3.1.1...v3.1.2
-[3.1.1]: https://github.com/Comandeer/rollup-plugin-babili/compare/v3.1.0...v3.1.1
-[3.1.0]: https://github.com/Comandeer/rollup-plugin-babili/compare/v3.0.0...v3.1.0
-[3.0.0]: https://github.com/Comandeer/rollup-plugin-babili/compare/v2.0.0...v3.0.0
-[2.0.0]: https://github.com/Comandeer/rollup-plugin-babili/compare/v1.1.1...v2.0.0
-[1.1.1]: https://github.com/Comandeer/rollup-plugin-babili/compare/v1.1.0...v1.1.1
-[1.1.0]: https://github.com/Comandeer/rollup-plugin-babili/compare/v1.0.3...v1.1.0
-[1.0.3]: https://github.com/Comandeer/rollup-plugin-babili/compare/v1.0.2...v1.0.3
-[1.0.2]: https://github.com/Comandeer/rollup-plugin-babili/compare/v1.0.1...v1.0.2
-[1.0.1]: https://github.com/Comandeer/rollup-plugin-babili/compare/v1.0.0...v1.0.1
-[1.0.0]: https://github.com/Comandeer/rollup-plugin-babili/compare/v1.0.0-alpha3...v1.0.0
+[5.0.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v4.0.0...v5.0.0
+[4.0.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v3.1.2...v4.0.0
+[3.1.2]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v3.1.1...v3.1.2
+[3.1.1]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v3.1.0...v3.1.1
+[3.1.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v3.0.0...v3.1.0
+[3.0.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v2.0.0...v3.0.0
+[2.0.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v1.1.1...v2.0.0
+[1.1.1]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v1.1.0...v1.1.1
+[1.1.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v1.0.3...v1.1.0
+[1.0.3]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v1.0.2...v1.0.3
+[1.0.2]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v1.0.1...v1.0.2
+[1.0.1]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v1.0.0...v1.0.1
+[1.0.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v1.0.0-alpha3...v1.0.0
