@@ -1,5 +1,3 @@
-'use strict';
-
 import { filterMinifyOptions } from './utils.js';
 import { addNewLine } from './utils.js';
 import { isFn } from './utils.js';
