@@ -10,14 +10,8 @@ import { getCommentContent } from '@comandeer/babel-plugin-banner';
 import { transform } from 'babel-core';
 
 function minify( options = {} ) {
-	let rollupBanner;
-
 	return {
 		name: 'babel-minify',
-
-		options( { banner } ) {
-			rollupBanner = banner;
-		},
 
 		transformBundle( bundle, { banner: bundleBanner } ) {
 			const minifyOptions = filterMinifyOptions( options );
@@ -27,8 +21,8 @@ function minify( options = {} ) {
 				comments: typeof options.comments !== 'undefined' ? Boolean( options.comments ) : true
 			};
 
-			if ( isFnOrString( options.banner ) || isFnOrString ( bundleBanner ) || isFnOrString ( rollupBanner ) ) {
-				let banner = options.banner || bundleBanner || rollupBanner;
+			if ( isFnOrString( options.banner ) || isFnOrString ( bundleBanner ) ) {
+				let banner = options.banner || bundleBanner;
 				banner = isFn ( banner ) ? banner() : banner;
 				const bannerContent = getCommentContent( banner );
 				let isAlreadyInserted = false;
