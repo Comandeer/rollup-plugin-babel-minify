@@ -96,24 +96,7 @@ describe( 'rollup-plugin-babel-minify', () => {
 		} );
 	} );
 
-	it( 'adds banner inherited from root configuration (legacy syntax)', () => {
-		const bannerOptions = {
-			banner: '/* hublabubla */'
-		};
-		const inputOptions = Object.assign( {
-			input: 'fixtures/index.js',
-			plugins: [ plugin() ]
-		}, bannerOptions );
-		const outputOptions = Object.assign( {}, bundleOptions, bannerOptions );
-
-		return rollup( inputOptions ).then( ( bundle ) => {
-			return bundle.generate( outputOptions );
-		} ).then( ( result ) => {
-			expect ( result.code ).to.match( /^\/\* hublabubla \*\// );
-		} );
-	} );
-
-	it( 'adds banner inherited from root configuration (new syntax)', () => {
+	it( 'adds banner inherited from root configuration', () => {
 		const bannerOptions = {
 			output: {
 				banner: '/* hublabubla */'
