@@ -270,23 +270,6 @@ describe( 'rollup-plugin-babel-minify', () => {
 		} );
 	} );
 
-	it( 'generates valid source map after heavy processing by fixMappings', () => {
-		return rollup( {
-			input: 'fixtures/invalidMappings.js',
-			plugins: [ plugin() ]
-		} ).then( ( bundle ) => {
-			return bundle.generate( {
-				format: 'es',
-				sourcemap: true
-			} );
-		} ).then( ( result ) => {
-			expect( result.map ).to.not.equal( null );
-			expect( () => {
-				validateSourcemap( result.code, result.map );
-			} ).not.to.throw();
-		} );
-	} );
-
 	// #16
 	it( 'generates valid source map for bundle with banner with empty line', () => {
 		return rollup( {
