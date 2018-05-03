@@ -14,7 +14,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * [#97] **BREAKING CHANGE**: Update `babel-preset-minify` to `^0.4.0`.
 
 ### Removed
-* [#64] **BREAKING CHANGE**: remove support for Node <6 and 7.
+* [#64] **BREAKING CHANGE**: remove support for Node < 6 and 7.
+* [#98] **BREAKING CHANGE**: remove support for Rollup < 0.58.0.
 
 ## [4.0.0] – 2018-02-03
 ### Added
