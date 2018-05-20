@@ -1,4 +1,5 @@
 import { readFileSync } from 'fs';
+import { resolve } from 'path';
 import { rollup } from 'rollup';
 import { transform } from 'babel-core';
 import plugin from '../../src/index.js';
@@ -15,13 +16,17 @@ const defaultBundleOptions = {
 	format: 'es'
 };
 
+function getFixturePath( fixtureName ) {
+	return resolve( __dirname, '..', 'fixtures', `${ fixtureName }.js` );
+}
+
 function createTransformTest( {
 	fixture = defaultFixture,
 	babelOptions = defaultBabelOptions,
 	rollupOptions = defaultRollupOptions,
 	bundleOptions = defaultBundleOptions
 } = {} ) {
-	const path = `fixtures/${ fixture }.js`;
+	const path = getFixturePath( fixture );
 	const code = readFileSync( path, 'utf8' );
 	const babeledCode = transform( code, babelOptions );
 
