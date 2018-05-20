@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
-## [5.0.0]
+## [5.0.0] – 2018-05-20
 ### Added
 * [#105] Add support for Node 10.
 
@@ -122,6 +122,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [#73]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/73
 [#83]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/83
 [#86]: https://github.com/Comandeer/rollup-plugin-babel-minify/pull/86
+[#97]: https://github.com/Comandeer/rollup-plugin-babel-minify/pull/97
+[#98]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/98
 [#105]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/105
 
 [5.0.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v4.0.0...v5.0.0
