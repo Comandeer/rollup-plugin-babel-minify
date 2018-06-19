@@ -4,6 +4,7 @@ node_js:
   - 8
   - 6
 before_install: if [[ $( node --version ) =~ ^v10. ]]; then npm install -g greenkeeper-lockfile; fi;
+install: npm install
 before_script: if [[ $( node --version ) =~ ^v10. ]]; then greenkeeper-lockfile-update; fi;
 script: npm test
 after_script: if [[ $( node --version ) =~ ^v10. ]]; then greenkeeper-lockfile-upload; fi;
