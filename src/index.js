@@ -5,7 +5,7 @@ import { isFnOrString } from './utils.js';
 import minifyPreset from 'babel-preset-minify';
 import bannerPlugin from '@comandeer/babel-plugin-banner';
 import { getCommentContent } from '@comandeer/babel-plugin-banner';
-import { transform } from 'babel-core';
+import { transform } from '@babel/core';
 
 function minify( options = {} ) {
 	return {

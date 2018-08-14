@@ -72,19 +72,19 @@
     "@comandeer/eslint-config": "^0.1.0",
     "@comandeer/is-ci": "^1.0.0",
     "@comandeer/rollup-lib-bundler": "^0.6.0",
-    "babel-preset-env": "^1.6.1",
+    "babel-preset-env": "^1.7.0",
     "babel-register": "^6.26.0",
     "chai": "^4.1.2",
-    "codecov": "^3.0.1",
-    "commitplease": "^3.1.0",
+    "codecov": "^3.0.4",
+    "commitplease": "^3.2.0",
     "cz-conventional-changelog": "^2.1.0",
-    "eslint": "^5.0.0",
+    "eslint": "^5.3.0",
     "husky": "^0.14.3",
-    "mocha": "^5.0.0",
+    "mocha": "^5.2.0",
     "nyc": "^12.0.2",
     "rimraf": "^2.6.2",
     "rollup": "^0.65.0",
-    "sourcemap-validator": "^1.0.6"
+    "sourcemap-validator": "^1.1.0"
   },
   "config": {
     "commitizen": {
@@ -93,8 +93,8 @@
   },
   "dependencies": {
     "@comandeer/babel-plugin-banner": "^3.0.0",
-    "babel-core": "^6.26.0",
-    "babel-preset-minify": "^0.4.0",
+    "@babel/core": "^7.0.0-rc.1",
+    "babel-preset-minify": "^0.4.3",
     "magic-string": "^0.25.0"
   }
 }
