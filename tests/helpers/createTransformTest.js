@@ -1,7 +1,7 @@
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 import { rollup } from 'rollup';
-import { transform } from 'babel-core';
+import { transform } from '@babel/core';
 import plugin from '../../src/index.js';
 
 const defaultFixture = 'index';
