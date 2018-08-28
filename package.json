@@ -10,7 +10,7 @@
     "build": "rlb",
     "lint": "eslint src/**/*.js tests/*.js tests/helpers/**/*.js",
     "pretest": "npm run lint && npm run build",
-    "test": "nyc mocha tests/*.js --timeout 15000 --require babel-register",
+    "test": "nyc mocha tests/*.js --timeout 15000 --require @babel/register",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "commitmsg": "is-ci && exit 0 || commitplease .git/COMMIT_EDITMSG",
     "version": "npm test && git add -f dist/",
@@ -69,11 +69,12 @@
     "rollup": ">=0.58.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/register": "^7.0.0",
     "@comandeer/eslint-config": "^0.1.0",
     "@comandeer/is-ci": "^1.0.0",
     "@comandeer/rollup-lib-bundler": "^0.6.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-register": "^6.26.0",
     "chai": "^4.1.2",
     "codecov": "^3.0.1",
     "commitplease": "^3.1.0",
@@ -92,8 +93,8 @@
     }
   },
   "dependencies": {
-    "@comandeer/babel-plugin-banner": "^3.0.0",
     "@babel/core": "^7.0.0",
+    "@comandeer/babel-plugin-banner": "^4.0.0",
     "babel-preset-minify": "^0.4.0",
     "magic-string": "^0.25.0"
   }
