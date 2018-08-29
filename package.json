@@ -73,7 +73,7 @@
     "@babel/register": "^7.0.0",
     "@comandeer/eslint-config": "^0.1.0",
     "@comandeer/is-ci": "^1.0.0",
-    "@comandeer/rollup-lib-bundler": "^0.6.0",
+    "@comandeer/rollup-lib-bundler": "^0.7.0",
     "chai": "^4.1.2",
     "codecov": "^3.0.1",
     "commitplease": "^3.1.0",
