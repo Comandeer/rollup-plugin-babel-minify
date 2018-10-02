@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## [6.1.0] – 2018-10-03
+### Added
+* [#131] Update `babel-preset-minify` to `^0.5.0`.
+
 ## [6.0.0] – 2018-08-28
 ### Added
 * [#124] Add support for Babel 7. Thanks to [Pieter Beulque](https://github.com/pieterbeulque)!
@@ -133,7 +137,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [#98]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/98
 [#105]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/105
 [#124]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/124
+[#131]: https://github.com/Comandeer/rollup-plugin-babel-minify/pull/131
 
+[6.1.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v6.0.0...v6.1.0
 [6.0.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v5.0.0...v6.0.0
 [5.0.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v4.0.0...v5.0.0
 [4.0.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v3.1.2...v4.0.0
