@@ -45,7 +45,7 @@ function minify( options = {} ) {
 				}
 			}
 
-			let { code, map } = transform( bundle, babelConf ); // eslint-disable-line prefer-const
+			let { code, map } = transform( bundle, babelConf );
 
 			if ( options.bannerNewLine ) {
 				( { code, map } = addNewLine( code, map, banner ) );
