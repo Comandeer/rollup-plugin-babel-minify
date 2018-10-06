@@ -6,6 +6,8 @@ import minifyPreset from 'babel-preset-minify';
 import bannerPlugin from '@comandeer/babel-plugin-banner';
 import { getCommentContent } from '@comandeer/babel-plugin-banner';
 import { transform } from '@babel/core';
+import { encode as encodeSourceMap } from 'sourcemap-codec';
+import { decode as decodeSourceMap } from 'sourcemap-codec';
 
 function minify( options = {} ) {
 	return {
@@ -18,9 +20,10 @@ function minify( options = {} ) {
 				sourceMaps: typeof options.sourceMap !== 'undefined' ? Boolean( options.sourceMap ) : true,
 				comments: typeof options.comments !== 'undefined' ? Boolean( options.comments ) : true
 			};
+			let banner;
 
 			if ( isFnOrString( options.banner ) || isFnOrString ( bundleBanner ) ) {
-				let banner = options.banner || bundleBanner;
+				banner = options.banner || bundleBanner;
 				banner = isFn ( banner ) ? banner() : banner;
 				const bannerContent = getCommentContent( banner );
 				let isAlreadyInserted = false;
@@ -44,10 +47,27 @@ function minify( options = {} ) {
 				}
 			}
 
-			let { code, map } = transform( bundle, babelConf );
+			let { code, map } = transform( bundle, babelConf ); // eslint-disable-line prefer-const
 
 			if ( options.bannerNewLine ) {
-				( { code, map } = addNewLine( code ) );
+				( { code } = addNewLine( code ) );
+
+				const mappings = decodeSourceMap( map.mappings );
+
+				let codeStart = banner.match( /\n/g );
+				codeStart = codeStart ? codeStart.length + 1 : 1;
+
+				mappings.unshift( [] );
+
+				if ( Array.isArray( mappings[ codeStart ] ) && mappings[ codeStart ].length ) {
+					const offset = mappings[ codeStart ][ 0 ][ 0 ];
+
+					mappings[ codeStart ].forEach( ( segment ) => {
+						segment[ 0 ] -= offset;
+					} );
+				}
+
+				map.mappings = encodeSourceMap( mappings );
 			}
 
 			return {
