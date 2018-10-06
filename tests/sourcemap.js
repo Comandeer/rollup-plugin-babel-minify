@@ -133,4 +133,70 @@ describe( 'source maps support', () => {
 			expect( mappings[ 4 ][ 0 ][ 0 ] ).to.equal( 0 );
 		} );
 	} );
+
+	// #133
+	it( 'generates valid source map for bundle with banner with empty line and whitespace before code', () => {
+		return createTransformTest( {
+			fixture: 'commentAtStart',
+			rollupOptions: {
+				plugins: [
+					plugin( {
+						banner: '/* hublabubla */',
+						bannerNewLine: true
+					} )
+				]
+			},
+			bundleOptions: Object.assign( {}, defaultBundleOptions, {
+				sourcemap: true
+			} )
+		} ).then( ( { bundle: { code, map } } ) => {
+			expect( () => {
+				validateSourcemap( code, map );
+			} ).not.to.throw();
+
+			const mappings = decodeSourceMap( map.mappings );
+
+			expect( mappings[ 0 ] ).to.be.an( 'array' );
+			expect( mappings[ 0 ] ).to.have.lengthOf( 0 );
+
+			expect( mappings[ 1 ] ).to.be.an( 'array' );
+			expect( mappings[ 1 ][ 0 ][ 0 ] ).to.equal( 1 );
+		} );
+	} );
+
+	// 133
+	it( 'generates valid source map for bundle with multiline banner with empty line and whitespace before code', () => {
+		return createTransformTest( {
+			fixture: 'commentAtStart',
+			rollupOptions: {
+				plugins: [
+					plugin( {
+						banner: '/* hu\nbla\nbub\nla */',
+						bannerNewLine: true
+					} )
+				]
+			},
+			bundleOptions: Object.assign( {}, defaultBundleOptions, {
+				sourcemap: true
+			} )
+		} ).then( ( { bundle: { code, map } } ) => {
+			expect( () => {
+				validateSourcemap( code, map );
+			} ).not.to.throw();
+
+			const mappings = decodeSourceMap( map.mappings );
+
+			expect( mappings[ 0 ] ).to.be.an( 'array' );
+			expect( mappings[ 0 ] ).to.have.lengthOf( 0 );
+			expect( mappings[ 1 ] ).to.be.an( 'array' );
+			expect( mappings[ 1 ] ).to.have.lengthOf( 0 );
+			expect( mappings[ 2 ] ).to.be.an( 'array' );
+			expect( mappings[ 2 ] ).to.have.lengthOf( 0 );
+			expect( mappings[ 3 ] ).to.be.an( 'array' );
+			expect( mappings[ 3 ] ).to.have.lengthOf( 0 );
+
+			expect( mappings[ 4 ] ).to.be.an( 'array' );
+			expect( mappings[ 4 ][ 0 ][ 0 ] ).to.equal( 1 );
+		} );
+	} );
 } );

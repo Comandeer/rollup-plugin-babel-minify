@@ -57,10 +57,13 @@ function minify( options = {} ) {
 				let codeStart = banner.match( /\n/g );
 				codeStart = codeStart ? codeStart.length + 1 : 1;
 
+				let whitespaceAtStart = code.replace( `${ banner }\n`, '' ).match( /^(\s)+/g );
+				whitespaceAtStart = whitespaceAtStart ? whitespaceAtStart.length : 0;
+
 				mappings.unshift( [] );
 
 				if ( Array.isArray( mappings[ codeStart ] ) && mappings[ codeStart ].length ) {
-					const offset = mappings[ codeStart ][ 0 ][ 0 ];
+					const offset = mappings[ codeStart ][ 0 ][ 0 ] - whitespaceAtStart;
 
 					mappings[ codeStart ].forEach( ( segment ) => {
 						segment[ 0 ] -= offset;

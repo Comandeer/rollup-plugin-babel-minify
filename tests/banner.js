@@ -85,6 +85,7 @@ describe( 'banner and comments support', () => {
 
 	it( 'preserves comments alongside banner if no comments option is passed', () => {
 		return createTransformTest( {
+			fixture: 'commentAtStart',
 			rollupOptions: {
 				plugins: [
 					plugin( {
@@ -100,6 +101,7 @@ describe( 'banner and comments support', () => {
 
 	it( 'preserves comments alongside banner if comments option is set to true', () => {
 		return createTransformTest( {
+			fixture: 'commentAtStart',
 			rollupOptions: {
 				plugins: [
 					plugin( {
