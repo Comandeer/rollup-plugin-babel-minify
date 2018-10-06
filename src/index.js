@@ -6,8 +6,6 @@ import minifyPreset from 'babel-preset-minify';
 import bannerPlugin from '@comandeer/babel-plugin-banner';
 import { getCommentContent } from '@comandeer/babel-plugin-banner';
 import { transform } from '@babel/core';
-import { encode as encodeSourceMap } from 'sourcemap-codec';
-import { decode as decodeSourceMap } from 'sourcemap-codec';
 
 function minify( options = {} ) {
 	return {
@@ -50,27 +48,7 @@ function minify( options = {} ) {
 			let { code, map } = transform( bundle, babelConf ); // eslint-disable-line prefer-const
 
 			if ( options.bannerNewLine ) {
-				( { code } = addNewLine( code ) );
-
-				const mappings = decodeSourceMap( map.mappings );
-
-				let codeStart = banner.match( /\n/g );
-				codeStart = codeStart ? codeStart.length + 1 : 1;
-
-				let whitespaceAtStart = code.replace( `${ banner }\n`, '' ).match( /^(\s)+/g );
-				whitespaceAtStart = whitespaceAtStart ? whitespaceAtStart.length : 0;
-
-				mappings.unshift( [] );
-
-				if ( Array.isArray( mappings[ codeStart ] ) && mappings[ codeStart ].length ) {
-					const offset = mappings[ codeStart ][ 0 ][ 0 ] - whitespaceAtStart;
-
-					mappings[ codeStart ].forEach( ( segment ) => {
-						segment[ 0 ] -= offset;
-					} );
-				}
-
-				map.mappings = encodeSourceMap( mappings );
+				( { code, map } = addNewLine( code, map, banner ) );
 			}
 
 			return {
