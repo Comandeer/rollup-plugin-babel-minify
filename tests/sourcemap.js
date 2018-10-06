@@ -1,6 +1,6 @@
 import chai from 'chai';
 import validateSourcemap from 'sourcemap-validator';
-import { decode as decodeSourceMap } from 'sourcemap-codec';
+import validateBannerNewLineSourceMap from './helpers/validateBannerNewLineSourceMap.js';
 import createTransformTest from './helpers/createTransformTest.js';
 import { defaultBundleOptions } from './helpers/createTransformTest.js';
 import plugin from '../src/index.js';
@@ -90,13 +90,9 @@ describe( 'source maps support', () => {
 				validateSourcemap( code, map );
 			} ).not.to.throw();
 
-			const mappings = decodeSourceMap( map.mappings );
-
-			expect( mappings[ 0 ] ).to.be.an( 'array' );
-			expect( mappings[ 0 ] ).to.have.lengthOf( 0 );
-
-			expect( mappings[ 1 ] ).to.be.an( 'array' );
-			expect( mappings[ 1 ][ 0 ][ 0 ] ).to.equal( 0 );
+			validateBannerNewLineSourceMap( {
+				map
+			} );
 		} );
 	} );
 
@@ -120,19 +116,11 @@ describe( 'source maps support', () => {
 				validateSourcemap( code, map );
 			} ).not.to.throw();
 
-			const mappings = decodeSourceMap( map.mappings );
-
-			expect( mappings[ 0 ] ).to.be.an( 'array' );
-			expect( mappings[ 0 ] ).to.have.lengthOf( 0 );
-			expect( mappings[ 1 ] ).to.be.an( 'array' );
-			expect( mappings[ 1 ] ).to.have.lengthOf( 0 );
-			expect( mappings[ 2 ] ).to.be.an( 'array' );
-			expect( mappings[ 2 ] ).to.have.lengthOf( 0 );
-			expect( mappings[ 3 ] ).to.be.an( 'array' );
-			expect( mappings[ 3 ] ).to.have.lengthOf( 0 );
-
-			expect( mappings[ 4 ] ).to.be.an( 'array' );
-			expect( mappings[ 4 ][ 0 ][ 0 ] ).to.equal( 0 );
+			validateBannerNewLineSourceMap( {
+				map,
+				startLine: 4,
+				totalLines: 5
+			} );
 		} );
 	} );
 
@@ -155,13 +143,11 @@ describe( 'source maps support', () => {
 				validateSourcemap( code, map );
 			} ).not.to.throw();
 
-			const mappings = decodeSourceMap( map.mappings );
-
-			expect( mappings[ 0 ] ).to.be.an( 'array' );
-			expect( mappings[ 0 ] ).to.have.lengthOf( 0 );
-
-			expect( mappings[ 1 ] ).to.be.an( 'array' );
-			expect( mappings[ 1 ][ 0 ][ 0 ] ).to.equal( 1 );
+			validateBannerNewLineSourceMap( {
+				map,
+				startLine: 1,
+				offset: 1
+			} );
 		} );
 	} );
 
@@ -184,19 +170,12 @@ describe( 'source maps support', () => {
 				validateSourcemap( code, map );
 			} ).not.to.throw();
 
-			const mappings = decodeSourceMap( map.mappings );
-
-			expect( mappings[ 0 ] ).to.be.an( 'array' );
-			expect( mappings[ 0 ] ).to.have.lengthOf( 0 );
-			expect( mappings[ 1 ] ).to.be.an( 'array' );
-			expect( mappings[ 1 ] ).to.have.lengthOf( 0 );
-			expect( mappings[ 2 ] ).to.be.an( 'array' );
-			expect( mappings[ 2 ] ).to.have.lengthOf( 0 );
-			expect( mappings[ 3 ] ).to.be.an( 'array' );
-			expect( mappings[ 3 ] ).to.have.lengthOf( 0 );
-
-			expect( mappings[ 4 ] ).to.be.an( 'array' );
-			expect( mappings[ 4 ][ 0 ][ 0 ] ).to.equal( 1 );
+			validateBannerNewLineSourceMap( {
+				map,
+				startLine: 4,
+				totalLines: 5,
+				offset: 1
+			} );
 		} );
 	} );
 
@@ -218,12 +197,10 @@ describe( 'source maps support', () => {
 		} ).then( ( { bundle: { map } } ) => {
 			expect( map ).to.not.equal( null );
 
-			const mappings = decodeSourceMap( map.mappings );
-
-			expect( mappings ).to.be.an( 'array' );
-			expect( mappings ).to.have.lengthOf( 2 );
-			expect( mappings[ 0 ] ).to.be.an( 'array' );
-			expect( mappings[ 0 ] ).to.have.lengthOf( 0 );
+			validateBannerNewLineSourceMap( {
+				map,
+				isEmpty: true
+			} );
 		} );
 	} );
 } );
