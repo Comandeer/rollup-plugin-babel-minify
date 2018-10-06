@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## [6.1.1]
+### Fixed
+* [#133] Empty sourcemaps when using bannerNewLine = true.
+
 ## [6.1.0] – 2018-10-03
 ### Added
 * [#131] Update `babel-preset-minify` to `^0.5.0`.
@@ -138,7 +142,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [#105]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/105
 [#124]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/124
 [#131]: https://github.com/Comandeer/rollup-plugin-babel-minify/pull/131
+[#133]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/133
 
+[6.1.1]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v6.1.0...v6.1.1
 [6.1.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v6.0.0...v6.1.0
 [6.0.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v5.0.0...v6.0.0
 [5.0.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v4.0.0...v5.0.0
