@@ -199,4 +199,31 @@ describe( 'source maps support', () => {
 			expect( mappings[ 4 ][ 0 ][ 0 ] ).to.equal( 1 );
 		} );
 	} );
+
+	// #133
+	it( 'generates source map for empty bundle with banner with empty line', () => {
+		return createTransformTest( {
+			fixture: 'empty',
+			rollupOptions: {
+				plugins: [
+					plugin( {
+						banner: '/* hublabubla */',
+						bannerNewLine: true
+					} )
+				]
+			},
+			bundleOptions: Object.assign( {}, defaultBundleOptions, {
+				sourcemap: true
+			} )
+		} ).then( ( { bundle: { map } } ) => {
+			expect( map ).to.not.equal( null );
+
+			const mappings = decodeSourceMap( map.mappings );
+
+			expect( mappings ).to.be.an( 'array' );
+			expect( mappings ).to.have.lengthOf( 2 );
+			expect( mappings[ 0 ] ).to.be.an( 'array' );
+			expect( mappings[ 0 ] ).to.have.lengthOf( 0 );
+		} );
+	} );
 } );
