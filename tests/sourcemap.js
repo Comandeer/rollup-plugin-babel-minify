@@ -1,5 +1,6 @@
 import chai from 'chai';
 import validateSourcemap from 'sourcemap-validator';
+import { decode as decodeSourceMap } from 'sourcemap-codec';
 import createTransformTest from './helpers/createTransformTest.js';
 import { defaultBundleOptions } from './helpers/createTransformTest.js';
 import plugin from '../src/index.js';
@@ -69,7 +70,7 @@ describe( 'source maps support', () => {
 		} );
 	} );
 
-	// #16
+	// #16, 133
 	it( 'generates valid source map for bundle with banner with empty line', () => {
 		return createTransformTest( {
 			rollupOptions: {
@@ -87,6 +88,49 @@ describe( 'source maps support', () => {
 			expect( () => {
 				validateSourcemap( code, map );
 			} ).not.to.throw();
+
+			const mappings = decodeSourceMap( map.mappings );
+
+			expect( mappings[ 0 ] ).to.be.an( 'array' );
+			expect( mappings[ 0 ] ).to.have.lengthOf( 0 );
+
+			expect( mappings[ 1 ] ).to.be.an( 'array' );
+			expect( mappings[ 1 ][ 0 ][ 0 ] ).to.equal( 0 );
+		} );
+	} );
+
+	// 133
+	it( 'generates valid source map for bundle with multiline banner with empty line', () => {
+		return createTransformTest( {
+			rollupOptions: {
+				plugins: [
+					plugin( {
+						banner: '/* hu\nbla\nbub\nla */',
+						bannerNewLine: true
+					} )
+				]
+			},
+			bundleOptions: Object.assign( {}, defaultBundleOptions, {
+				sourcemap: true
+			} )
+		} ).then( ( { bundle: { code, map } } ) => {
+			expect( () => {
+				validateSourcemap( code, map );
+			} ).not.to.throw();
+
+			const mappings = decodeSourceMap( map.mappings );
+
+			expect( mappings[ 0 ] ).to.be.an( 'array' );
+			expect( mappings[ 0 ] ).to.have.lengthOf( 0 );
+			expect( mappings[ 1 ] ).to.be.an( 'array' );
+			expect( mappings[ 1 ] ).to.have.lengthOf( 0 );
+			expect( mappings[ 2 ] ).to.be.an( 'array' );
+			expect( mappings[ 2 ] ).to.have.lengthOf( 0 );
+			expect( mappings[ 3 ] ).to.be.an( 'array' );
+			expect( mappings[ 3 ] ).to.have.lengthOf( 0 );
+
+			expect( mappings[ 4 ] ).to.be.an( 'array' );
+			expect( mappings[ 4 ][ 0 ][ 0 ] ).to.equal( 0 );
 		} );
 	} );
 } );
