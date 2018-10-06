@@ -1,14 +1,10 @@
-import MagicString from 'magic-string';
 import { encode as encodeSourceMap } from 'sourcemap-codec';
 import { decode as decodeSourceMap } from 'sourcemap-codec';
 
 function addNewLine( code, map, banner ) {
-	const magicString = new MagicString( code );
-	const bannerEnd = code.indexOf( '*/' );
 	map = Object.assign( {}, map );
 
-	magicString.appendRight( bannerEnd + 2, '\n' );
-	code = magicString.toString();
+	code = code.replace( banner, `${ banner }\n` );
 
 	const mappings = decodeSourceMap( map.mappings );
 
