@@ -73,6 +73,7 @@ describe( 'source maps support', () => {
 	// #16, 133
 	it( 'generates valid source map for bundle with banner with empty line', () => {
 		return createTransformTest( {
+			fixture: 'withoutCommentAtStart',
 			rollupOptions: {
 				plugins: [
 					plugin( {
@@ -102,6 +103,7 @@ describe( 'source maps support', () => {
 	// 133
 	it( 'generates valid source map for bundle with multiline banner with empty line', () => {
 		return createTransformTest( {
+			fixture: 'withoutCommentAtStart',
 			rollupOptions: {
 				plugins: [
 					plugin( {
@@ -137,7 +139,6 @@ describe( 'source maps support', () => {
 	// #133
 	it( 'generates valid source map for bundle with banner with empty line and whitespace before code', () => {
 		return createTransformTest( {
-			fixture: 'commentAtStart',
 			rollupOptions: {
 				plugins: [
 					plugin( {
@@ -167,7 +168,6 @@ describe( 'source maps support', () => {
 	// 133
 	it( 'generates valid source map for bundle with multiline banner with empty line and whitespace before code', () => {
 		return createTransformTest( {
-			fixture: 'commentAtStart',
 			rollupOptions: {
 				plugins: [
 					plugin( {

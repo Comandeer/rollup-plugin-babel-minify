@@ -1,5 +1,3 @@
-/* Simple comment */
-
 class Test {
 	method() {
 		return Symbol( 'a' );
