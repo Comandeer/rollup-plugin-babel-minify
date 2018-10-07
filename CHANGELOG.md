@@ -6,12 +6,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
-## [6.1.1]
+## [6.1.1] – 2018-10-07
 ### Fixed
 * [#133] Empty sourcemaps when using bannerNewLine = true.
 
 ## [6.1.0] – 2018-10-03
-### Added
+### Changed
 * [#131] Update `babel-preset-minify` to `^0.5.0`.
 
 ## [6.0.0] – 2018-08-28
