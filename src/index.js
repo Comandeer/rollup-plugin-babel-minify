@@ -1,11 +1,11 @@
-import { filterMinifyOptions } from './utils.js';
-import { addNewLine } from './utils.js';
-import { isFn } from './utils.js';
-import { isFnOrString } from './utils.js';
 import minifyPreset from 'babel-preset-minify';
 import bannerPlugin from '@comandeer/babel-plugin-banner';
 import { getCommentContent } from '@comandeer/babel-plugin-banner';
 import { transform } from '@babel/core';
+import { filterMinifyOptions } from './utils.js';
+import { addNewLine } from './utils.js';
+import { isFn } from './utils.js';
+import { isFnOrString } from './utils.js';
 
 function minify( options = {} ) {
 	return {
