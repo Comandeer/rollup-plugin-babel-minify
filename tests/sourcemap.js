@@ -1,5 +1,6 @@
 import chai from 'chai';
 import validateSourcemap from 'sourcemap-validator';
+import validateBannerNewLineSourceMap from './helpers/validateBannerNewLineSourceMap.js';
 import createTransformTest from './helpers/createTransformTest.js';
 import { defaultBundleOptions } from './helpers/createTransformTest.js';
 import plugin from '../src/index.js';
@@ -69,8 +70,62 @@ describe( 'source maps support', () => {
 		} );
 	} );
 
-	// #16
+	// #16, 133
 	it( 'generates valid source map for bundle with banner with empty line', () => {
+		return createTransformTest( {
+			fixture: 'withoutCommentAtStart',
+			rollupOptions: {
+				plugins: [
+					plugin( {
+						banner: '/* hublabubla */',
+						bannerNewLine: true
+					} )
+				]
+			},
+			bundleOptions: Object.assign( {}, defaultBundleOptions, {
+				sourcemap: true
+			} )
+		} ).then( ( { bundle: { code, map } } ) => {
+			expect( () => {
+				validateSourcemap( code, map );
+			} ).not.to.throw();
+
+			validateBannerNewLineSourceMap( {
+				map
+			} );
+		} );
+	} );
+
+	// 133
+	it( 'generates valid source map for bundle with multiline banner with empty line', () => {
+		return createTransformTest( {
+			fixture: 'withoutCommentAtStart',
+			rollupOptions: {
+				plugins: [
+					plugin( {
+						banner: '/* hu\nbla\nbub\nla */',
+						bannerNewLine: true
+					} )
+				]
+			},
+			bundleOptions: Object.assign( {}, defaultBundleOptions, {
+				sourcemap: true
+			} )
+		} ).then( ( { bundle: { code, map } } ) => {
+			expect( () => {
+				validateSourcemap( code, map );
+			} ).not.to.throw();
+
+			validateBannerNewLineSourceMap( {
+				map,
+				startLine: 4,
+				totalLines: 5
+			} );
+		} );
+	} );
+
+	// #133
+	it( 'generates valid source map for bundle with banner with empty line and whitespace before code', () => {
 		return createTransformTest( {
 			rollupOptions: {
 				plugins: [
@@ -87,6 +142,65 @@ describe( 'source maps support', () => {
 			expect( () => {
 				validateSourcemap( code, map );
 			} ).not.to.throw();
+
+			validateBannerNewLineSourceMap( {
+				map,
+				startLine: 1,
+				offset: 1
+			} );
+		} );
+	} );
+
+	// 133
+	it( 'generates valid source map for bundle with multiline banner with empty line and whitespace before code', () => {
+		return createTransformTest( {
+			rollupOptions: {
+				plugins: [
+					plugin( {
+						banner: '/* hu\nbla\nbub\nla */',
+						bannerNewLine: true
+					} )
+				]
+			},
+			bundleOptions: Object.assign( {}, defaultBundleOptions, {
+				sourcemap: true
+			} )
+		} ).then( ( { bundle: { code, map } } ) => {
+			expect( () => {
+				validateSourcemap( code, map );
+			} ).not.to.throw();
+
+			validateBannerNewLineSourceMap( {
+				map,
+				startLine: 4,
+				totalLines: 5,
+				offset: 1
+			} );
+		} );
+	} );
+
+	// #133
+	it( 'generates source map for empty bundle with banner with empty line', () => {
+		return createTransformTest( {
+			fixture: 'empty',
+			rollupOptions: {
+				plugins: [
+					plugin( {
+						banner: '/* hublabubla */',
+						bannerNewLine: true
+					} )
+				]
+			},
+			bundleOptions: Object.assign( {}, defaultBundleOptions, {
+				sourcemap: true
+			} )
+		} ).then( ( { bundle: { map } } ) => {
+			expect( map ).to.not.equal( null );
+
+			validateBannerNewLineSourceMap( {
+				map,
+				isEmpty: true
+			} );
 		} );
 	} );
 } );

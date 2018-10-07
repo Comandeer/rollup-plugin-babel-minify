@@ -18,9 +18,10 @@ function minify( options = {} ) {
 				sourceMaps: typeof options.sourceMap !== 'undefined' ? Boolean( options.sourceMap ) : true,
 				comments: typeof options.comments !== 'undefined' ? Boolean( options.comments ) : true
 			};
+			let banner;
 
 			if ( isFnOrString( options.banner ) || isFnOrString ( bundleBanner ) ) {
-				let banner = options.banner || bundleBanner;
+				banner = options.banner || bundleBanner;
 				banner = isFn ( banner ) ? banner() : banner;
 				const bannerContent = getCommentContent( banner );
 				let isAlreadyInserted = false;
@@ -47,7 +48,7 @@ function minify( options = {} ) {
 			let { code, map } = transform( bundle, babelConf );
 
 			if ( options.bannerNewLine ) {
-				( { code, map } = addNewLine( code ) );
+				( { code, map } = addNewLine( code, map, banner ) );
 			}
 
 			return {

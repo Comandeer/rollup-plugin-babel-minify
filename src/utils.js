@@ -1,17 +1,33 @@
-import MagicString from 'magic-string';
+import { encode as encodeSourceMap } from 'sourcemap-codec';
+import { decode as decodeSourceMap } from 'sourcemap-codec';
 
-function addNewLine( code ) {
-	const magicString = new MagicString( code );
-	const bannerEnd = code.indexOf( '*/' );
+function addNewLine( code, map, banner ) {
+	map = Object.assign( {}, map );
 
-	magicString.appendRight( bannerEnd + 2, '\n' );
+	code = code.replace( banner, `${ banner }\n` );
 
-	const map = magicString.generateMap( {
-		includeContent: true
-	} );
+	const mappings = decodeSourceMap( map.mappings );
+
+	let codeStart = banner.match( /\n/g );
+	codeStart = codeStart ? codeStart.length + 1 : 1;
+
+	let whitespaceAtStart = code.replace( `${ banner }\n`, '' ).match( /^(\s)+/g );
+	whitespaceAtStart = whitespaceAtStart ? whitespaceAtStart.length : 0;
+
+	mappings.unshift( [] );
+
+	if ( Array.isArray( mappings[ codeStart ] ) && mappings[ codeStart ].length ) {
+		const offset = mappings[ codeStart ][ 0 ][ 0 ] - whitespaceAtStart;
+
+		mappings[ codeStart ].forEach( ( segment ) => {
+			segment[ 0 ] -= offset;
+		} );
+	}
+
+	map.mappings = encodeSourceMap( mappings );
 
 	return {
-		code: magicString.toString(),
+		code,
 		map
 	};
 }
