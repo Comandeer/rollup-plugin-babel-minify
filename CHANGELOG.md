@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## [6.2.0] – 2018-11-22
+### Added
+* [#138] Ability to add plugins to Babel.
+
+### Fixed
+* [#137] Error when minifying dynamic import.
+
 ## [6.1.1] – 2018-10-07
 ### Fixed
 * [#133] Empty sourcemaps when using bannerNewLine = true.
@@ -143,7 +150,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [#124]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/124
 [#131]: https://github.com/Comandeer/rollup-plugin-babel-minify/pull/131
 [#133]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/133
+[#137]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/137
+[#138]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/138
 
+[6.2.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v6.1.1...v6.2.0
 [6.1.1]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v6.1.0...v6.1.1
 [6.1.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v6.0.0...v6.1.0
 [6.0.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v5.0.0...v6.0.0
