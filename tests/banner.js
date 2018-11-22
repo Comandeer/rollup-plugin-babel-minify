@@ -160,4 +160,24 @@ describe( 'banner and comments support', () => {
 			expect( bundle.code ).to.match( /^\/\* hublabubla \*\/[^\n]/ );
 		} );
 	} );
+
+	// #138
+	it ( 'works with other plugins', () => {
+		return createTransformTest( {
+			skipBabel: true,
+			fixture: 'dynamicImport',
+			rollupOptions: {
+				plugins: [
+					plugin( {
+						plugins: [
+							'@babel/plugin-syntax-dynamic-import'
+						],
+						banner: '/* hublabubla */'
+					} )
+				]
+			}
+		} ).then( ( { bundle } ) => {
+			expect( bundle.code ).to.match( /^\/\* hublabubla \*\// );
+		} );
+	} );
 } );

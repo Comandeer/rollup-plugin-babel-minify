@@ -27,11 +27,11 @@ function minify( options = {} ) {
 				const bannerContent = getCommentContent( banner );
 				let isAlreadyInserted = false;
 
-				babelConf.plugins = [
+				babelConf.plugins = babelConf.plugins.concat( [
 					[ bannerPlugin, {
 						banner
 					} ]
-				];
+				] );
 
 				if ( !babelConf.comments ) {
 					babelConf.shouldPrintComment = ( comment ) => {
