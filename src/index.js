@@ -16,7 +16,8 @@ function minify( options = {} ) {
 			const babelConf = {
 				presets: [ [ minifyPreset, minifyOptions ] ],
 				sourceMaps: typeof options.sourceMap !== 'undefined' ? Boolean( options.sourceMap ) : true,
-				comments: typeof options.comments !== 'undefined' ? Boolean( options.comments ) : true
+				comments: typeof options.comments !== 'undefined' ? Boolean( options.comments ) : true,
+				plugins: Array.isArray( options.plugins ) ? options.plugins : []
 			};
 			let banner;
 
@@ -26,11 +27,11 @@ function minify( options = {} ) {
 				const bannerContent = getCommentContent( banner );
 				let isAlreadyInserted = false;
 
-				babelConf.plugins = [
+				babelConf.plugins = babelConf.plugins.concat( [
 					[ bannerPlugin, {
 						banner
 					} ]
-				];
+				] );
 
 				if ( !babelConf.comments ) {
 					babelConf.shouldPrintComment = ( comment ) => {

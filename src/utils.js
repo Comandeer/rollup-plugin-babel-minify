@@ -37,7 +37,8 @@ function filterMinifyOptions( options ) {
 		'banner',
 		'bannerNewLine',
 		'sourceMap',
-		'comments'
+		'comments',
+		'plugins'
 	];
 	const minifyOptions = {};
 

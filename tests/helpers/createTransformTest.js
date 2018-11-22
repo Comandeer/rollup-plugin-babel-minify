@@ -22,13 +22,14 @@ function getFixturePath( fixtureName ) {
 
 function createTransformTest( {
 	fixture = defaultFixture,
+	skipBabel = false,
 	babelOptions = defaultBabelOptions,
 	rollupOptions = defaultRollupOptions,
 	bundleOptions = defaultBundleOptions
 } = {} ) {
 	const path = getFixturePath( fixture );
 	const code = readFileSync( path, 'utf8' );
-	const babeledCode = transform( code, babelOptions );
+	const babeledCode = skipBabel !== true ? transform( code, babelOptions ) : null;
 
 	rollupOptions.input = path;
 
