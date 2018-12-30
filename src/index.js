@@ -1,5 +1,6 @@
 import minifyPreset from 'babel-preset-minify';
 import bannerPlugin from '@comandeer/babel-plugin-banner';
+import importPlugin from '@babel/plugin-syntax-dynamic-import';
 import { getCommentContent } from '@comandeer/babel-plugin-banner';
 import { transform } from '@babel/core';
 import { filterMinifyOptions } from './utils.js';
@@ -28,6 +29,7 @@ function minify( options = {} ) {
 				let isAlreadyInserted = false;
 
 				babelConf.plugins = babelConf.plugins.concat( [
+					importPlugin,
 					[ bannerPlugin, {
 						banner
 					} ]
