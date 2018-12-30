@@ -53,18 +53,4 @@ describe( 'Rollup CLI', () => {
 			} ).not.to.throw();
 		} );
 	} );
-
-	it( 'banner inherited (legacy syntax)', () => {
-		return executeRollupCmd( 'bannerInheritLegacy' ).then( () => {
-			assertArtifacts();
-
-			const { [ 'bundle.js' ]: code, [ 'bundle.js.map' ]: map } = getArtifacts();
-
-			expect( code ).to.match( /^\/\* hublabubla \*\// );
-			expect( map ).to.not.equal( null );
-			expect( () => {
-				validateSourcemap( code, map );
-			} ).not.to.throw();
-		} );
-	} );
 } );
