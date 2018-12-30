@@ -11,7 +11,7 @@ function minify( options = {} ) {
 	return {
 		name: 'babel-minify',
 
-		transformBundle( bundle, { banner: bundleBanner } ) {
+		renderChunk( bundle, chunkInfo, { banner: bundleBanner } ) {
 			const minifyOptions = filterMinifyOptions( options );
 			const babelConf = {
 				presets: [ [ minifyPreset, minifyOptions ] ],
