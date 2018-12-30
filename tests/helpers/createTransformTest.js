@@ -35,7 +35,7 @@ function createTransformTest( {
 
 	return rollup( rollupOptions ).then( ( bundle ) => {
 		return bundle.generate( bundleOptions );
-	} ).then( ( result ) => {
+	} ).then( ( { output: [ result ] } ) => {
 		return {
 			bundle: result,
 			transpiled: babeledCode
