@@ -74,4 +74,21 @@ describe( 'Rollup CLI', () => {
 			assertArtifacts( chunks );
 		} );
 	} );
+
+	it( 'multiple chunks (multiple inputs)', () => {
+		const artifacts = [
+			'bundle/Test.js',
+			'bundle/Test.js.map',
+			'bundle/another.js',
+			'bundle/another.js.map'
+		];
+
+		return executeRollupCmd( 'multipleInputs' ).then( () => {
+			assertArtifacts( artifacts );
+		} ).then( () => {
+			const chunks = getChunksNames( artifacts );
+
+			assertArtifacts( chunks );
+		} );
+	} );
 } );
