@@ -2,7 +2,10 @@ import { exec } from 'child_process';
 import { unlinkSync } from 'fs';
 import { readFileSync } from 'fs';
 import { existsSync } from 'fs';
+import { statSync } from 'fs';
 import { resolve } from 'path';
+import { dirname } from 'path';
+import { sync as rimraf } from 'rimraf';
 import chai from 'chai';
 
 const expect = chai.expect;
@@ -35,6 +38,11 @@ function removeArtifacts( artifacts = defaultArtifacts ) {
 	artifacts.forEach( ( artifact ) => {
 		try {
 			const path = resolve( rollupCwd, artifact );
+			const info = statSync( path );
+
+			if ( info.isDirectory() ) {
+				return rimraf( path );
+			}
 
 			unlinkSync( path );
 		} catch ( e ) {
@@ -47,7 +55,7 @@ function assertArtifacts( artifacts = defaultArtifacts ) {
 	artifacts.forEach( ( artifact ) => {
 		const path = resolve( rollupCwd, artifact );
 
-		expect( existsSync( path ) ).to.equal( true );
+		expect( existsSync( path ), `Artifact ${ path } exists` ).to.equal( true );
 	} );
 }
 
@@ -63,8 +71,36 @@ function getArtifacts( artifacts = defaultArtifacts ) {
 	return result;
 }
 
+function getChunksNames( artifacts = defaultArtifacts, withMaps = true ) {
+	const content = getArtifacts( artifacts );
+
+	return Object.keys( content ).map( ( artifact ) => {
+		const path = dirname( artifact );
+		const imports = content[ artifact ].match( /import\("(.+?)"\)/g );
+
+		if ( !imports ) {
+			return [];
+		}
+
+		const chunks = imports.map( ( chunk ) => {
+			return `${ path }/${ chunk.replace( /import\("(.+?)"\)/, '$1' ) }`;
+		} );
+
+		if ( withMaps ) {
+			chunks.push( ...chunks.map( ( chunk ) => {
+				return `${ chunk }.map`;
+			} ) );
+		}
+
+		return chunks;
+	} ).reduce( ( chunks, chunk ) => {
+		return chunks.concat( chunk );
+	}, [] );
+}
+
 export { defaultArtifacts };
 export { removeArtifacts };
 export { assertArtifacts };
 export { getArtifacts };
+export { getChunksNames };
 export default executeRollupCmd;

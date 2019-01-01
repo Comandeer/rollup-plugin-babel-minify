@@ -1,6 +1,7 @@
 import validateSourcemap from 'sourcemap-validator';
 import chai from 'chai';
 import executeRollupCmd from './helpers/executeRollupCmd.js';
+import { getChunksNames } from './helpers/executeRollupCmd.js';
 import { assertArtifacts } from './helpers/executeRollupCmd.js';
 import { getArtifacts } from './helpers/executeRollupCmd.js';
 import { removeArtifacts } from './helpers/executeRollupCmd.js';
@@ -10,6 +11,11 @@ const expect = chai.expect;
 describe( 'Rollup CLI', () => {
 	beforeEach( removeArtifacts );
 	afterEach( removeArtifacts );
+	afterEach( () => {
+		removeArtifacts( [
+			'bundle'
+		] );
+	} );
 
 	it( 'default settings', () => {
 		return executeRollupCmd().then( () => {
@@ -40,7 +46,7 @@ describe( 'Rollup CLI', () => {
 		} );
 	} );
 
-	it( 'banner inherited (new syntax)', () => {
+	it( 'banner inherited', () => {
 		return executeRollupCmd( 'bannerInherit' ).then( () => {
 			assertArtifacts();
 
@@ -51,6 +57,21 @@ describe( 'Rollup CLI', () => {
 			expect( () => {
 				validateSourcemap( code, map );
 			} ).not.to.throw();
+		} );
+	} );
+
+	it( 'multiple chunks (dynamic import)', () => {
+		const artifacts = [
+			'bundle/chunks.js',
+			'bundle/chunks.js.map'
+		];
+
+		return executeRollupCmd( 'chunks' ).then( () => {
+			assertArtifacts( artifacts );
+		} ).then( () => {
+			const chunks = getChunksNames( artifacts );
+
+			assertArtifacts( chunks );
 		} );
 	} );
 } );
