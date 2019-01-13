@@ -1,3 +1,0 @@
-import( 'whatever' ).then( () => {
-
-} );

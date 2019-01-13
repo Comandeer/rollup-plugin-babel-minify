@@ -165,12 +165,12 @@ describe( 'banner and comments support', () => {
 	it ( 'works with other plugins', () => {
 		return createTransformTest( {
 			skipBabel: true,
-			fixture: 'dynamicImport',
+			fixture: 'asyncGenerators',
 			rollupOptions: {
 				plugins: [
 					plugin( {
 						plugins: [
-							'@babel/plugin-syntax-dynamic-import'
+							'@babel/plugin-syntax-async-generators'
 						],
 						banner: '/* hublabubla */'
 					} )

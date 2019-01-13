@@ -1,5 +1,5 @@
 import chai from 'chai';
-import dynamicImportPlugin from '@babel/plugin-syntax-dynamic-import';
+import asyncGeneratorsPlugin from '@babel/plugin-syntax-async-generators';
 import createTransformTest from './helpers/createTransformTest.js';
 import { defaultBabelOptions } from './helpers/createTransformTest.js';
 import plugin from '../src/index.js';
@@ -41,10 +41,10 @@ describe( 'plugin and its configuration', () => {
 
 	// #137, #138
 	it( 'allows passing additional plugins by name', () => {
-		const pluginsOption = [ '@babel/plugin-syntax-dynamic-import' ];
+		const pluginsOption = [ '@babel/plugin-syntax-async-generators' ];
 
 		return createTransformTest( {
-			fixture: 'dynamicImport',
+			fixture: 'asyncGenerators',
 			babelOptions: Object.assign( {}, defaultBabelOptions, {
 				plugins: pluginsOption
 			} ),
@@ -62,10 +62,10 @@ describe( 'plugin and its configuration', () => {
 
 	// #137, #138
 	it( 'allows passing additional plugins by instance', () => {
-		const pluginsOption = [ dynamicImportPlugin ];
+		const pluginsOption = [ asyncGeneratorsPlugin ];
 
 		return createTransformTest( {
-			fixture: 'dynamicImport',
+			fixture: 'asyncGenerators',
 			babelOptions: Object.assign( {}, defaultBabelOptions, {
 				plugins: pluginsOption
 			} ),

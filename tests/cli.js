@@ -91,4 +91,32 @@ describe( 'Rollup CLI', () => {
 			assertArtifacts( chunks );
 		} );
 	} );
+
+	it( 'additional plugin (by name)', () => {
+		return executeRollupCmd( 'pluginName' ).then( () => {
+			assertArtifacts();
+
+			const { [ 'bundle.js' ]: code, [ 'bundle.js.map' ]: map } = getArtifacts();
+
+			expect( code ).to.match( /\/\* Super non-important comment, which should be wiped out from existence \*\// );
+			expect( map ).to.not.equal( null );
+			expect( () => {
+				validateSourcemap( code, map );
+			} ).not.to.throw();
+		} );
+	} );
+
+	it( 'additional plugin (by import)', () => {
+		return executeRollupCmd( 'pluginImport' ).then( () => {
+			assertArtifacts();
+
+			const { [ 'bundle.js' ]: code, [ 'bundle.js.map' ]: map } = getArtifacts();
+
+			expect( code ).to.match( /\/\* Super non-important comment, which should be wiped out from existence \*\// );
+			expect( map ).to.not.equal( null );
+			expect( () => {
+				validateSourcemap( code, map );
+			} ).not.to.throw();
+		} );
+	} );
 } );
