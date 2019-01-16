@@ -36,7 +36,7 @@ There are additional options:
 * `sourceMap` (default: `true`): indicates if sourcemap should be generated;
 * `plugins` (since 6.2.0): indicates which Babel plugins should be loaded alongside [minify preset](https://github.com/babel/minify/tree/master/packages/babel-preset-minify); two plugins are loaded by default:
 	* [`@comandeer/babel-plugin-banner`](https://www.npmjs.com/package/@comandeer/babel-plugin-banner),
-	* [`@babel/plugin-syntax-dynamic-import`](https://www.npmjs.com/package/@babel/plugin-syntax-dynamic-import).
+	* [`@babel/plugin-syntax-dynamic-import`](https://www.npmjs.com/package/@babel/plugin-syntax-dynamic-import) (since 7.0.0).
 
 ## License
 
