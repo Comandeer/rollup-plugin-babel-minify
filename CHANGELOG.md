@@ -9,9 +9,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [7.0.0]
 ### Added
 * [#143] **BREAKING CHANGE**: add support for Rollup `^1.0.0`.
+* [#144] **BREAKING CHANGE**: add support for code splitting:
+	* pre-include [`@babel/plugin-syntax-dynamic-import`](https://www.npmjs.com/package/@babel/plugin-syntax-dynamic-import) Babel plugin.
 
 ### Removed
-* [#143] **BREAKING CHANGE**: remove support for Rollup < 1:
+* [#143] **BREAKING CHANGE**: remove support for Rollup < 1.
 * [#143] **BREAKING CHANGE**: remove support for legacy syntax of banner.
 
 ## [6.2.0] – 2018-11-22
