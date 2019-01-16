@@ -1,6 +1,7 @@
 import { exec } from 'child_process';
 import { unlinkSync } from 'fs';
 import { readFileSync } from 'fs';
+import { readdirSync } from 'fs';
 import { existsSync } from 'fs';
 import { statSync } from 'fs';
 import { resolve } from 'path';
@@ -12,6 +13,7 @@ const expect = chai.expect;
 
 const rollup = resolve( __dirname, '..', '..', 'node_modules', '.bin', 'rollup' );
 const rollupCwd = resolve( __dirname, '..', 'fixtures', 'simple-project' );
+const defaultAssetsDirectory = resolve( __dirname, '..', 'fixtures', 'simple-project', 'bundle', 'assets' );
 const defaultArtifacts = [
 	'bundle.js',
 	'bundle.js.map'
@@ -98,9 +100,34 @@ function getChunksNames( artifacts = defaultArtifacts, withMaps = true ) {
 	}, [] );
 }
 
+function getAssets( dir = defaultAssetsDirectory ) {
+	return readdirSync( dir ).reduce( ( assets, path ) => {
+		const absolutePath = resolve( dir, path );
+		const info = statSync( absolutePath );
+
+		if ( !info.isFile() ) {
+			return assets;
+		}
+
+		assets[ path ] = readFileSync( absolutePath, 'utf8' );
+
+		return assets;
+	}, {} );
+}
+
+function assertAssets( assets = {}, banner = new RegExp( '' ) ) {
+	return Object.keys( assets ).forEach( ( assetName ) => {
+		const asset = assets[ assetName ];
+
+		expect( asset ).not.to.match( banner );
+	} );
+}
+
 export { defaultArtifacts };
 export { removeArtifacts };
 export { assertArtifacts };
 export { getArtifacts };
 export { getChunksNames };
+export { getAssets };
+export { assertAssets };
 export default executeRollupCmd;

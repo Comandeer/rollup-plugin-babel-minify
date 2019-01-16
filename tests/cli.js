@@ -4,6 +4,8 @@ import executeRollupCmd from './helpers/executeRollupCmd.js';
 import { getChunksNames } from './helpers/executeRollupCmd.js';
 import { assertArtifacts } from './helpers/executeRollupCmd.js';
 import { getArtifacts } from './helpers/executeRollupCmd.js';
+import { getAssets } from './helpers/executeRollupCmd.js';
+import { assertAssets } from './helpers/executeRollupCmd.js';
 import { removeArtifacts } from './helpers/executeRollupCmd.js';
 
 const expect = chai.expect;
@@ -60,6 +62,7 @@ describe( 'Rollup CLI', () => {
 		} );
 	} );
 
+	// #139
 	it( 'multiple chunks (dynamic import)', () => {
 		const artifacts = [
 			'bundle/chunks.js',
@@ -75,6 +78,7 @@ describe( 'Rollup CLI', () => {
 		} );
 	} );
 
+	// #139
 	it( 'multiple chunks (multiple inputs)', () => {
 		const artifacts = [
 			'bundle/Test.js',
@@ -117,6 +121,21 @@ describe( 'Rollup CLI', () => {
 			expect( () => {
 				validateSourcemap( code, map );
 			} ).not.to.throw();
+		} );
+	} );
+
+	// #139
+	it( 'correctly generates asset', () => {
+		return executeRollupCmd( 'asset' ).then( () => {
+			const artifacts = [
+				'bundle/index.js',
+				'bundle/index.js.map'
+			];
+			const assets = getAssets();
+
+			assertArtifacts( artifacts );
+
+			assertAssets( assets, /^\/\* hublabubla \*\// );
 		} );
 	} );
 } );
