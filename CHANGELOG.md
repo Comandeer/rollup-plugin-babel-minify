@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
-## [7.0.0]
+## [7.0.0] – 2019-01-17
 ### Added
 * [#143] **BREAKING CHANGE**: add support for Rollup `^1.0.0`.
 * [#144] **BREAKING CHANGE**: add support for code splitting:
