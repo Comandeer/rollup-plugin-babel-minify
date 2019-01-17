@@ -1,5 +1,5 @@
 import validateSourcemap from 'sourcemap-validator';
-import chai from 'chai';
+import { expect } from 'chai';
 import executeRollupCmd from './helpers/executeRollupCmd.js';
 import { getChunksNames } from './helpers/executeRollupCmd.js';
 import { assertArtifacts } from './helpers/executeRollupCmd.js';
@@ -7,8 +7,6 @@ import { getArtifacts } from './helpers/executeRollupCmd.js';
 import { getAssets } from './helpers/executeRollupCmd.js';
 import { assertAssets } from './helpers/executeRollupCmd.js';
 import { removeArtifacts } from './helpers/executeRollupCmd.js';
-
-const expect = chai.expect;
 
 describe( 'Rollup CLI', () => {
 	beforeEach( removeArtifacts );

@@ -1,4 +1,4 @@
-import chai from 'chai';
+import { expect } from 'chai';
 import validateSourcemap from 'sourcemap-validator';
 import emitAssetPlugin from './helpers/emitAssetPlugin.js';
 import validateBannerNewLineSourceMap from './helpers/validateBannerNewLineSourceMap.js';
@@ -8,8 +8,6 @@ import { assertChunks } from './helpers/createTransformTest.js';
 import { assertAssets } from './helpers/createTransformTest.js';
 import { defaultBundleOptions } from './helpers/createTransformTest.js';
 import plugin from '../src/index.js';
-
-const expect = chai.expect;
 
 describe( 'source maps support', () => {
 	it( 'generates source map by default', () => {

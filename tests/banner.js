@@ -1,4 +1,4 @@
-import chai from 'chai';
+import { expect } from 'chai';
 import emitAssetPlugin from './helpers/emitAssetPlugin.js';
 import createTransformTest from './helpers/createTransformTest.js';
 import { defaultBabelOptions } from './helpers/createTransformTest.js';
@@ -9,8 +9,6 @@ import { getChunksNames } from './helpers/createTransformTest.js';
 import { assertChunks } from './helpers/createTransformTest.js';
 import { assertAssets } from './helpers/createTransformTest.js';
 import plugin from '../src/index.js';
-
-const expect = chai.expect;
 
 describe( 'banner and comments support', () => {
 	it( 'removes comments', () => {

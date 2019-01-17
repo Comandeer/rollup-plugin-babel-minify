@@ -1,4 +1,4 @@
-import chai from 'chai';
+import { expect } from 'chai';
 import asyncGeneratorsPlugin from '@babel/plugin-syntax-async-generators';
 import emitAssetPlugin from './helpers/emitAssetPlugin.js';
 import createTransformTest from './helpers/createTransformTest.js';
@@ -8,8 +8,6 @@ import { assertAssets } from './helpers/createTransformTest.js';
 import { assertTranspiled } from './helpers/createTransformTest.js';
 import { defaultBabelOptions } from './helpers/createTransformTest.js';
 import plugin from '../src/index.js';
-
-const expect = chai.expect;
 
 describe( 'plugin and its configuration', () => {
 	it( 'is a function', () => {
