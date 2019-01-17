@@ -1,14 +1,5 @@
 import minify from '../../../dist/rollup-plugin-babel-minify.es2015.js';
-
-function emitAsset() {
-	return {
-		name: 'emit-asset',
-
-		buildStart() {
-			this.emitAsset( 'asset', 'I am an asset.' );
-		}
-	}
-}
+import emitAsset from '../../helpers/emitAssetPlugin.js';
 
 export default {
 	input: 'index.js',

@@ -1,6 +1,10 @@
 import chai from 'chai';
 import asyncGeneratorsPlugin from '@babel/plugin-syntax-async-generators';
+import emitAssetPlugin from './helpers/emitAssetPlugin.js';
 import createTransformTest from './helpers/createTransformTest.js';
+import { getChunksNames } from './helpers/createTransformTest.js';
+import { assertChunks } from './helpers/createTransformTest.js';
+import { assertAssets } from './helpers/createTransformTest.js';
 import { assertTranspiled } from './helpers/createTransformTest.js';
 import { defaultBabelOptions } from './helpers/createTransformTest.js';
 import plugin from '../src/index.js';
@@ -72,5 +76,31 @@ describe( 'plugin and its configuration', () => {
 				]
 			}
 		} ).then( assertTranspiled );
+	} );
+
+	// #139, #144
+	it( 'generates chunks correctly', () => {
+		return createTransformTest( {
+			fixture: 'chunks',
+			skipBabel: true
+		} ).then( ( { bundle: { code }, chunks } ) => {
+			const chunksNames = getChunksNames( code );
+
+			assertChunks( chunks, chunksNames );
+		} );
+	} );
+
+	// #139
+	it( 'generates assets correctly', () => {
+		return createTransformTest( {
+			rollupOptions: {
+				plugins: [
+					emitAssetPlugin(),
+					plugin()
+				]
+			}
+		} ).then( ( { chunks } ) => {
+			assertAssets( chunks );
+		} );
 	} );
 } );

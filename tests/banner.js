@@ -1,9 +1,13 @@
 import chai from 'chai';
+import emitAssetPlugin from './helpers/emitAssetPlugin.js';
 import createTransformTest from './helpers/createTransformTest.js';
 import { defaultBabelOptions } from './helpers/createTransformTest.js';
 import { defaultRollupOptions } from './helpers/createTransformTest.js';
 import { defaultBundleOptions } from './helpers/createTransformTest.js';
 import { assertTranspiled } from './helpers/createTransformTest.js';
+import { getChunksNames } from './helpers/createTransformTest.js';
+import { assertChunks } from './helpers/createTransformTest.js';
+import { assertAssets } from './helpers/createTransformTest.js';
 import plugin from '../src/index.js';
 
 const expect = chai.expect;
@@ -177,6 +181,49 @@ describe( 'banner and comments support', () => {
 			}
 		} ).then( ( { bundle } ) => {
 			expect( bundle.code ).to.match( /^\/\* hublabubla \*\// );
+		} );
+	} );
+
+	// #139, #144
+	it( 'adds banner to chunks', () => {
+		return createTransformTest( {
+			fixture: 'chunks',
+			skipBabel: true,
+			rollupOptions: {
+				plugins: [
+					plugin( {
+						banner: '/* hublabubla */'
+					} )
+				]
+			}
+		} ).then( ( { bundle: { code }, chunks } ) => {
+			const chunksNames = getChunksNames( code );
+
+			assertChunks( chunks, chunksNames );
+
+			chunks.forEach( ( { code } ) => {
+				expect( code ).to.match( /^\/\* hublabubla \*\// );
+			} );
+		} );
+	} );
+
+	// #139
+	it( 'does not add banner to assets', () => {
+		return createTransformTest( {
+			rollupOptions: {
+				plugins: [
+					emitAssetPlugin(),
+					plugin( {
+						banner: '/* hublabubla */'
+					} )
+				]
+			}
+		} ).then( ( { chunks } ) => {
+			assertAssets( chunks );
+
+			chunks.forEach( ( { code } ) => {
+				expect( code ).not.to.match( /^\/\* hublabubla \*\// );
+			} );
 		} );
 	} );
 } );
