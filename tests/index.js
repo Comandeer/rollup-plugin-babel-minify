@@ -1,6 +1,7 @@
 import chai from 'chai';
 import asyncGeneratorsPlugin from '@babel/plugin-syntax-async-generators';
 import createTransformTest from './helpers/createTransformTest.js';
+import { assertTranspiled } from './helpers/createTransformTest.js';
 import { defaultBabelOptions } from './helpers/createTransformTest.js';
 import plugin from '../src/index.js';
 
@@ -12,9 +13,7 @@ describe( 'plugin and its configuration', () => {
 	} );
 
 	it( 'minifies code just like babel-minify', () => {
-		return createTransformTest().then( ( { bundle, transpiled } ) => {
-			expect( bundle.code.trim() ).to.equal( transpiled.code );
-		} );
+		return createTransformTest().then( assertTranspiled );
 	} );
 
 	it( 'passes options to babel', () => {
@@ -34,9 +33,7 @@ describe( 'plugin and its configuration', () => {
 					} )
 				]
 			}
-		} ).then( ( { bundle, transpiled } ) => {
-			expect( bundle.code.trim() ).to.equal( transpiled.code );
-		} );
+		} ).then( assertTranspiled );
 	} );
 
 	// #137, #138
@@ -55,9 +52,7 @@ describe( 'plugin and its configuration', () => {
 					} )
 				]
 			}
-		} ).then( ( { bundle, transpiled } ) => {
-			expect( bundle.code.trim() ).to.equal( transpiled.code );
-		} );
+		} ).then( assertTranspiled );
 	} );
 
 	// #137, #138
@@ -76,8 +71,6 @@ describe( 'plugin and its configuration', () => {
 					} )
 				]
 			}
-		} ).then( ( { bundle, transpiled } ) => {
-			expect( bundle.code.trim() ).to.equal( transpiled.code );
-		} );
+		} ).then( assertTranspiled );
 	} );
 } );

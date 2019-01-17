@@ -1,3 +1,4 @@
+import { expect } from 'chai';
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 import { rollup } from 'rollup';
@@ -43,8 +44,13 @@ function createTransformTest( {
 	} );
 }
 
+function assertTranspiled( { bundle, transpiled } ) {
+	expect( bundle.code.trim() ).to.equal( transpiled.code );
+}
+
 export { defaultFixture };
 export { defaultBabelOptions };
 export { defaultRollupOptions };
 export { defaultBundleOptions };
+export { assertTranspiled };
 export default createTransformTest;

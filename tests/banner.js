@@ -3,6 +3,7 @@ import createTransformTest from './helpers/createTransformTest.js';
 import { defaultBabelOptions } from './helpers/createTransformTest.js';
 import { defaultRollupOptions } from './helpers/createTransformTest.js';
 import { defaultBundleOptions } from './helpers/createTransformTest.js';
+import { assertTranspiled } from './helpers/createTransformTest.js';
 import plugin from '../src/index.js';
 
 const expect = chai.expect;
@@ -20,9 +21,7 @@ describe( 'banner and comments support', () => {
 					} )
 				]
 			}
-		} ).then( ( { bundle, transpiled } ) => {
-			expect( bundle.code.trim() ).to.equal( transpiled.code );
-		} );
+		} ).then( assertTranspiled );
 	} );
 
 	it( 'adds banner even if comments are removed', () => {
