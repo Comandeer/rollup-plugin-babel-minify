@@ -40,15 +40,14 @@ function filterMinifyOptions( options ) {
 		'comments',
 		'plugins'
 	];
-	const minifyOptions = {};
 
-	Object.keys( options ).forEach( ( option ) => {
+	return Object.keys( options ).reduce( ( newOptions, option ) => {
 		if ( disallowedProperties.indexOf( option ) === -1 ) {
-			minifyOptions[ option ] = options[ option ];
+			newOptions[ option ] = options[ option ];
 		}
-	} );
 
-	return minifyOptions;
+		return newOptions;
+	}, {} );
 }
 
 function isString( v ) {
