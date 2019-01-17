@@ -1,11 +1,13 @@
-import chai from 'chai';
+import { expect } from 'chai';
 import validateSourcemap from 'sourcemap-validator';
+import emitAssetPlugin from './helpers/emitAssetPlugin.js';
 import validateBannerNewLineSourceMap from './helpers/validateBannerNewLineSourceMap.js';
 import createTransformTest from './helpers/createTransformTest.js';
+import { getChunksNames } from './helpers/createTransformTest.js';
+import { assertChunks } from './helpers/createTransformTest.js';
+import { assertAssets } from './helpers/createTransformTest.js';
 import { defaultBundleOptions } from './helpers/createTransformTest.js';
 import plugin from '../src/index.js';
-
-const expect = chai.expect;
 
 describe( 'source maps support', () => {
 	it( 'generates source map by default', () => {
@@ -200,6 +202,49 @@ describe( 'source maps support', () => {
 			validateBannerNewLineSourceMap( {
 				map,
 				isEmpty: true
+			} );
+		} );
+	} );
+
+	// #139, #144
+	it( 'generates sourcemaps for chunks', () => {
+		return createTransformTest( {
+			fixture: 'chunks',
+			skipBabel: true,
+			bundleOptions: Object.assign( {}, defaultBundleOptions, {
+				sourcemap: true
+			} )
+		} ).then( ( { bundle: { code }, chunks } ) => {
+			const chunksNames = getChunksNames( code );
+
+			assertChunks( chunks, chunksNames );
+
+			chunks.forEach( ( { code, map } ) => {
+				expect( map ).to.not.equal( null );
+				expect( () => {
+					validateSourcemap( code, map );
+				} ).not.to.throw();
+			} );
+		} );
+	} );
+
+	// #139
+	it( 'does not generate sourcemaps for assets', () => {
+		return createTransformTest( {
+			rollupOptions: {
+				plugins: [
+					emitAssetPlugin(),
+					plugin()
+				]
+			},
+			bundleOptions: Object.assign( {}, defaultBundleOptions, {
+				sourcemap: true
+			} )
+		} ).then( ( { chunks } ) => {
+			assertAssets( chunks );
+
+			chunks.forEach( ( { map } ) => {
+				expect( map ).to.equal( undefined );
 			} );
 		} );
 	} );

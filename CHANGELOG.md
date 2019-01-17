@@ -6,12 +6,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
-## [7.0.0]
+## [7.0.0] – 2019-01-17
 ### Added
 * [#143] **BREAKING CHANGE**: add support for Rollup `^1.0.0`.
+* [#144] **BREAKING CHANGE**: add support for code splitting:
+	* pre-include [`@babel/plugin-syntax-dynamic-import`](https://www.npmjs.com/package/@babel/plugin-syntax-dynamic-import) Babel plugin.
 
 ### Removed
-* [#143] **BREAKING CHANGE**: remove support for Rollup < 1:
+* [#143] **BREAKING CHANGE**: remove support for Rollup < 1.
 * [#143] **BREAKING CHANGE**: remove support for legacy syntax of banner.
 
 ## [6.2.0] – 2018-11-22
@@ -161,6 +163,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [#137]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/137
 [#138]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/138
 [#143]: https://github.com/Comandeer/rollup-plugin-babel-minify/pull/143
+[#144]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/144
 
 [7.0.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v6.2.0...v7.0.0
 [6.2.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v6.1.1...v6.2.0

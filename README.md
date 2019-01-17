@@ -33,7 +33,10 @@ There are additional options:
 * `comments` (default: `true`): indicates if comments should be preserved in source;
 * `banner` (default: `undefined`): the comment which should be prepended to the transformed bundle;
 * `bannerNewLine` (since 4.0.0, default: `false`): indicates if the banner comment should be followed by a new line;
-* `sourceMap` (default: `true`): indicates if sourcemap should be generated.
+* `sourceMap` (default: `true`): indicates if sourcemap should be generated;
+* `plugins` (since 6.2.0): indicates which Babel plugins should be loaded alongside [minify preset](https://github.com/babel/minify/tree/master/packages/babel-preset-minify); two plugins are loaded by default:
+	* [`@comandeer/babel-plugin-banner`](https://www.npmjs.com/package/@comandeer/babel-plugin-banner),
+	* [`@babel/plugin-syntax-dynamic-import`](https://www.npmjs.com/package/@babel/plugin-syntax-dynamic-import) (since 7.0.0).
 
 ## License
 

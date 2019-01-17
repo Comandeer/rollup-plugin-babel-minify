@@ -1,5 +1,6 @@
 import minifyPreset from 'babel-preset-minify';
 import bannerPlugin from '@comandeer/babel-plugin-banner';
+import importPlugin from '@babel/plugin-syntax-dynamic-import';
 import { getCommentContent } from '@comandeer/babel-plugin-banner';
 import { transform } from '@babel/core';
 import { filterMinifyOptions } from './utils.js';
@@ -17,7 +18,7 @@ function minify( options = {} ) {
 				presets: [ [ minifyPreset, minifyOptions ] ],
 				sourceMaps: typeof options.sourceMap !== 'undefined' ? Boolean( options.sourceMap ) : true,
 				comments: typeof options.comments !== 'undefined' ? Boolean( options.comments ) : true,
-				plugins: Array.isArray( options.plugins ) ? options.plugins : []
+				plugins: Array.isArray( options.plugins ) ? options.plugins.concat( [ importPlugin ] ) : [ importPlugin ]
 			};
 			let banner;
 
