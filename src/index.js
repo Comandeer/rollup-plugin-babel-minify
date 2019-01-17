@@ -18,7 +18,7 @@ function minify( options = {} ) {
 				presets: [ [ minifyPreset, minifyOptions ] ],
 				sourceMaps: typeof options.sourceMap !== 'undefined' ? Boolean( options.sourceMap ) : true,
 				comments: typeof options.comments !== 'undefined' ? Boolean( options.comments ) : true,
-				plugins: Array.isArray( options.plugins ) ? options.plugins : []
+				plugins: Array.isArray( options.plugins ) ? options.plugins.concat( [ importPlugin ] ) : [ importPlugin ]
 			};
 			let banner;
 
@@ -29,7 +29,6 @@ function minify( options = {} ) {
 				let isAlreadyInserted = false;
 
 				babelConf.plugins = babelConf.plugins.concat( [
-					importPlugin,
 					[ bannerPlugin, {
 						banner
 					} ]
