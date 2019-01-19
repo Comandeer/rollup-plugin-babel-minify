@@ -118,7 +118,7 @@ function getAssets( dir = defaultAssetsDirectory ) {
 function assertAssets( assets = {}, banner = new RegExp( '' ) ) {
 	return Object.keys( assets ).forEach( ( assetName ) => {
 		const asset = assets[ assetName ];
-		console.log( asset ); // eslint-disable-line no-console
+
 		expect( asset ).not.to.match( banner );
 	} );
 }
