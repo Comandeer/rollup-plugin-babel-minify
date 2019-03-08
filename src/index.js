@@ -9,10 +9,21 @@ import { isFn } from './utils.js';
 import { isFnOrString } from './utils.js';
 
 function minify( options = {} ) {
+	let bundleBanner;
+
 	return {
 		name: 'babel-minify',
 
-		renderChunk( bundle, chunkInfo, { banner: bundleBanner } ) {
+		outputOptions( outputOptions ) {
+			const result = Object.assign( {}, outputOptions );
+			bundleBanner = result.banner;
+
+			delete result.banner;
+
+			return result;
+		},
+
+		renderChunk( bundle ) {
 			const minifyOptions = filterMinifyOptions( options );
 			const babelConf = {
 				presets: [ [ minifyPreset, minifyOptions ] ],
