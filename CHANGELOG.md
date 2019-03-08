@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## [8.0.0] – 2019-03-08
+### Fixed
+* [#146] Banner is outputted twice.
+
+### Changed
+* [#146] **BREAKING CHANGE**: bump Rollup dependency to `^1.6.0`.
+
 ## [7.0.0] – 2019-01-17
 ### Added
 * [#143] **BREAKING CHANGE**: add support for Rollup `^1.0.0`.
@@ -164,7 +171,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [#138]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/138
 [#143]: https://github.com/Comandeer/rollup-plugin-babel-minify/pull/143
 [#144]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/144
+[#146]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/146
 
+[8.0.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v7.0.0...v8.0.0
 [7.0.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v6.2.0...v7.0.0
 [6.2.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v6.1.1...v6.2.0
 [6.1.1]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v6.1.0...v6.1.1
