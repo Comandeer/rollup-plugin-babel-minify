@@ -60,6 +60,16 @@ describe( 'Rollup CLI', () => {
 		} );
 	} );
 
+	// #146
+	it( 'banner inherited not outputted twice', () => {
+		return executeRollupCmd( 'bannerInheritTwice' ).then( () => {
+			const { [ 'bundle.js' ]: code } = getArtifacts();
+
+			expect( code ).to.match( /^\/\* hublabubla \*\// );
+			expect( code ).not.to.match( /^(\/\* hublabubla \*\/\s*){2,}/ );
+		} );
+	} );
+
 	// #139
 	it( 'multiple chunks (dynamic import)', () => {
 		const artifacts = [

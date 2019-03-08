@@ -51,6 +51,32 @@ describe( 'banner and comments support', () => {
 		} );
 	} );
 
+	// #146
+	it( 'adds banner inherited from bundle.generate only once when comments are enabled', () => {
+		const rollupOptions = Object.assign( {}, defaultRollupOptions );
+		// Plugin adding banner dynamically is used to ensure that test passes due to fix,
+		// not due to the fact that plugin does not insert banner on its own, causing that
+		// banner is inserted only once (by Rollup).
+		const bannerPlugin = {
+			outputOptions( outputOptions ) {
+				return Object.assign( {}, outputOptions, {
+					banner: '/* hublabubla */'
+				} );
+			}
+		};
+
+		rollupOptions.plugins = [ ... rollupOptions.plugins ];
+		rollupOptions.plugins.unshift( bannerPlugin );
+
+		return createTransformTest( {
+			rollupOptions,
+			bundleOptions: defaultBundleOptions
+		} ).then( ( { bundle } ) => {
+			expect( bundle.code ).to.match( /^\/\* hublabubla \*\// );
+			expect( bundle.code ).not.to.match( /^(\/\* hublabubla \*\/\s*){2,}/ );
+		} );
+	} );
+
 	it( 'adds banner inherited from root configuration', () => {
 		const bannerOptions = {
 			output: {
