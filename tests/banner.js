@@ -83,7 +83,7 @@ describe( 'banner and comments support', () => {
 				banner: '/* hublabubla */'
 			}
 		};
-		const rollupOptions = Object.assign( defaultRollupOptions, bannerOptions );
+		const rollupOptions = Object.assign( {}, defaultRollupOptions, bannerOptions );
 		const bundleOptions = Object.assign( {}, defaultBundleOptions, bannerOptions );
 
 		return createTransformTest( {
