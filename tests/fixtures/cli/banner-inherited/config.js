@@ -1,14 +1,14 @@
-import minify from '../../../dist/rollup-plugin-babel-minify.es2015.js';
+import minify from '../../../../dist/rollup-plugin-babel-minify.es2015.js';
 
 export default {
-	input: 'chunks.js',
+	input: 'index.js',
 	plugins: [
 		minify()
 	],
 	output: {
 		banner: '/* hublabubla */',
 		sourcemap: true,
-		dir: 'bundle',
+		file: 'output/bundle.js',
 		format: 'es'
 	}
 };
