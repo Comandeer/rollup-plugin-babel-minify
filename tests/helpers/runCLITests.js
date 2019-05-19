@@ -63,29 +63,31 @@ function assertArtifacts( cwd ) {
 	processArtifacts( outputPath, expectedPath );
 }
 
-function runTest( path ) {
-	it( basename( path ), () => {
-		return executeRollupCmd( path ).then( () => {
-			assertArtifacts( path );
+function runTest( path, versions ) {
+	versions.forEach( ( version ) => {
+		it( `${ basename( path ) } (${ version })`, () => {
+			return executeRollupCmd( path, version ).then( () => {
+				assertArtifacts( path );
+			} );
 		} );
 	} );
 }
 
-function runTestsFromDir( directory ) {
+function runTestsFromDir( directory, versions ) {
 	const fixtures = readdirSync( directory );
 
 	fixtures.forEach( ( fixture ) => {
-		runTest( resolvePath( directory, fixture ) );
+		runTest( resolvePath( directory, fixture ), versions );
 	} );
 }
 
-function runCLITests( suiteName, directory ) {
+function runCLITests( suiteName, directory, versions ) {
 	describe( suiteName, () => {
 		afterEach( () => {
 			removeArtifacts( directory );
 		} );
 
-		runTestsFromDir( directory );
+		runTestsFromDir( directory, versions );
 	} );
 }
 
