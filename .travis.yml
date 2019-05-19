@@ -7,6 +7,8 @@ node_js:
   - 10
   - 8
   - 6
-install: npm install
+install:
+  - npm install
+  - npm install --global npx
 script: npm test
 after_success: if [ "$TRAVIS_OS_NAME" = "linux" ]; then npm run coverage; fi
