@@ -1,0 +1,5 @@
+{
+	"hooks": {
+		"commit-msg": "is-ci && exit 0 || commitplease .git/COMMIT_EDITMSG"
+	}
+}
