@@ -10,7 +10,7 @@
     "build": "rlb",
     "lint": "eslint src/**/*.js tests/*.js tests/helpers/**/*.js",
     "pretest": "npm run lint && npm run build",
-    "test": "nyc mocha tests/*.js --timeout 15000 --require @babel/register",
+    "test": "nyc mocha tests/*.js --timeout 30000 --require @babel/register",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "commitmsg": "is-ci && exit 0 || commitplease .git/COMMIT_EDITMSG",
     "version": "npm test && git add -f dist/",
