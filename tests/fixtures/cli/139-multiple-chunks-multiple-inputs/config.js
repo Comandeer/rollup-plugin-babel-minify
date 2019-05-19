@@ -1,4 +1,4 @@
-import minify from '../../../dist/rollup-plugin-babel-minify.es2015.js';
+import minify from '../../../../dist/rollup-plugin-babel-minify.es2015.js';
 
 export default {
 	input: [
@@ -11,7 +11,7 @@ export default {
 	output: {
 		banner: '/* hublabubla */',
 		sourcemap: true,
-		dir: 'bundle',
+		dir: 'output',
 		format: 'es'
 	}
 };

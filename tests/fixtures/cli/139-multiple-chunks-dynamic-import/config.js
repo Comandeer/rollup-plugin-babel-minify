@@ -1,4 +1,4 @@
-import minify from '../../../dist/rollup-plugin-babel-minify.es2015.js';
+import minify from '../../../../dist/rollup-plugin-babel-minify.es2015.js';
 
 export default {
 	input: 'chunks.js',
@@ -6,9 +6,10 @@ export default {
 		minify()
 	],
 	output: {
+		chunkFileNames: 'chunk-[hash].js',
 		banner: '/* hublabubla */',
 		sourcemap: true,
-		dir: 'bundle',
+		dir: 'output',
 		format: 'es'
 	}
 };

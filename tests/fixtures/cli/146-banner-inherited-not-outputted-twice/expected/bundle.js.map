@@ -1,0 +1,1 @@
+{"version":3,"file":"bundle.js","sources":["../index.js"],"sourcesContent":["/* Simple comment */\n\nclass Test {\n\tmethod() {\n\t\treturn Symbol( 'a' );\n\t}\n}\n\nexport default Test;\n"],"names":["Test","method","Symbol"],"mappings":"iBAAA,oBAEA,KAAMA,CAAAA,IAAK,CACVC,MAAM,EAAG,CACR,MAAOC,CAAAA,MAAM,CAAE,GAAF,CACb,CAHS"}

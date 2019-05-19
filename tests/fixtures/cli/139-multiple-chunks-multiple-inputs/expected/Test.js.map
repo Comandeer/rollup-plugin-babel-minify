@@ -1,0 +1,1 @@
+{"version":3,"file":"Test.js","sources":["../Test.js"],"sourcesContent":["class Test {\n\tconstructor( arg ) {\n\t\tconsole.log( arg );\n\t}\n}\n\nexport default Test;\n"],"names":["Test","constructor","arg","console","log"],"mappings":"gBAAA,KAAMA,CAAAA,IAAK,CACVC,WAAW,CAAEC,CAAF,CAAQ,CAClBC,OAAO,CAACC,GAAR,CAAaF,CAAb,CACA,CAHS"}

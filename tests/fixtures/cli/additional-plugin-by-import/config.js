@@ -1,5 +1,5 @@
 import asyncGeneratorsPlugin from '@babel/plugin-syntax-async-generators';
-import minify from '../../../dist/rollup-plugin-babel-minify.es2015.js';
+import minify from '../../../../dist/rollup-plugin-babel-minify.es2015.js';
 
 export default {
 	input: 'index.js',
@@ -12,7 +12,7 @@ export default {
 	],
 	output: {
 		sourcemap: true,
-		file: 'bundle.js',
+		file: 'output/bundle.js',
 		format: 'es'
 	}
 };
