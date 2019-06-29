@@ -6,9 +6,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
-## [8.1.0]
+## [9.0.0] – 2019-06-29
 ### Added
 * [#159] Support for Node 12.
+
+### Removed
+* [#169] **BREAKING CHANGE**: support for Node 6.
 
 ## [8.0.0] – 2019-03-08
 ### Fixed
@@ -177,8 +180,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [#144]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/144
 [#146]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/146
 [#159]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/159
+[#169]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/169
 
-[8.1.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v8.0.0...v8.1.0
+[9.0.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v8.0.0...v9.0.0
 [8.0.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v7.0.0...v8.0.0
 [7.0.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v6.2.0...v7.0.0
 [6.2.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v6.1.1...v6.2.0
