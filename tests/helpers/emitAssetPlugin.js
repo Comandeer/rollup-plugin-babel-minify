@@ -3,7 +3,17 @@ function emitAssetPlugin() {
 		name: 'emit-asset',
 
 		buildStart() {
-			this.emitAsset( 'asset.js', 'I am an asset.' );
+			const assetContent = 'I am an asset.';
+
+			if ( this.emitFile ) {
+				return this.emitFile( {
+					type: 'asset',
+					fileName: 'assets/asset-cc117f4a.js',
+					source: assetContent
+				} );
+			}
+
+			this.emitAsset( 'asset.js', assetContent );
 		}
 	};
 }
