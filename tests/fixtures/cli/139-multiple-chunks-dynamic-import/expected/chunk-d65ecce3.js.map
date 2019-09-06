@@ -1,1 +1,0 @@
-{"version":3,"file":"chunk-d65ecce3.js","sources":["../another.js"],"sourcesContent":["function another() {\n\treturn 'Just some dummy string';\n}\n\nexport { another };\n"],"names":["another"],"mappings":"gBAAA,QAASA,CAAAA,OAAT,EAAmB,CAClB,MAAO,wBACP"}
