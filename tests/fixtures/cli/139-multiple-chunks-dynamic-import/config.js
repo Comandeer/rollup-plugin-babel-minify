@@ -6,7 +6,7 @@ export default {
 		minify()
 	],
 	output: {
-		chunkFileNames: 'chunk-[hash].js',
+		chunkFileNames: 'chunk-generated.js',
 		banner: '/* hublabubla */',
 		sourcemap: true,
 		dir: 'output',
