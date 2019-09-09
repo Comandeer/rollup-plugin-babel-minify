@@ -7,6 +7,10 @@ node_js:
   - 12
   - 10
   - 8
+branches:
+  only:
+  - master
+  - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
 install:
   - npm install
   - npm install --global npx
