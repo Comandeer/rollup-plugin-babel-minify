@@ -1,0 +1,33 @@
+/**
+ * Rollup plugin that enables usage of `babel-preset-minify` with Rollup.
+ *
+ * @interface MinifyPlugin
+ * @memberof module:rollup-plugin-babel-minify
+ */
+
+/**
+ * Plugin's name.
+ *
+ * @readonly
+ * @member {string} [name='babel-minify']
+ * @memberof module:rollup-plugin-babel-minify.MinifyPlugin
+ */
+
+/**
+ * Method transforming Rollup's output options to prevent double insertion of the banner comment.
+ *
+ * @since 8.0.0
+ * @readonly
+ * @see {@link http://rollupjs.org/guide/en/#outputoptions <code>outputOptions</code> hook in Rollup's documentation}
+ * @member {function} outputOptions
+ * @memberof module:rollup-plugin-babel-minify.MinifyPlugin
+ */
+
+/**
+ * Method performing the actual minification.
+ *
+ * @readonly
+ * @see {@link http://rollupjs.org/guide/en/#renderchunk <code>renderChunk</code> hook in Rollup's documentation}
+ * @member {function} renderChunk
+ * @memberof module:rollup-plugin-babel-minify.MinifyPlugin
+ */

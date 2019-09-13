@@ -8,6 +8,18 @@ import { addNewLine } from './utils.js';
 import { isFn } from './utils.js';
 import { isFnOrString } from './utils.js';
 
+/**
+ * Rollup's plugin adding the ability to use babel-minify with Rollup.
+ *
+ * @module rollup-plugin-babel-minify
+ */
+
+/**
+ * Function performing the actual minification.
+ *
+ * @param {module:rollup-plugin-babel-minify.MinifyOptions} [options={}] Plugin's options.
+ * @returns {module:rollup-plugin-babel-minify.MinifyPlugin} Rollup plugin.
+ */
 function minify( options = {} ) {
 	let bundleBanner;
 
