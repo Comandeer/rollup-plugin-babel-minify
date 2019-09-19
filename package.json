@@ -6,8 +6,9 @@
   "jsnext:main": "dist/rollup-plugin-babel-minify.es2015.js",
   "module": "dist/rollup-plugin-babel-minify.es2015.js",
   "scripts": {
-    "prebuild-docs": "rimraf docs",
+	"prebuild-docs": "rimraf docs",
     "build-docs": "npx jsdoc src -c .jsdocrc -R README.md -d docs",
+    "postbuild-docs": "cd docs && touch .nojekyll",
     "prebuild": "rimraf dist",
     "build": "rlb",
     "lint": "eslint src/**/*.js tests/*.js tests/helpers/**/*.js",
