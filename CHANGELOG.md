@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## [9.1.0] – 2019-09-20
+### Added
+* [#140] API docs.
+
+### Changed
+* [#187] Bump `babel-preset-minify` dependency to `^0.5.1`.
+
 ## [9.0.0] – 2019-06-29
 ### Added
 * [#159] Support for Node 12.
@@ -176,12 +183,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [#133]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/133
 [#137]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/137
 [#138]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/138
+[#140]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/140
 [#143]: https://github.com/Comandeer/rollup-plugin-babel-minify/pull/143
 [#144]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/144
 [#146]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/146
 [#159]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/159
 [#169]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/169
+[#187]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/187
 
+[9.1.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v9.0.0...v9.1.0
 [9.0.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v8.0.0...v9.0.0
 [8.0.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v7.0.0...v8.0.0
 [7.0.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v6.2.0...v7.0.0
