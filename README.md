@@ -38,6 +38,8 @@ There are additional options:
 	* [`@comandeer/babel-plugin-banner`](https://www.npmjs.com/package/@comandeer/babel-plugin-banner),
 	* [`@babel/plugin-syntax-dynamic-import`](https://www.npmjs.com/package/@babel/plugin-syntax-dynamic-import) (since 7.0.0).
 
+Check [API docs](https://comandeer.github.io/rollup-plugin-babel-minify) for more detailed description.
+
 ## License
 
 See [LICENSE](./LICENSE) file for details.

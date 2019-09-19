@@ -1,0 +1,57 @@
+/**
+ * Additional options accepted by {@link MinifyPlugin}. All options accepted by `babel-preset-minify`
+ * are also handled by the plugin.
+ *
+ * @see {@link https://github.com/babel/minify/blob/master/packages/babel-preset-minify/README.md#options <code>babel-preset-minify</code> options}
+ * @interface MinifyOptions
+ * @memberof module:rollup-plugin-babel-minify
+ */
+
+/**
+ * Indicates if comments should be preserved in source.
+ *
+ * @member {boolean} [comments=true]
+ * @memberof module:rollup-plugin-babel-minify.MinifyOptions
+ */
+
+/**
+ * The comment which should be prepended to the transformed bundle.
+ * Function generating banner comment is also accepted.
+ *
+ * @member {string/function} [banner]
+ * @memberof module:rollup-plugin-babel-minify.MinifyOptions
+ */
+
+/**
+ * Indicates if the banner comment should be followed by a new line.
+ *
+ * @since 4.0.0
+ * @member {boolean} [bannerNewLine=false]
+ * @memberof module:rollup-plugin-babel-minify.MinifyOptions
+ */
+
+/**
+ * Indicates whether sourcemap should be generated.
+ *
+ * @member {boolean} [sourceMap=true]
+ * @memberof module:rollup-plugin-babel-minify.MinifyOptions
+ */
+
+/**
+ * Indicates which Babel plugins should be loaded alongside minify preset;
+ * two plugins are loaded by default:
+ * * [`@comandeer/babel-plugin-banner`](https://www.npmjs.com/package/@comandeer/babel-plugin-banner),
+ * * [`@babel/plugin-syntax-dynamic-import`](https://www.npmjs.com/package/@babel/plugin-syntax-dynamic-import) (since 7.0.0).
+ *
+ * @since 6.2.0
+ * @member {module:rollup-plugin-babel-minify.BabelPlugin[]} [plugins]
+ * @memberof module:rollup-plugin-babel-minify.MinifyOptions
+ */
+
+/**
+ * Babel plugin.
+ *
+ * @see {@link https://babeljs.io/docs/en/plugins Plugins in Babel documentation}
+ * @typedef {Object} BabelPlugin
+ * @memberof module:rollup-plugin-babel-minify
+ */

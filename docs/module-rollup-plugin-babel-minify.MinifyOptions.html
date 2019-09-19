@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Interface: MinifyOptions</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Interface: MinifyOptions</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+            <span class="ancestors"><a href="module-rollup-plugin-babel-minify.html">rollup-plugin-babel-minify</a>.</span>MinifyOptions</h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>Additional options accepted by MinifyPlugin. All options accepted by <code>babel-preset-minify</code>
+are also handled by the plugin.</p></div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="MinifyOptions.jsdoc.html">MinifyOptions.jsdoc</a>, <a href="MinifyOptions.jsdoc.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://github.com/babel/minify/blob/master/packages/babel-preset-minify/README.md#options"><code>babel-preset-minify</code> options</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id=".banner"><span class="type-signature">(static) </span>banner<span class="type-signature"> :string/function</span></h4>
+
+
+
+
+<div class="description">
+    <p>The comment which should be prepended to the transformed bundle.
+Function generating banner comment is also accepted.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string/function</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="MinifyOptions.jsdoc.html">MinifyOptions.jsdoc</a>, <a href="MinifyOptions.jsdoc.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".bannerNewLine"><span class="type-signature">(static) </span>bannerNewLine<span class="type-signature"> :boolean</span></h4>
+
+
+
+
+<div class="description">
+    <p>Indicates if the banner comment should be followed by a new line.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">boolean</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>4.0.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="MinifyOptions.jsdoc.html">MinifyOptions.jsdoc</a>, <a href="MinifyOptions.jsdoc.html#line25">line 25</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".comments"><span class="type-signature">(static) </span>comments<span class="type-signature"> :boolean</span></h4>
+
+
+
+
+<div class="description">
+    <p>Indicates if comments should be preserved in source.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">boolean</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>true</li>
+        </ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="MinifyOptions.jsdoc.html">MinifyOptions.jsdoc</a>, <a href="MinifyOptions.jsdoc.html#line10">line 10</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".plugins"><span class="type-signature">(static) </span>plugins<span class="type-signature"> :Array.&lt;<a href="module-rollup-plugin-babel-minify.html#.BabelPlugin">module:rollup-plugin-babel-minify.BabelPlugin</a>></span></h4>
+
+
+
+
+<div class="description">
+    <p>Indicates which Babel plugins should be loaded alongside minify preset;
+two plugins are loaded by default:</p>
+<ul>
+<li><a href="https://www.npmjs.com/package/@comandeer/babel-plugin-banner"><code>@comandeer/babel-plugin-banner</code></a>,</li>
+<li><a href="https://www.npmjs.com/package/@babel/plugin-syntax-dynamic-import"><code>@babel/plugin-syntax-dynamic-import</code></a> (since 7.0.0).</li>
+</ul>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;<a href="module-rollup-plugin-babel-minify.html#.BabelPlugin">module:rollup-plugin-babel-minify.BabelPlugin</a>></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>6.2.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="MinifyOptions.jsdoc.html">MinifyOptions.jsdoc</a>, <a href="MinifyOptions.jsdoc.html#line40">line 40</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".sourceMap"><span class="type-signature">(static) </span>sourceMap<span class="type-signature"> :boolean</span></h4>
+
+
+
+
+<div class="description">
+    <p>Indicates whether sourcemap should be generated.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">boolean</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>true</li>
+        </ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="MinifyOptions.jsdoc.html">MinifyOptions.jsdoc</a>, <a href="MinifyOptions.jsdoc.html#line33">line 33</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-rollup-plugin-babel-minify.html">rollup-plugin-babel-minify</a></li></ul><h3>Interfaces</h3><ul><li><a href="module-rollup-plugin-babel-minify.MinifyOptions.html">MinifyOptions</a></li><li><a href="module-rollup-plugin-babel-minify.MinifyPlugin.html">MinifyPlugin</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Fri Sep 20 2019 00:56:46 GMT+0200 (Central European Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
