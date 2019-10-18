@@ -6,7 +6,7 @@
   "jsnext:main": "dist/rollup-plugin-babel-minify.es2015.js",
   "module": "dist/rollup-plugin-babel-minify.es2015.js",
   "scripts": {
-	"prebuild-docs": "rimraf docs",
+    "prebuild-docs": "rimraf docs",
     "build-docs": "npx jsdoc src -c .jsdocrc -R README.md -d docs",
     "postbuild-docs": "cd docs && touch .nojekyll",
     "prebuild": "rimraf dist",
@@ -72,21 +72,21 @@
   },
   "devDependencies": {
     "@babel/plugin-syntax-async-generators": "^7.2.0",
-    "@babel/preset-env": "^7.6.0",
-    "@babel/register": "^7.6.0",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/register": "^7.6.2",
     "@comandeer/eslint-config": "^0.2.2",
     "@comandeer/is-ci": "^2.0.0",
     "@comandeer/rollup-lib-bundler": "^0.9.0",
     "chai": "^4.2.0",
-    "codecov": "^3.5.0",
+    "codecov": "^3.6.1",
     "commitplease": "^3.2.0",
     "cz-conventional-changelog": "^3.0.2",
-    "eslint": "^6.4.0",
-    "husky": "^3.0.5",
-    "mocha": "^6.2.0",
+    "eslint": "^6.5.1",
+    "husky": "^3.0.9",
+    "mocha": "^6.2.2",
     "nyc": "^14.1.1",
     "rimraf": "^3.0.0",
-    "rollup": "^1.21.4",
+    "rollup": "^1.25.0",
     "sourcemap-validator": "^2.1.0"
   },
   "config": {
@@ -95,7 +95,7 @@
     }
   },
   "dependencies": {
-    "@babel/core": "^7.6.0",
+    "@babel/core": "^7.6.4",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@comandeer/babel-plugin-banner": "^5.0.0",
     "babel-preset-minify": "^0.5.1",
