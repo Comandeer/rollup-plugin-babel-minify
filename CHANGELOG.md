@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## [9.1.1] – 2019-11-10
+### Fixed
+* [#193] Incompatibility with `@babel/traverse@7.7.0` (see [babel/babel#10654](https://github.com/babel/babel/issues/10654)).
+
 ## [9.1.0] – 2019-09-20
 ### Added
 * [#140] API docs.
@@ -190,7 +194,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [#159]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/159
 [#169]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/169
 [#187]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/187
+[#193]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/193
 
+[9.1.1]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v9.1.0...v9.1.1
 [9.1.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v9.0.0...v9.1.0
 [9.0.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v8.0.0...v9.0.0
 [8.0.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v7.0.0...v8.0.0
