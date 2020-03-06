@@ -86,7 +86,7 @@
     "mocha": "^6.2.2",
     "nyc": "^14.1.1",
     "rimraf": "^3.0.0",
-    "rollup": "^1.25.0",
+    "rollup": "^2.0.0",
     "sourcemap-validator": "^2.1.0"
   },
   "config": {
