@@ -203,6 +203,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [#187]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/187
 [#193]: https://github.com/Comandeer/rollup-plugin-babel-minify/issues/193
 
+[9.1.1]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v9.1.1...v10.0.0
 [9.1.1]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v9.1.0...v9.1.1
 [9.1.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v9.0.0...v9.1.0
 [9.0.0]: https://github.com/Comandeer/rollup-plugin-babel-minify/compare/v8.0.0...v9.0.0
