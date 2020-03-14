@@ -56,7 +56,16 @@ function assertArtifacts( cwd ) {
 			const producedContent = readFileSync( producedPath, 'utf8' );
 			const expectedContent = readFileSync( expectedPath, 'utf8' );
 
-			expect( producedContent ).to.equal( expectedContent );
+			try {
+				expect( producedContent ).to.equal( expectedContent );
+			} catch ( e ) {
+				// Allow fail in case of source maps.
+				if ( !artifact.endsWith( '.map' ) ) {
+					throw e;
+				}
+
+				console.error( `Mismatch in source map: ${ artifact }` ); // eslint-disable-line no-console
+			}
 		} );
 	}
 

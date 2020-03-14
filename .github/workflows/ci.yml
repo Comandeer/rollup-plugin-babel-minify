@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         os: [ ubuntu-latest, windows-latest, macOS-latest ]
-        node: [ '12', '10', '8' ]
+        node: [ '12', '10' ]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v1
@@ -25,6 +25,6 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
       - run: npm install
-      - run: npm install --global npx
+      - run: npm install --global npx --force
       - run: npm test
       - run: npm run coverage

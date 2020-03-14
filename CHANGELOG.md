@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## [10.0.0] – 2020-03-14
+### Added
+* Support for Rollup `^2.0.0`.
+
+### Removed
+* **BREAKING CHANGE**: support for Node 8.
+
 ## [9.1.1] – 2019-11-10
 ### Fixed
 * [#193] Incompatibility with `@babel/traverse@7.7.0` (see [babel/babel#10654](https://github.com/babel/babel/issues/10654)).
