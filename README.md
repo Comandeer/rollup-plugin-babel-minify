@@ -4,6 +4,10 @@
 
 Allows using [babel-minify](https://github.com/babel/minify) with [Rollup](https://rollupjs.org/guide/en).
 
+## ☠️ Project is deprecated! ☠️
+
+Version 10.0.0, released on 2020-03-14, will be the last version of the project, as [`babel-minify` is basically dead](https://github.com/babel/minify/issues/952). Please consider using [`rollup-plugin-terser`](https://www.npmjs.com/package/rollup-plugin-terser) instead.
+
 ## Installation
 
 ```bash
